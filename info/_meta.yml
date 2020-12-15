@@ -1,0 +1,110 @@
+# "csv":
+#   date: "required"
+#   data_period:
+#     from: "optional"
+#     to: "optional"
+#   source: "required"
+#   fields: "optional"
+
+cards:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - indicator_id
+    - id
+    - name
+    - description
+
+dashboards_disabled_filters:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - dashboard_id
+    - filter
+
+dashboards_sections:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - dashboard_id
+    - section_id
+
+dashboards:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - id
+    - name
+    - description
+
+data_periods:
+  date: '2020-11-26'
+  source: health_board
+  fields:
+    - context
+    - location_id
+    - from_date
+    - to_date
+    - extraction_date
+
+indicators_children:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - indicator_id
+    - child_id
+
+indicators_sources:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - indicator_id
+    - source_id
+
+indicators:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - id
+    - description
+    - formula
+    - measurement_unit
+    - reference
+
+sections_cards_filters:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - section_card_id
+    - filter
+    - value
+
+sections_cards:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - section_id
+    - card_id
+    - id
+    - name
+    - link
+
+sections:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - id
+    - name
+    - description
+
+sources:
+  date: '2020-12-03'
+  source: health_board
+  fields:
+    - id
+    - name
+    - description
+    - link
+    - update_rate
+    - extraction_date
+

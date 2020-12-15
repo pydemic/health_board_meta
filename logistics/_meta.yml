@@ -1,0 +1,19 @@
+# "csv":
+#   date: "required"
+#   data_period:
+#     from: "optional"
+#     to: "optional"
+#   source: "required"
+#   fields: "optional"
+
+health_institutions:
+  date: '2020-10-30'
+  data_period:
+    from: '2020-09-01'
+    to: '2020-09-30'
+  source: datasus_cnes
+  fields:
+    - city_id
+    - id
+    - name
+

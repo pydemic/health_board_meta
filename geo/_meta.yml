@@ -1,0 +1,21 @@
+# "csv":
+#   date: "required"
+#   data_period:
+#     from: "optional"
+#     to: "optional"
+#   source: "required"
+#   fields: "optional"
+
+locations:
+  date: '2020-10-26'
+  data_period:
+    from: '2000-01-01'
+    to: '2020-12-31'
+  source: datasus_geo
+  fields:
+    - level
+    - parent_id
+    - id
+    - name
+    - abbr
+
