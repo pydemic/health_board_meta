@@ -1,0 +1,166 @@
+# card_id:
+#   name: value
+#   description: value
+#   indicator_id: indicator_id
+
+# csvs:
+#   cards:
+#     - indicator_id
+#     - card_id
+#     - name
+#     - description
+
+# Births
+
+births_card:
+  indicator_id: births
+  name: Nascidos vivos
+  description: Quantidade de registros de nascidos vivos
+
+births_per_child_mass:
+  indicator_id: births
+  name: Nascidos vivos por peso ao nascer
+  description: Distribuição do número de nascidos vivos por peso ao nascer
+
+births_per_mother_age_group:
+  indicator_id: births
+  name: Distribuição de faixa etária materna
+  description: Distribuição de registros de nascidos vivos por faixa etária materna
+
+births_per_year:
+  indicator_id: births
+  name: Histórico da distribuição de nascidos vivos
+  description: Série histórica de registros de nascidos vivos por ano
+
+crude_birth_rate_card:
+  indicator_id: crude_birth_rate
+  name: Taxa bruta de natalidade
+  description: Expressa a intensidade com a qual a natalidade atua sobre uma determinada população
+
+crude_birth_rate_map:
+  indicator_id: crude_birth_rate
+  name: Mapa de distribuição da taxa bruta de natalidade
+  description: Distribuição de registros de nascidos vivos por localidade
+
+crude_birth_rate_per_year:
+  indicator_id: crude_birth_rate
+  name: Histórico da distribuição da taxa bruta de natalidade
+  description: Série histórica da taxa bruta de natalidade por ano
+
+# Deaths
+
+deaths_card:
+  indicator_id: deaths
+  name: Óbitos
+  description: Total de óbitos confirmados em residentes
+
+deaths_per_age_gender:
+  indicator_id: deaths
+  name: Pirâmide etária de óbitos
+  description: Distribuição dos óbitos em pirâmide etária
+
+deaths_per_race:
+  indicator_id: deaths
+  name: Óbitos por raça/cor
+  description: Distribuição dos óbitos por raça/cor
+
+death_rate_card:
+  indicator_id: death_rate
+  name: Coeficiente de mortalidade
+  description: Proporção de óbitos confirmados na população residente por 1000 habitantes
+
+death_rate_control_diagram:
+  indicator_id: death_rate
+  name: Diagrama de controle de coeficiente de mortalidade
+  description: Análise histórica do coeficiente de mortalidade
+
+death_rate_map:
+  indicator_id: death_rate
+  name: Mapa de coeficiente de mortalidade
+  description: Coeficiente de mortalidade apresentado em mapa geográfico
+
+death_rate_per_year:
+  indicator_id: death_rate
+  name: Histórico do coeficiente de mortalidade por período
+  description: Série histórica do coeficiente de mortalidade por período
+
+death_rate_table:
+  indicator_id: death_rate
+  name: Coeficiente de mortalidade por localidade
+  description: Análise do coeficiente de mortalidade por localidade através de mapa de calor em tabela
+
+# Incidence
+
+incidence_card:
+  indicator_id: incidence
+  name: Casos
+  description: Total de casos confirmados em residentes
+
+incidence_per_age_gender:
+  indicator_id: incidence
+  name: Pirâmide etária de casos
+  description: Distribuição dos casos de incidência em pirâmide etária
+
+incidence_per_race:
+  indicator_id: incidence
+  name: Casos por raça/cor
+  description: Distribuição dos casos de incidência por raça/cor
+
+incidence_rate_card:
+  indicator_id: incidence_rate
+  name: Coeficiente de incidência
+  description: Proporção de novos casos confirmados na população residente por 100 mil habitantes
+
+incidence_rate_control_diagram:
+  indicator_id: incidence_rate
+  name: Diagrama de controle de coeficiente de incidência
+  description: Análise histórica do coeficiente de incidência
+
+incidence_rate_map:
+  indicator_id: incidence_rate
+  name: Mapa de coeficiente de incidência
+  description: Coeficiente de incidência apresentado em mapa geográfico
+
+incidence_rate_per_year:
+  indicator_id: incidence_rate
+  name: Coeficiente de incidência por ano
+  description: Série histórica do coeficiente de incidência por ano
+
+incidence_rate_table:
+  indicator_id: incidence_rate
+  name: Coeficiente de incidência por localidade
+  description: Análise do coeficiente de incidência por localidade através de mapa de calor em tabela
+
+# Population
+
+gender_ratio_card:
+  indicator_id: gender_ratio
+  name: Razão de sexos
+  description: Expressa a relação quantitativa entre os sexos
+
+population_card:
+  indicator_id: population
+  name: População
+  description: População residente
+
+population_map:
+  indicator_id: population
+  name: Mapa de distribuição populacional
+  description: Distribuição de pessoas residentes por localidade
+
+population_growth:
+  indicator_id: population
+  name: Crescimento populacional
+  description: Série histórica de pessoas residentes por ano
+
+population_per_age_group:
+  indicator_id: population
+  name: População por faixa etária
+  description: Distribuição da população residente por faixa etária
+
+# Vaccination
+
+vaccination_coverage_card:
+  indicator_id: vaccination_coverage
+  name: Cobertura vacinal
+  description: Percentual de pessoas vacinadas e potencialmente protegidas contra uma doença

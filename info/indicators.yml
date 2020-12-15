@@ -1,0 +1,105 @@
+# indicator_id:
+#   description: value
+#   formula: value
+#   measurement_unit: value
+#   reference: value
+#   sources:
+#     - source1_id
+#     - source2_id
+#   children:
+#     - child1_id
+#     - child2_id
+
+# csvs:
+#   indicators:
+#     - indicator_id
+#     - description
+#     - formula
+#     - measurement_unit
+#     - reference
+#   indicators_sources:
+#     - indicator_id
+#     - source_id
+#   indicators_children:
+#     - parent_id
+#     - child_id
+
+births:
+  description: Número total de nascidos vivos em determinado espaço geográfico, no ano considerado
+  formula: Somatório de nascidos vivos
+  sources:
+    - datasus_sinasc
+
+crude_birth_rate:
+  description: Número de nascidos vivos, por mil habitantes, na população residente em determinado espaço geográfico, no ano considerado
+  formula: Número total de nascidos vivos de residentes/população total residente * 100
+  measurement_unit: /1000 habitantes
+  reference: http://fichas.ripsa.org.br/2012/a-7/?l=pt_BR
+  sources:
+    - datasus_sinasc
+    - datasus_population
+  children:
+    - population
+    - births
+
+deaths:
+  description: Total de óbitos confirmados em residentes
+  formula: Somatório do número de óbitos confirmados em residentes
+  reference: http://fichas.ripsa.org.br/2012/c-4/?l=pt_BR
+  sources:
+    - datasus_sim
+
+death_rate:
+  description: Número total de óbitos, por mil habitantes, na população residente em determinado espaço geográfico, no ano considerado
+  formula: Número total de óbitos de residentes/população total residente * 100
+  measurement_unit: /1000 habitantes
+  reference: http://fichas.ripsa.org.br/2012/a-10/?l=pt_BR
+  sources:
+    - datasus_sim
+  children:
+    - population
+    - deaths
+
+incidence:
+  description: Total de novos casos confirmados na população residente em determinado espaço geográfico, no ano considerado.
+  formula: Somatório do número de novos casos confirmados em residentes
+  reference: http://fichas.ripsa.org.br/2012/category/morbidade/?l=pt_BR
+  sources:
+    - datasus_sinan
+
+incidence_rate:
+  description: Proporção de novos casos confirmados na população residente por 100 mil habitantes
+  formula: Somatório do número de casos novos/população residente * 100.000
+  measurement_unit: /100 mil habitantes
+  reference: http://fichas.ripsa.org.br/2012/category/morbidade/?l=pt_BR
+  sources:
+    - datasus_sinan
+    - datasus_population
+  children:
+    - incidence
+    - population
+
+gender_ratio:
+  description: Número de homens para cada grupo de 100 mulheres, na população residente em determinado espaço geográfico, no ano considerado
+  formula: Número de residentes do sexo masculino/número de residentes do sexo feminino * 100
+  measurement_unit: \%
+  reference: http://fichas.ripsa.org.br/2012/a-2/?l=pt_BR
+  sources:
+    - datasus_population
+  children:
+    - population
+
+population:
+  description: Número total de pessoas residentes e sua estrutura relativa, em determinado espaço geográfico, no ano considerado
+  formula: Somatório do total de pessoas residentes
+  reference: http://fichas.ripsa.org.br/2012/a-1/?l=pt_BR
+  sources:
+    - datasus_population
+
+vaccination_coverage:
+  description: Percentual de crianças vacinadas com vacinas específicas, em determinado espaço geográfico, no ano considerado.
+  formula: Número de crianças com esquema básico completo na idade-alvo para determinado tipo de vacina / Número de crianças na idade alvo * 100
+  measurement_unit: \%
+  reference: http://fichas.ripsa.org.br/2008/f-13/
+  sources:
+    - tabnet_sipni

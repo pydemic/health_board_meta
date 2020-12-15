@@ -1,0 +1,1498 @@
+# section_id:
+#   name: value
+#   description: value
+#   section_card1_id:
+#     card_id: card_id
+#     name: value
+#     link: boolean (convert to 0 (false) or 1 (default))
+#     filters:
+#       filter1_id: filter1_value
+#       filter2_id: # Parse list to string with comma and quotes
+#         - filter2_value_item1
+#         - filter2_value_item2
+#   section_card2_id:
+#     card_id: card_id
+#     name: value
+#     link: boolean (convert to 0 (false) or 1 (default))
+#     filters:
+#       filter1_id: filter1_value
+#       filter2_id: # Parse list to string with comma and quotes
+#         - filter2_value_item1
+#         - filter2_value_item2
+
+# csvs:
+#   sections:
+#     - section_id
+#     - name
+#     - description
+#   sections_cards:
+#     - section_id
+#     - card_id
+#     - section_id
+#     - name
+#     - link
+#   sections_cards_filters:
+#     - section_id
+#     - filter_id
+#     - filter_value (always string)
+
+
+immediate_compulsory_analytic_summary:
+  name: Sumário - Notificação Compulsória Imediata
+  description: Resumo dos dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória imediata
+  cards:
+    # MS - Sem semanal
+
+    botulism_incidence:
+      card_id: incidence
+      name: Casos de Botulismo
+      filters:
+        morbidity_context: 1_0_00_00
+
+    cholera_incidence:
+      card_id: incidence
+      name: Casos de Cólera
+      filters:
+        morbidity_context: 1_0_01_00
+
+    anthrax_incidence:
+      card_id: incidence
+      name: Casos de Antraz Pneumônico
+      filters:
+        morbidity_context: 1_0_02_00
+
+    tularemia_incidence:
+      card_id: incidence
+      name: Casos de Tularemia
+      filters:
+        morbidity_context: 1_0_03_00
+
+    smallpox_incidence:
+      card_id: incidence
+      name: Casos de Varíola
+      filters:
+        morbidity_context: 1_0_04_00
+
+    arenavirus_incidence:
+      card_id: incidence
+      name: Casos de Arenavírus
+      filters:
+        morbidity_context: 1_0_05_00
+
+    ebola_incidence:
+      card_id: incidence
+      name: Casos de Ebola
+      filters:
+        morbidity_context: 1_0_06_00
+
+    marburg_incidence:
+      card_id: incidence
+      name: Casos de Marburg
+      filters:
+        morbidity_context: 1_0_07_00
+
+    lassa_incidence:
+      card_id: incidence
+      name: Casos de Lassa
+      filters:
+        morbidity_context: 1_0_08_00
+
+    brazilian_purpuric_fever_incidence:
+      card_id: incidence
+      name: Casos de Febre Purpúrica Brasileira
+      filters:
+        morbidity_context: 1_0_09_00
+
+    yellow_fever_incidence:
+      card_id: incidence
+      name: Casos de Febre Amarela
+      filters:
+        morbidity_context: 1_0_12_00
+
+    west_nile_fever_incidence:
+      card_id: incidence
+      name: Casos de Febre do Nilo Ocidental
+      filters:
+        morbidity_context: 1_0_13_00
+
+    spotted_fever_incidence:
+      card_id: incidence
+      name: Casos de Febre Maculosa
+      filters:
+        morbidity_context: 1_0_14_00
+
+    hantavirus_incidence:
+      card_id: incidence
+      name: Casos de Hantavirose
+      filters:
+        morbidity_context: 1_0_15_00
+
+    extra_amazon_malaria_incidence:
+      card_id: incidence
+      name: Casos de Malária na região extra-Amazônica
+      filters:
+        morbidity_context: 1_0_17_00
+
+    polio_incidence:
+      card_id: incidence
+      name: Casos de Poliomielite por poliovirus selvagem
+      filters:
+        morbidity_context: 1_0_18_00
+
+    plague_incidence:
+      card_id: incidence
+      name: Casos de Peste
+      filters:
+        morbidity_context: 1_0_19_00
+
+    human_rabies_incidence:
+      card_id: incidence
+      name: Casos de Raiva Humana
+      filters:
+        morbidity_context: 1_0_20_00
+
+    congenital_rubella_syndrome_incidence:
+      card_id: incidence
+      name: Casos de Síndrome da Rubéola Congênita
+      filters:
+        morbidity_context: 1_0_21_00
+
+    measle_incidence:
+      card_id: incidence
+      name: Casos de Sarampo
+      filters:
+        morbidity_context: 1_0_22_00
+
+    rubella_incidence:
+      card_id: incidence
+      name: Casos de Rubéola
+      filters:
+        morbidity_context: 1_0_23_00
+
+    acute_flaccid_paralysis_incidence:
+      card_id: incidence
+      name: Casos de Paralisia Flácida Aguda
+      filters:
+        morbidity_context: 1_0_24_00
+
+    # MS - Inclui semanal
+
+    dengue_incidence:
+      card_id: incidence
+      name: Casos de Dengue
+      filters:
+        morbidity_context: 1_1_00_00
+
+    zika_incidence:
+      card_id: incidence
+      name: Casos de Zika
+      filters:
+        morbidity_context: 1_1_01_00
+
+    chikungunya_incidence:
+      card_id: incidence
+      name: Casos de Chikungunya
+      filters:
+        morbidity_context: 1_1_02_00
+
+    # SES
+
+    coqueluche_incidence:
+      card_id: incidence
+      name: Casos de Coqueluche
+      filters:
+        morbidity_context: 2_0_00_00
+
+    diphtheria_incidence:
+      card_id: incidence
+      name: Casos de Difteria
+      filters:
+        morbidity_context: 2_0_01_00
+
+    acute_chagas_disease_incidence:
+      card_id: incidence
+      name: Casos de Doença de Chagas Aguda
+      filters:
+        morbidity_context: 2_0_02_00
+
+    meningococcal_disease_incidence:
+      card_id: incidence
+      name: Casos de Doença Meningocócica
+      filters:
+        morbidity_context: 2_0_04_00
+
+    typhoid_fever_incidence:
+      card_id: incidence
+      name: Casos de Febre Tifoide
+      filters:
+        morbidity_context: 2_0_05_00
+
+    varicella_incidence:
+      card_id: incidence
+      name: Casos de Varicela
+      filters:
+        morbidity_context: 2_0_06_00
+
+    # SMS
+
+    severe_work_accident_incidence:
+      card_id: incidence
+      name: Casos de acidente grave de trabalho
+      filters:
+        morbidity_context: 3_0_00_00
+
+    accident_by_venomous_animals_incidence:
+      card_id: incidence
+      name: Casos de acidente por animal peçonhento
+      filters:
+        morbidity_context: 3_0_01_00
+
+    rabies_related_animals_disease_incidence:
+      card_id: incidence
+      name: Casos de acidente por potencial animal transmissor da Raiva
+      filters:
+        morbidity_context: 3_0_02_00
+
+    leptospirosis_incidence:
+      card_id: incidence
+      name: Casos de Leptospirose
+      filters:
+        morbidity_context: 3_0_03_00
+
+    accidental_tetanus_incidence:
+      card_id: incidence
+      name: Casos de Tétano Acidental
+      filters:
+        morbidity_context: 3_0_04_00
+
+    neonatal_tetanus_incidence:
+      card_id: incidence
+      name: Casos de Tétano Neonatal
+      filters:
+        morbidity_context: 3_0_05_00
+
+    suicide_incidence:
+      card_id: incidence
+      name: Casos de Suicídio
+      filters:
+        morbidity_context: 3_0_07_00
+
+    violence_incidence:
+      card_id: incidence
+      name: Casos de violência
+      filters:
+        morbidity_context: 3_0_08_00
+
+weekly_compulsory_analytic_summary:
+  name: Sumário - Notificação Compulsória Semanal
+  description: Resumo dos dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória semanal
+  cards:
+    bio_exposure_work_accident_incidence:
+      card_id: incidence
+      name: Casos de acidente de trabalho com exposição a material biológico
+      filters:
+        morbidity_context: 4_1_00_00
+
+    chronic_chagas_disease_incidence:
+      card_id: incidence
+      name: Casos de Doença de Chagas Crônica
+      filters:
+        morbidity_context: 4_1_01_00
+
+    schistosomiasis_incidence:
+      card_id: incidence
+      name: Casos de Esquistossomose
+      filters:
+        morbidity_context: 4_1_03_00
+
+    leprosy_incidence:
+      card_id: incidence
+      name: Casos de Hanseníase
+      filters:
+        morbidity_context: 4_1_04_00
+
+    viral_hepatitis_incidence:
+      card_id: incidence
+      name: Casos de Hepatites Virais
+      filters:
+        morbidity_context: 4_1_05_00
+
+    hiv_incidence:
+      card_id: incidence
+      name: Casos de HIV/AIDS
+      filters:
+        morbidity_context: 4_1_06_00
+
+    exogenous_intoxication_incidence:
+      card_id: incidence
+      name: Casos de Intoxicação Exógena
+      filters:
+        morbidity_context: 4_1_07_00
+
+    american_cutaneous_leishmaniasis_incidence:
+      card_id: incidence
+      name: Casos de Leishmaniose Tegumentar Americana
+      filters:
+        morbidity_context: 4_1_08_00
+
+    visceral_leishmaniasis_incidence:
+      card_id: incidence
+      name: Casos de Leishmaniose Visceral
+      filters:
+        morbidity_context: 4_1_09_00
+
+    amazon_malaria_incidence:
+      card_id: incidence
+      name: Casos de Malária na região Amazônica
+      filters:
+        morbidity_context: 4_1_10_00
+
+    maternal_death_incidence:
+      card_id: incidence
+      name: Casos de óbito materno
+      filters:
+        morbidity_context: 4_1_12_00
+
+    syphilis_incidence:
+      card_id: incidence
+      name: Casos de Sífilis
+      filters:
+        morbidity_context: 4_1_13_00
+
+    congenital_pregnant_toxoplasmosis_incidence:
+      card_id: incidence
+      name: Casos de Toxoplasmose Gestacional e Congênita
+      filters:
+        morbidity_context: 4_1_14_00
+
+    tuberculosis_incidence:
+      card_id: incidence
+      name: Casos de Tuberculose
+      filters:
+        morbidity_context: 4_1_15_00
+
+    transport_accident_incidence:
+        card_id: incidence
+        name: Casos de acidente de transporte
+        filters:
+          morbidity_context: 4_1_17_00
+
+immediate_compulsory_analytic_history:
+  name: Histórico - Notificação Compulsória Imediata
+  description: Histórico de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória imediata
+  cards:
+    country_immediate_compulsory_incidence_rate_per_year:
+      card_id: incidence_rate_per_year
+      name: Coeficiente de incidência por ano de relevância nacional
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 1_0_00_00
+          - 1_0_01_00
+          - 1_0_02_00
+          - 1_0_03_00
+          - 1_0_04_00
+          - 1_0_05_00
+          - 1_0_06_00
+          - 1_0_07_00
+          - 1_0_08_00
+          - 1_0_09_00
+          - 1_0_12_00
+          - 1_0_13_00
+          - 1_0_14_00
+          - 1_0_15_00
+          - 1_0_16_00
+          - 1_0_17_00
+          - 1_0_18_00
+          - 1_0_19_00
+          - 1_0_20_00
+          - 1_0_21_00
+          - 1_0_22_00
+          - 1_0_23_00
+          - 1_0_24_00
+          - 1_1_00_00
+          - 1_1_01_00
+          - 1_1_02_00
+
+    country_immediate_compulsory_death_rate_per_year:
+      card_id: death_rate_per_year
+      name: Coeficiente de mortalidade por ano de relevância nacional
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 1_0_00_00
+          - 1_0_01_00
+          - 1_0_02_00
+          - 1_0_03_00
+          - 1_0_04_00
+          - 1_0_05_00
+          - 1_0_06_00
+          - 1_0_07_00
+          - 1_0_08_00
+          - 1_0_09_00
+          - 1_0_12_00
+          - 1_0_13_00
+          - 1_0_14_00
+          - 1_0_15_00
+          - 1_0_16_00
+          - 1_0_17_00
+          - 1_0_18_00
+          - 1_0_19_00
+          - 1_0_20_00
+          - 1_0_21_00
+          - 1_0_22_00
+          - 1_0_23_00
+          - 1_0_24_00
+          - 1_1_00_00
+          - 1_1_01_00
+          - 1_1_02_00
+
+    state_immediate_compulsory_incidence_rate_per_year:
+      card_id: incidence_rate_per_year
+      name: Coeficiente de incidência por ano de relevância estadual
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 2_0_00_00
+          - 2_0_01_00
+          - 2_0_02_00
+          - 2_0_04_00
+          - 2_0_05_00
+          - 2_0_06_00
+
+    state_immediate_compulsory_death_rate_per_year:
+      card_id: death_rate_per_year
+      name: Coeficiente de mortalidade por ano de relevância estadual
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 2_0_00_00
+          - 2_0_01_00
+          - 2_0_02_00
+          - 2_0_04_00
+          - 2_0_05_00
+          - 2_0_06_00
+
+    city_immediate_compulsory_incidence_rate_per_year:
+      card_id: incidence_rate_per_year
+      name: Coeficiente de incidência por ano de relevância municipal
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 3_0_00_00
+          - 3_0_01_00
+          - 3_0_02_00
+          - 3_0_03_00
+          - 3_0_04_00
+          - 3_0_05_00
+          - 3_0_07_00
+          - 3_0_08_00
+
+    city_immediate_compulsory_death_rate_per_year:
+      card_id: death_rate_per_year
+      name: Coeficiente de mortalidade por ano de relevância municipal
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 3_0_00_00
+          - 3_0_01_00
+          - 3_0_02_00
+          - 3_0_03_00
+          - 3_0_04_00
+          - 3_0_05_00
+          - 3_0_07_00
+          - 3_0_08_00
+
+weekly_compulsory_analytic_history:
+  name: Histórico - Notificação Compulsória Semanal
+  description: Histórico de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória semanal
+  cards:
+    weekly_compulsory_incidence_rate_per_year:
+      card_id: incidence_rate_per_year
+      name: Coeficiente de incidência por ano
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 4_1_00_00
+          - 4_1_01_00
+          - 4_1_03_00
+          - 4_1_04_00
+          - 4_1_05_00
+          - 4_1_06_00
+          - 4_1_07_00
+          - 4_1_08_00
+          - 4_1_09_00
+          - 4_1_10_00
+          - 4_1_12_00
+          - 4_1_13_00
+          - 4_1_14_00
+          - 4_1_15_00
+          - 4_1_17_00
+
+    weekly_compulsory_death_rate_per_year:
+      card_id: death_rate_per_year
+      name: Coeficiente de mortalidade por ano de relevância nacional
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 4_1_00_00
+          - 4_1_01_00
+          - 4_1_03_00
+          - 4_1_04_00
+          - 4_1_05_00
+          - 4_1_06_00
+          - 4_1_07_00
+          - 4_1_08_00
+          - 4_1_09_00
+          - 4_1_10_00
+          - 4_1_12_00
+          - 4_1_13_00
+          - 4_1_14_00
+          - 4_1_15_00
+          - 4_1_17_00
+
+immediate_compulsory_analytic_region:
+  name: Situação Regional - Notificação Compulsória Imediata
+  description: Comparativo regional de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória imediata
+  cards:
+    immediate_compulsory_incidence_rate_table:
+      card_id: incidence_rate_table
+      name: Coeficiente de incidência por localidade
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 1_0_00_00
+          - 1_0_01_00
+          - 1_0_02_00
+          - 1_0_03_00
+          - 1_0_04_00
+          - 1_0_05_00
+          - 1_0_06_00
+          - 1_0_07_00
+          - 1_0_08_00
+          - 1_0_09_00
+          - 1_0_12_00
+          - 1_0_13_00
+          - 1_0_14_00
+          - 1_0_15_00
+          - 1_0_16_00
+          - 1_0_17_00
+          - 1_0_18_00
+          - 1_0_19_00
+          - 1_0_20_00
+          - 1_0_21_00
+          - 1_0_22_00
+          - 1_0_23_00
+          - 1_0_24_00
+          - 1_1_00_00
+          - 1_1_01_00
+          - 1_1_02_00
+          - 2_0_00_00
+          - 2_0_01_00
+          - 2_0_02_00
+          - 2_0_04_00
+          - 2_0_05_00
+          - 2_0_06_00
+          - 3_0_00_00
+          - 3_0_01_00
+          - 3_0_02_00
+          - 3_0_03_00
+          - 3_0_04_00
+          - 3_0_05_00
+          - 3_0_07_00
+          - 3_0_08_00
+
+    immediate_compulsory_death_rate_table:
+      card_id: death_rate_table
+      name: Coeficiente de mortalidade por localidade
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 1_0_00_00
+          - 1_0_01_00
+          - 1_0_02_00
+          - 1_0_03_00
+          - 1_0_04_00
+          - 1_0_05_00
+          - 1_0_06_00
+          - 1_0_07_00
+          - 1_0_08_00
+          - 1_0_09_00
+          - 1_0_12_00
+          - 1_0_13_00
+          - 1_0_14_00
+          - 1_0_15_00
+          - 1_0_16_00
+          - 1_0_17_00
+          - 1_0_18_00
+          - 1_0_19_00
+          - 1_0_20_00
+          - 1_0_21_00
+          - 1_0_22_00
+          - 1_0_23_00
+          - 1_0_24_00
+          - 1_1_00_00
+          - 1_1_01_00
+          - 1_1_02_00
+          - 2_0_00_00
+          - 2_0_01_00
+          - 2_0_02_00
+          - 2_0_04_00
+          - 2_0_05_00
+          - 2_0_06_00
+          - 3_0_00_00
+          - 3_0_01_00
+          - 3_0_02_00
+          - 3_0_03_00
+          - 3_0_04_00
+          - 3_0_05_00
+          - 3_0_07_00
+          - 3_0_08_00
+
+weekly_compulsory_analytic_region:
+  name: Situação Regional - Notificação Compulsória Semanal
+  description: Comparativo regional de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória semanal
+  cards:
+    weekly_compulsory_incidence_rate_table:
+      card_id: incidence_rate_table
+      name: Coeficiente de incidência por localidade
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 4_1_00_00
+          - 4_1_01_00
+          - 4_1_03_00
+          - 4_1_04_00
+          - 4_1_05_00
+          - 4_1_06_00
+          - 4_1_07_00
+          - 4_1_08_00
+          - 4_1_09_00
+          - 4_1_10_00
+          - 4_1_12_00
+          - 4_1_13_00
+          - 4_1_14_00
+          - 4_1_15_00
+          - 4_1_17_00
+
+    weekly_compulsory_death_rate_table:
+      card_id: death_rate_table
+      name: Coeficiente de mortalidade por localidade
+      filters:
+        morbidity_contexts:
+          # Parse list to string (remember to quote), ex: "100000,100100,...,102400"
+          - 4_1_00_00
+          - 4_1_01_00
+          - 4_1_03_00
+          - 4_1_04_00
+          - 4_1_05_00
+          - 4_1_06_00
+          - 4_1_07_00
+          - 4_1_08_00
+          - 4_1_09_00
+          - 4_1_10_00
+          - 4_1_12_00
+          - 4_1_13_00
+          - 4_1_14_00
+          - 4_1_15_00
+          - 4_1_17_00
+
+# immediate_compulsory_analytic_control_diagrams:
+#   name: Controle - Notificação Compulsória Imediata
+#   description: Análise de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória imediata
+#   cards:
+#     botulism_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Botulismo
+#       filters:
+#         morbidity_context: 1_0_00_00
+
+#     cholera_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Cólera
+#       filters:
+#         morbidity_context: 1_0_01_00
+
+#     anthrax_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Antraz Pneumônico
+#       filters:
+#         morbidity_context: 1_0_02_00
+
+#     tularemia_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Tularemia
+#       filters:
+#         morbidity_context: 1_0_03_00
+
+#     smallpox_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Varíola
+#       filters:
+#         morbidity_context: 1_0_04_00
+
+#     arenavirus_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Arenavírus
+#       filters:
+#         morbidity_context: 1_0_05_00
+
+#     ebola_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Ebola
+#       filters:
+#         morbidity_context: 1_0_06_00
+
+#     marburg_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Marburg
+#       filters:
+#         morbidity_context: 1_0_07_00
+
+#     lassa_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Lassa
+#       filters:
+#         morbidity_context: 1_0_08_00
+
+#     brazilian_purpuric_fever_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Febre Purpúrica Brasileira
+#       filters:
+#         morbidity_context: 1_0_09_00
+
+#     yellow_fever_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Febre Amarela
+#       filters:
+#         morbidity_context: 1_0_12_00
+
+#     west_nile_fever_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Febre do Nilo Ocidental
+#       filters:
+#         morbidity_context: 1_0_13_00
+
+#     spotted_fever_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Febre Maculosa
+#       filters:
+#         morbidity_context: 1_0_14_00
+
+#     hantavirus_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Hantavirose
+#       filters:
+#         morbidity_context: 1_0_15_00
+
+#     extra_amazon_malaria_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Malária na região extra-Amazônica
+#       filters:
+#         morbidity_context: 1_0_17_00
+
+#     polio_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Poliomielite
+#       filters:
+#         morbidity_context: 1_0_18_00
+
+#     plague_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Peste
+#       filters:
+#         morbidity_context: 1_0_19_00
+
+#     human_rabies_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Raiva Humana
+#       filters:
+#         morbidity_context: 1_0_20_00
+
+#     congenital_rubella_syndrome_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Síndrome da Rubéola Congênita
+#       filters:
+#         morbidity_context: 1_0_21_00
+
+#     measle_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Sarampo
+#       filters:
+#         morbidity_context: 1_0_22_00
+
+#     rubella_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Rubéola
+#       filters:
+#         morbidity_context: 1_0_23_00
+
+#     acute_flaccid_paralysis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Paralisia Flácida Aguda
+#       filters:
+#         morbidity_context: 1_0_24_00
+
+#     # MS - Inclui semanal
+
+#     dengue_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Dengue
+#       filters:
+#         morbidity_context: 1_1_00_00
+
+#     zika_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Zika
+#       filters:
+#         morbidity_context: 1_1_01_00
+
+#     chikungunya_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Chikungunya
+#       filters:
+#         morbidity_context: 1_1_02_00
+
+#     # SES
+
+#     coqueluche_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Coqueluche
+#       filters:
+#         morbidity_context: 2_0_00_00
+
+#     diphtheria_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Difteria
+#       filters:
+#         morbidity_context: 2_0_01_00
+
+#     acute_chagas_disease_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Doença de Chagas Aguda
+#       filters:
+#         morbidity_context: 2_0_02_00
+
+#     meningococcal_disease_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Doença Meningocócica
+#       filters:
+#         morbidity_context: 2_0_04_00
+
+#     typhoid_fever_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Febre Tifoide
+#       filters:
+#         morbidity_context: 2_0_05_00
+
+#     varicella_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Varicela
+#       filters:
+#         morbidity_context: 2_0_06_00
+
+#     # SMS
+
+#     severe_work_accident_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para acidente grave de trabalho
+#       filters:
+#         morbidity_context: 3_0_00_00
+
+#     accident_by_venomous_animals_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para acidente por animal peçonhento
+#       filters:
+#         morbidity_context: 3_0_01_00
+
+#     rabies_related_animals_disease_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para acidente por potencial animal transmissor da Raiva
+#       filters:
+#         morbidity_context: 3_0_02_00
+
+#     leptospirosis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Leptospirose
+#       filters:
+#         morbidity_context: 3_0_03_00
+
+#     accidental_tetanus_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Tétano Acidental
+#       filters:
+#         morbidity_context: 3_0_04_00
+
+#     neonatal_tetanus_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Tétano Neonatal
+#       filters:
+#         morbidity_context: 3_0_05_00
+
+#     suicide_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para tentativa de suicídio
+#       filters:
+#         morbidity_context: 3_0_07_00
+
+#     violence_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para violência
+#       filters:
+#         morbidity_context: 3_0_08_00
+
+#     # Mortality
+
+#     botulism_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Botulismo
+#       filters:
+#         morbidity_context: 1_0_00_00
+
+#     cholera_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Cólera
+#       filters:
+#         morbidity_context: 1_0_01_00
+
+#     anthrax_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Antraz Pneumônico
+#       filters:
+#         morbidity_context: 1_0_02_00
+
+#     tularemia_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Tularemia
+#       filters:
+#         morbidity_context: 1_0_03_00
+
+#     smallpox_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Varíola
+#       filters:
+#         morbidity_context: 1_0_04_00
+
+#     arenavirus_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Arenavírus
+#       filters:
+#         morbidity_context: 1_0_05_00
+
+#     ebola_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Ebola
+#       filters:
+#         morbidity_context: 1_0_06_00
+
+#     marburg_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Marburg
+#       filters:
+#         morbidity_context: 1_0_07_00
+
+#     lassa_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Lassa
+#       filters:
+#         morbidity_context: 1_0_08_00
+
+#     brazilian_purpuric_fever_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Febre Purpúrica Brasileira
+#       filters:
+#         morbidity_context: 1_0_09_00
+
+#     yellow_fever_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Febre Amarela
+#       filters:
+#         morbidity_context: 1_0_12_00
+
+#     west_nile_fever_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Febre do Nilo Ocidental
+#       filters:
+#         morbidity_context: 1_0_13_00
+
+#     spotted_fever_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Febre Maculosa
+#       filters:
+#         morbidity_context: 1_0_14_00
+
+#     hantavirus_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Hantavirose
+#       filters:
+#         morbidity_context: 1_0_15_00
+
+#     extra_amazon_malaria_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Malária na região extra-Amazônica
+#       filters:
+#         morbidity_context: 1_0_17_00
+
+#     polio_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Poliomielite
+#       filters:
+#         morbidity_context: 1_0_18_00
+
+#     plague_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Peste
+#       filters:
+#         morbidity_context: 1_0_19_00
+
+#     human_rabies_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Raiva Humana
+#       filters:
+#         morbidity_context: 1_0_20_00
+
+#     congenital_rubella_syndrome_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Síndrome da Rubéola Congênita
+#       filters:
+#         morbidity_context: 1_0_21_00
+
+#     measle_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Sarampo
+#       filters:
+#         morbidity_context: 1_0_22_00
+
+#     rubella_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Rubéola
+#       filters:
+#         morbidity_context: 1_0_23_00
+
+#     acute_flaccid_paralysis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Paralisia Flácida Aguda
+#       filters:
+#         morbidity_context: 1_0_24_00
+
+#     # MS - Inclui semanal
+
+#     dengue_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Dengue
+#       filters:
+#         morbidity_context: 1_1_00_00
+
+#     zika_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Zika
+#       filters:
+#         morbidity_context: 1_1_01_00
+
+#     chikungunya_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Chikungunya
+#       filters:
+#         morbidity_context: 1_1_02_00
+
+#     # SES
+
+#     coqueluche_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Coqueluche
+#       filters:
+#         morbidity_context: 2_0_00_00
+
+#     diphtheria_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Difteria
+#       filters:
+#         morbidity_context: 2_0_01_00
+
+#     acute_chagas_disease_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Doença de Chagas Aguda
+#       filters:
+#         morbidity_context: 2_0_02_00
+
+#     meningococcal_disease_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Doença Meningocócica
+#       filters:
+#         morbidity_context: 2_0_04_00
+
+#     typhoid_fever_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Febre Tifoide
+#       filters:
+#         morbidity_context: 2_0_05_00
+
+#     varicella_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Varicela
+#       filters:
+#         morbidity_context: 2_0_06_00
+
+#     # SMS
+
+#     severe_work_accident_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para acidente grave de trabalho
+#       filters:
+#         morbidity_context: 3_0_00_00
+
+#     accident_by_venomous_animals_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para acidente por animal peçonhento
+#       filters:
+#         morbidity_context: 3_0_01_00
+
+#     rabies_related_animals_disease_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para acidente por potencial animal transmissor da Raiva
+#       filters:
+#         morbidity_context: 3_0_02_00
+
+#     leptospirosis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Leptospirose
+#       filters:
+#         morbidity_context: 3_0_03_00
+
+#     accidental_tetanus_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Tétano Acidental
+#       filters:
+#         morbidity_context: 3_0_04_00
+
+#     neonatal_tetanus_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Tétano Neonatal
+#       filters:
+#         morbidity_context: 3_0_05_00
+
+#     suicide_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para suicídio
+#       filters:
+#         morbidity_context: 3_0_07_00
+
+#     violence_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para violência
+#       filters:
+#         morbidity_context: 3_0_08_00
+
+# weekly_compulsory_analytic_control_diagrams:
+#   name: Controle - Notificação Compulsória Semanal
+#   description: Análise de dados de incidência e óbitos de doenças, agravos e eventos de saúde pública de motificação compulsória semanal
+#   cards:
+#     bio_exposure_work_accident_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para acidente de trabalho com exposição a material biológico
+#       filters:
+#         morbidity_context: 4_1_00_00
+
+#     chronic_chagas_disease_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Doença de Chagas Crônica
+#       filters:
+#         morbidity_context: 4_1_01_00
+
+#     schistosomiasis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Esquistossomose
+#       filters:
+#         morbidity_context: 4_1_03_00
+
+#     leprosy_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Hanseníase
+#       filters:
+#         morbidity_context: 4_1_04_00
+
+#     viral_hepatitis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Hepatites Virais
+#       filters:
+#         morbidity_context: 4_1_05_00
+
+#     hiv_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para HIV/AIDS
+#       filters:
+#         morbidity_context: 4_1_06_00
+
+#     exogenous_intoxication_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Intoxicação Exógena
+#       filters:
+#         morbidity_context: 4_1_07_00
+
+#     american_cutaneous_leishmaniasis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Leishmaniose Tegumentar Americana
+#       filters:
+#         morbidity_context: 4_1_08_00
+
+#     visceral_leishmaniasis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Leishmaniose Visceral
+#       filters:
+#         morbidity_context: 4_1_09_00
+
+#     amazon_malaria_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Malária na região Amazônica
+#       filters:
+#         morbidity_context: 4_1_10_00
+
+#     maternal_death_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para óbito materno
+#       filters:
+#         morbidity_context: 4_1_12_00
+
+#     syphilis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Sífilis
+#       filters:
+#         morbidity_context: 4_1_13_00
+
+#     congenital_pregnant_toxoplasmosis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Toxoplasmose Gestacional e Congênita
+#       filters:
+#         morbidity_context: 4_1_14_00
+
+#     tuberculosis_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para Tuberculose
+#       filters:
+#         morbidity_context: 4_1_15_00
+
+#     transport_accident_incidence_rate_control_diagram:
+#       card_id: incidence_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de incidência para acidente de transporte
+#       filters:
+#         morbidity_context: 4_1_17_00
+
+#     # Mortality
+
+#     bio_exposure_work_accident_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para acidente de trabalho com exposição a material biológico
+#       filters:
+#         morbidity_context: 4_1_00_00
+
+#     chronic_chagas_disease_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Doença de Chagas Crônica
+#       filters:
+#         morbidity_context: 4_1_01_00
+
+#     schistosomiasis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Esquistossomose
+#       filters:
+#         morbidity_context: 4_1_03_00
+
+#     leprosy_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Hanseníase
+#       filters:
+#         morbidity_context: 4_1_04_00
+
+#     viral_hepatitis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Hepatites Virais
+#       filters:
+#         morbidity_context: 4_1_05_00
+
+#     hiv_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para HIV/AIDS
+#       filters:
+#         morbidity_context: 4_1_06_00
+
+#     exogenous_intoxication_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Intoxicação Exógena
+#       filters:
+#         morbidity_context: 4_1_07_00
+
+#     american_cutaneous_leishmaniasis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Leishmaniose Tegumentar Americana
+#       filters:
+#         morbidity_context: 4_1_08_00
+
+#     visceral_leishmaniasis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Leishmaniose Visceral
+#       filters:
+#         morbidity_context: 4_1_09_00
+
+#     amazon_malaria_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Malária na região Amazônica
+#       filters:
+#         morbidity_context: 4_1_10_00
+
+#     maternal_death_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para óbito materno
+#       filters:
+#         morbidity_context: 4_1_12_00
+
+#     syphilis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Sífilis
+#       filters:
+#         morbidity_context: 4_1_13_00
+
+#     congenital_pregnant_toxoplasmosis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Toxoplasmose Gestacional e Congênita
+#       filters:
+#         morbidity_context: 4_1_14_00
+
+#     tuberculosis_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para Tuberculose
+#       filters:
+#         morbidity_context: 4_1_15_00
+
+#     transport_accident_death_rate_control_diagram:
+#       card_id: death_rate_control_diagram
+#       name: Diagrama de controle de coeficiente de mortalidade para acidente de transporte
+#       filters:
+#         morbidity_context: 4_1_17_00
+
+
+morbidity_summary:
+  name: Sumário
+  description: Resumo dos dados de incidência e óbitos de doença, agravo ou evento de saúde pública de motificação compulsória
+  cards:
+    morbidity_incidence:
+      card_id: incidence
+      link: false
+
+    morbidity_incidence_rate:
+      card_id: incidence_rate
+      link: false
+
+    morbidity_deaths:
+      card_id: deaths
+      link: false
+
+    morbidity_death_rate:
+      card_id: death_rate
+      link: false
+
+morbidity_incidence:
+  name: Incidência
+  description: Informações gerais sobre os registros de incidência de doença, agravo ou evento de saúde pública de notificação compulsória
+  cards:
+    morbidity_incidence_rate_map:
+      card_id: incidence_rate_map
+      link: false
+
+    morbidity_incidence_per_age_gender:
+      card_id: incidence_per_age_gender
+      link: false
+
+    morbidity_incidence_per_race:
+      card_id: incidence_per_race
+      link: false
+
+    morbidity_incidence_rate_per_year:
+      card_id: incidence_rate_per_year
+      link: false
+
+    morbidity_incidence_rate_control_diagram:
+      card_id: incidence_rate_control_diagram
+      link: false
+
+morbidity_deaths:
+  name: Óbitos
+  description: Informações gerais sobre os registros de mortalidade de doença, agravo ou evento de saúde pública de notificação compulsória
+  cards:
+    morbidity_death_rate_map:
+      card_id: death_rate_map
+      link: false
+
+    morbidity_deaths_per_age_gender:
+      card_id: death_per_age_gender
+      link: false
+
+    morbidity_deaths_per_race:
+      card_id: death_per_race
+      link: false
+
+    morbidity_death_rate_per_year:
+      card_id: death_rate_per_year
+      link: false
+
+    morbidity_death_rate_control_diagram:
+      card_id: death_rate_control_diagram
+      link: false
+
+demographic_summary:
+  name: Sumário
+  description: Resumo dos dados demográficos
+  cards:
+    demographic_population:
+      card_id: population
+      link: false
+
+    demographic_gender_ratio:
+      card_id: gender_ratio
+      link: false
+
+    demographic_births:
+      card_id: births
+      link: false
+
+    demographic_crude_birth_rate:
+      card_id: crude_birth_rate
+
+demographic_population:
+  name: População
+  description: Dados populacionais
+  cards:
+    demographic_population_map:
+      card_id: population_map
+      link: false
+
+    demographic_population_growth:
+      card_id: population_growth
+      link: false
+
+    demographic_population_per_age_group:
+      card_id: population_per_age_group
+      link: false
+
+demographic_births:
+  name: Nascidos vivos
+  description: Dados de nascidos vivos
+  cards:
+    demographic_crude_birth_rate_map:
+      card_id: crude_birth_rate_map
+      link: false
+
+    demographic_births_per_year:
+      card_id: births_per_year
+      link: false
+
+    demographic_crude_birth_rate_per_year:
+      card_id: crude_birth_rate_per_year
+      link: false
+
+    demographic_births_per_mother_age_group:
+      card_id: births_per_mother_age_group
+      link: false
+
+    demographic_births_per_child_mass:
+      card_id: births_per_child_mass
+      link: false
