@@ -1,0 +1,478 @@
+esus:
+  columns:
+    classificacaoFinal:
+      description: Classificação final do caso
+      type: string
+      required: no
+      parsing: Confirmado Laboratorial
+        Confirmado Clínico-Epidemiológico
+        Descartado
+        Síndrome Gripal não Especificada
+        Confirmado Clínico-Imagem
+        Confirmado por Critério Clínico
+      observations: Esse campo OU o campo resultadoTeste será utilizado em todos os indicadores como filtro para separar os casos de covid e os casos não covid (que serão descartados). Serão considerados covid os campos (Confirmado Laboratorial, Confirmado Clínico Epidemiológico, Confirmado Clínico-Imagem, Confirmado por Critério Clínico)
+
+    resultadoTeste:
+      description: Resultado do teste
+      type: string
+      required: no
+      parsing: Negativo
+        Positivo
+      observations: Esse campo OU o campo resultadoTeste será utilizado em todos os indicadores como filtro para separar os casos de covid e os casos não covid (que serão descartados). Serão considerados covid o campo (positivo)
+
+    dataInicioSintomas:
+      description: Data do primeiro sintoma
+      type: date
+      required: no
+      parsing: AAAA-MM-DD hms
+      observations: Quando esse campo for vazio, será utilizado a dataNotificação para calculo do indicador Incidência de COVID-19
+
+    dataNotificação:
+      description: Data da notificação do caso
+      type: date
+      required: no
+      parsing: AAAA-MM-DD hms
+      observations: n/a
+
+    estadoTeste:
+      description: Estado do teste
+      type: string
+      required: no
+      parsing: Solicitado
+        Coletado
+        Concluído
+        Exame não solicitado
+      observations: O valor que nos interessa é o 2-coletado para o indicador (Taxa de positividade SG-COVID-19)
+
+    profissionalSaude:
+      description: Se é profissional da saude
+      type: string
+      required: no
+      parsing: Sim
+        Não
+      observations: O valor que nos interessa é o 1-sim para o indicador (Casos entre profissionais de saúde)
+
+    sexo:
+      description: Sexo do paciente
+      type: string
+      required: no
+      parsing: Masculino
+        Feminino
+      observations: n/a
+
+    idade:
+      description: idade do paciente
+      type: integer
+      required: no
+      parsing: n/a
+      observations: n/a
+
+    municipioNotificacaoIBGE:
+      description: Municipio de notificacao
+      type: integer
+      required: no
+      parsing: Código (IBGE)
+      observations: A padronização deste campo é pelo IBGE
+
+    municipioIBGE:
+      description: Municipio de residencia
+      type: integer
+      required: no
+      parsing: Código (IBGE)
+      observations: A padronização deste campo é pelo IBGE
+
+sivep:
+  columns:
+    PCR_SARS2:
+      description: Resultado diagnóstico do RT-PCR paraa SARS-Cov-2
+      type: integer
+      required: no
+      parsing:
+        1: confirmado covid-19
+        vazio: não marcado
+      observations: Esse campo será utilizado em todos os indicadores como filtro para separar os casos de covid e os casos não covid (que serão descartados)
+
+    DT_INTERNA:
+      description: Data em que o paciente foi hospitalizado
+      type: date
+      required: no
+      parsing: DD/MM/AAAA
+      observations: Esse campo precisa ser ter uma data valida para ser considerado no calculo do indicador (N° de internações de SRAG por COVID-19)
+
+    EVOLUCAO:
+      description: Evolução do caso
+      type: integer
+      required: no
+      parsing:
+        1: Cura
+        2: Óbito
+        3: Óbito por outras causas
+        9: Ignorado
+      observations: O valor que nos interessa é o 2-óbitos para o indicador (N° de óbitos por COVID-19)
+
+    HOSPITAL:
+      description: Se o paciente foi internado
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: O valor que nos interessa é o 1-sim para o indicador (N° de internações de SRAG por COVID-19)
+
+    ID_MUNICIP ou CO_MUN_NOT:
+      description: Municipio de notificacao
+      type: integer
+      required: no
+      parsing: Código (IBGE)
+      observations: A padronização deste campo é pelo IBGE
+
+    ID_MN_RESI ou CO_MUN_RES:
+      description: Municipio de residencia
+      type: integer
+      required: no
+      parsing: Código (IBGE)
+      observations: A padronização deste campo é pelo IBGE
+
+    ID_MN_INTE ou CO_MU_INTE:
+      description: Municipio de internacao
+      type: integer
+      required: no
+      parsing: Código (IBGE)
+      observations: A padronização deste campo é pelo IBGE
+
+    DT_SIN_PRI:
+      description: Data de primeiro sintomas
+      type: date
+      required: no
+      parsing: DD/MM/AAAA
+      observations: Quando esse campo for vazio, será utilizado a DT_NOTIFIC para calculo do indicador Incidência de COVID-19
+
+    DT_NOTIFIC:
+      description: Data do preenchimento da ficha de notificação
+      type: date
+      required: no
+      parsing: DD/MM/AAAA
+      observations: n/a
+
+    AMOSTRA:
+      description: Se coletou amostra
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    CS_RACA:
+      description: Cor ou raça declarada pelo paciente
+      type: integer
+      required: no
+      parsing:
+        1: Branca
+        2: Preta
+        3: Amarela
+        4: Parda
+        5: Indígena
+        9: Ignorado
+      observations: O valor que nos interessa é o 5-indigena para o indicador (N de internacoes indígenas por COVID-19)
+
+    CS_SEXO:
+      description: Sexo do paciente
+      type: integer
+      required: no
+      parsing:
+        1: Masculino
+        2: Feminino
+        9: Ignorado
+      observations: n/a
+
+    NU_IDADE_N:
+      description: Idade informada pelo paciente
+      type: integer
+      required: no
+      parsing: n/a
+      observations: n/a
+
+    CLASSI_FIN:
+      description: Diagnóstico final do caso
+      type: integer
+      required: no
+      parsing:
+        1: SRAG por influenza
+        2: SRAG por outro vírus respiratório
+        3: SRAG por outro agente etiológico
+        4: SRAG não especificado
+        5: SRAG por COVID-19
+      observations: n/a
+
+    FEBRE:
+      description: Se o paciente apresentou febre
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    TOSSE:
+      description: Se o paciente apresentou tosse
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    GARGANTA:
+      description: Se o paciente apresentou dor de garganta
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    DISPNEIA:
+      description: Se o paciente apresentou dispneia
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    DESC_RESP:
+      description: Se o paciente apresentou desconforto respiratório
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    SATURACAO:
+      description: Se o paciente apresentou saturação O2 < 95%
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    DIARREIA:
+      description: Se o paciente apresentou diarreia
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    VOMITO:
+      description: Se o paciente apresentou vômito
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    DOR_ABD:
+      description: Se o paciente apresentou dor abdominal
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    FADIGA:
+      description: Se o paciente apresentou fadiga
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    PERD_OLFT:
+      description: Se o paciente apresentou perda de olfato
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    PERD_PALA:
+      description: Se o paciente apresentou perda de paladar
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    OUTRO_SIN:
+      description: Se o paciente apresentou outros sintomas
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    FATOR_RISC:
+      description: Se o paciente apresenta algum grupo de risco
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    PUERPERA:
+      description: Se o paciente possui Puérpera
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    CARDIOPATI:
+      description: Se o paciente possui doença cardiovascular crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    HEMATOLOGI:
+      description: Se o paciente possui doença Hematológica Crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    SIND_DOWN:
+      description: Se o paciente possui sindrome de down
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    HEPATICA:
+      description: Se o paciente possui Doença Hepática Crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    ASMA:
+      description: Se o paciente possui asma
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    DIABETES:
+      description: Se o paciente possui Diabetes mellitus
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    NEUROLOGIC:
+      description: Se o paciente possui doença Neurológica Crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    PNEUMOPATI:
+      description: Se o paciente possui doença Pneumatopatia Crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    IMUNODEPRE:
+      description: Se o paciente possui Imunodeficiência ou Imunodepressão
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    RENAL:
+      description: Se o paciente possui Doença Renal crônica
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    OBESIDADE:
+      description: Se o paciente possui Obesidade
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
+
+    OUT_MORBI:
+      description: Se o paciente possui outros fatores de risco
+      type: integer
+      required: no
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+      observations: n/a
