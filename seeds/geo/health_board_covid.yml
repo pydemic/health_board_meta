@@ -1,0 +1,23 @@
+locations:
+  date: '2020-10-26'
+  period:
+    from: '2000-01-01'
+    to: '2020-12-31'
+  source: datasus_geo
+  fields:
+    - context
+    - id
+    - name
+    - abbr
+
+locations_children:
+  date: '2020-12-17'
+  period:
+    from: '2000-01-01'
+    to: '2020-12-31'
+  source: datasus_geo
+  fields:
+    - parent_context
+    - parent_id
+    - child_context
+    - child_id

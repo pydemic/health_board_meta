@@ -1,0 +1,42 @@
+# indicator_id:
+#   description: value
+#   formula: value
+#   measurement_unit: value
+#   reference: value
+#   sources:
+#     - source1_id
+#     - source2_id
+#   children:
+#     - child1_id
+#     - child2_id
+
+# csvs:
+#   indicators:
+#     - indicator_id
+#     - description
+#     - formula
+#     - measurement_unit
+#     - reference
+#   indicators_sources:
+#     - indicator_id
+#     - source_id
+#   indicators_children:
+#     - parent_id
+#     - child_id
+
+gender_ratio:
+  description: Número de homens para cada grupo de 100 mulheres, na população residente em determinado espaço geográfico, no ano considerado
+  formula: Número de residentes do sexo masculino/número de residentes do sexo feminino * 100
+  measurement_unit: \%
+  reference: http://fichas.ripsa.org.br/2012/a-2/?l=pt_BR
+  sources:
+    - datasus_population
+  children:
+    - population
+
+population:
+  description: Número total de pessoas residentes e sua estrutura relativa, em determinado espaço geográfico, no ano considerado
+  formula: Somatório do total de pessoas residentes
+  reference: http://fichas.ripsa.org.br/2012/a-1/?l=pt_BR
+  sources:
+    - datasus_population

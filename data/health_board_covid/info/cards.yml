@@ -1,0 +1,38 @@
+# card_id:
+#   name: value
+#   description: value
+#   indicator_id: indicator_id
+
+# csvs:
+#   cards:
+#     - indicator_id
+#     - card_id
+#     - name
+#     - description
+
+# Population
+
+gender_ratio_card:
+  indicator_id: gender_ratio
+  name: Razão de sexos
+  description: Expressa a relação quantitativa entre os sexos
+
+population_card:
+  indicator_id: population
+  name: População
+  description: População residente
+
+population_map:
+  indicator_id: population
+  name: Mapa de distribuição populacional
+  description: Distribuição de pessoas residentes por localidade
+
+population_growth:
+  indicator_id: population
+  name: Crescimento populacional
+  description: Série histórica de pessoas residentes por ano
+
+population_per_age_group:
+  indicator_id: population
+  name: População por faixa etária
+  description: Distribuição da população residente por faixa etária

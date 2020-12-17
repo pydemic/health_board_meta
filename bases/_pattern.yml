@@ -1,0 +1,10 @@
+<context>:
+  date: YYYY-MM-DD
+  link: https://link.to.base
+  columns:
+    <column>:
+      description: string
+      type: string
+      required: yes or no
+      parsing: string, list or object
+      observations: string (optional)

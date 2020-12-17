@@ -1,87 +1,6 @@
-esus:
-  columns:
-    classificacaoFinal:
-      description: Classificação final do caso
-      type: string
-      required: no
-      parsing: Confirmado Laboratorial
-        Confirmado Clínico-Epidemiológico
-        Descartado
-        Síndrome Gripal não Especificada
-        Confirmado Clínico-Imagem
-        Confirmado por Critério Clínico
-      observations: Esse campo OU o campo resultadoTeste será utilizado em todos os indicadores como filtro para separar os casos de covid e os casos não covid (que serão descartados). Serão considerados covid os campos (Confirmado Laboratorial, Confirmado Clínico Epidemiológico, Confirmado Clínico-Imagem, Confirmado por Critério Clínico)
-
-    resultadoTeste:
-      description: Resultado do teste
-      type: string
-      required: no
-      parsing: Negativo
-        Positivo
-      observations: Esse campo OU o campo resultadoTeste será utilizado em todos os indicadores como filtro para separar os casos de covid e os casos não covid (que serão descartados). Serão considerados covid o campo (positivo)
-
-    dataInicioSintomas:
-      description: Data do primeiro sintoma
-      type: date
-      required: no
-      parsing: AAAA-MM-DD hms
-      observations: Quando esse campo for vazio, será utilizado a dataNotificação para calculo do indicador Incidência de COVID-19
-
-    dataNotificação:
-      description: Data da notificação do caso
-      type: date
-      required: no
-      parsing: AAAA-MM-DD hms
-      observations: n/a
-
-    estadoTeste:
-      description: Estado do teste
-      type: string
-      required: no
-      parsing: Solicitado
-        Coletado
-        Concluído
-        Exame não solicitado
-      observations: O valor que nos interessa é o 2-coletado para o indicador (Taxa de positividade SG-COVID-19)
-
-    profissionalSaude:
-      description: Se é profissional da saude
-      type: string
-      required: no
-      parsing: Sim
-        Não
-      observations: O valor que nos interessa é o 1-sim para o indicador (Casos entre profissionais de saúde)
-
-    sexo:
-      description: Sexo do paciente
-      type: string
-      required: no
-      parsing: Masculino
-        Feminino
-      observations: n/a
-
-    idade:
-      description: idade do paciente
-      type: integer
-      required: no
-      parsing: n/a
-      observations: n/a
-
-    municipioNotificacaoIBGE:
-      description: Municipio de notificacao
-      type: integer
-      required: no
-      parsing: Código (IBGE)
-      observations: A padronização deste campo é pelo IBGE
-
-    municipioIBGE:
-      description: Municipio de residencia
-      type: integer
-      required: no
-      parsing: Código (IBGE)
-      observations: A padronização deste campo é pelo IBGE
-
-sivep:
+default:
+  link: '?' #  link para a base
+  date: '?' # data do último mapeamento
   columns:
     PCR_SARS2:
       description: Resultado diagnóstico do RT-PCR paraa SARS-Cov-2
@@ -153,7 +72,6 @@ sivep:
       type: date
       required: no
       parsing: DD/MM/AAAA
-      observations: n/a
 
     AMOSTRA:
       description: Se coletou amostra
@@ -163,7 +81,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     CS_RACA:
       description: Cor ou raça declarada pelo paciente
@@ -186,14 +103,12 @@ sivep:
         1: Masculino
         2: Feminino
         9: Ignorado
-      observations: n/a
 
     NU_IDADE_N:
       description: Idade informada pelo paciente
       type: integer
       required: no
       parsing: n/a
-      observations: n/a
 
     CLASSI_FIN:
       description: Diagnóstico final do caso
@@ -205,7 +120,6 @@ sivep:
         3: SRAG por outro agente etiológico
         4: SRAG não especificado
         5: SRAG por COVID-19
-      observations: n/a
 
     FEBRE:
       description: Se o paciente apresentou febre
@@ -215,7 +129,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     TOSSE:
       description: Se o paciente apresentou tosse
@@ -225,7 +138,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     GARGANTA:
       description: Se o paciente apresentou dor de garganta
@@ -235,7 +147,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     DISPNEIA:
       description: Se o paciente apresentou dispneia
@@ -245,7 +156,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     DESC_RESP:
       description: Se o paciente apresentou desconforto respiratório
@@ -255,7 +165,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     SATURACAO:
       description: Se o paciente apresentou saturação O2 < 95%
@@ -265,7 +174,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     DIARREIA:
       description: Se o paciente apresentou diarreia
@@ -275,7 +183,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     VOMITO:
       description: Se o paciente apresentou vômito
@@ -285,7 +192,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     DOR_ABD:
       description: Se o paciente apresentou dor abdominal
@@ -295,7 +201,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     FADIGA:
       description: Se o paciente apresentou fadiga
@@ -305,7 +210,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     PERD_OLFT:
       description: Se o paciente apresentou perda de olfato
@@ -315,7 +219,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     PERD_PALA:
       description: Se o paciente apresentou perda de paladar
@@ -325,7 +228,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     OUTRO_SIN:
       description: Se o paciente apresentou outros sintomas
@@ -335,7 +237,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     FATOR_RISC:
       description: Se o paciente apresenta algum grupo de risco
@@ -345,7 +246,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     PUERPERA:
       description: Se o paciente possui Puérpera
@@ -355,7 +255,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     CARDIOPATI:
       description: Se o paciente possui doença cardiovascular crônica
@@ -365,7 +264,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     HEMATOLOGI:
       description: Se o paciente possui doença Hematológica Crônica
@@ -375,7 +273,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     SIND_DOWN:
       description: Se o paciente possui sindrome de down
@@ -385,7 +282,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     HEPATICA:
       description: Se o paciente possui Doença Hepática Crônica
@@ -395,7 +291,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     ASMA:
       description: Se o paciente possui asma
@@ -405,7 +300,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     DIABETES:
       description: Se o paciente possui Diabetes mellitus
@@ -415,7 +309,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     NEUROLOGIC:
       description: Se o paciente possui doença Neurológica Crônica
@@ -425,7 +318,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     PNEUMOPATI:
       description: Se o paciente possui doença Pneumatopatia Crônica
@@ -435,7 +327,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     IMUNODEPRE:
       description: Se o paciente possui Imunodeficiência ou Imunodepressão
@@ -445,7 +336,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     RENAL:
       description: Se o paciente possui Doença Renal crônica
@@ -455,7 +345,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     OBESIDADE:
       description: Se o paciente possui Obesidade
@@ -465,7 +354,6 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a
 
     OUT_MORBI:
       description: Se o paciente possui outros fatores de risco
@@ -475,4 +363,3 @@ sivep:
         1: Sim
         2: Não
         9: Ignorado
-      observations: n/a

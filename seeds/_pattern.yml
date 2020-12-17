@@ -1,0 +1,10 @@
+<csv_name>:
+  date: YYYY-MM-DD
+  period:
+    from: YYYY-MM-DD
+    to: YYYY-MM-DD
+  source: string
+  fields:
+    - string
+    - '...'
+    - string

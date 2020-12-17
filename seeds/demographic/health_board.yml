@@ -1,14 +1,6 @@
-# "csv":
-#   date: "required"
-#   data_period:
-#     from: "optional"
-#     to: "optional"
-#   source: "required"
-#   fields: "optional"
-
 yearly_locations_births:
   date: '2020-11-06'
-  data_period:
+  period:
     from: '2000-01-01'
     to: '2019-12-31'
   source: datasus_sinasc
@@ -65,7 +57,7 @@ yearly_locations_births:
 
 yearly_populations:
   date: '2020-10-28'
-  data_period:
+  period:
     from: '2000-01-01'
     to: '2020-12-31'
   source: datasus_geo
@@ -87,8 +79,7 @@ yearly_populations:
     - age_50_54
     - age_55_59
     - age_60_64
-    - age_64_69
+    - age_65_69
     - age_70_74
     - age_75_79
     - age_80_or_more
-

@@ -1,0 +1,89 @@
+# dashboard_id:
+#   name: required
+#   description: required
+#   groups:
+#     group_id:
+#       group_name: required
+#       group_description: required
+#       group_index: required
+#       sections:
+#         section_id:
+#           section_name: required
+#           section_description: required
+#           section_index: required
+#           cards:
+#             section_card_id:
+#               card_id: required
+#               card_name: optional
+#               card_index: required
+#               card_link: optional
+#               filters:
+#                 filter_name: filter_value
+
+# csvs:
+#   dashboards:
+#     - dashboard_id
+#     - name
+#     - description
+#   dashboards_groups:
+#     - dashboard_id
+#     - group_index
+#     - group_id
+#     - group_name
+#     - group_description
+#   groups_sections:
+#     - group_id
+#     - section_index
+#     - section_id
+#     - section_name
+#     - section_description
+#   sections_cards:
+#     - section_id
+#     - card_index
+#     - card_id
+#     - section_card_id
+#     - card_name
+#     - card_link
+#   sections_cards_filters:
+#     - card_id
+#     - filter_name
+#     - filter_value
+
+demographic:
+  name: Painel demográfico
+  description: Painel demográfico
+  groups:
+    demographic_group:
+      name: Demografia
+      description: Dados demográficos
+      index: 0
+      sections:
+        demographic_summary:
+          name: Sumário
+          description: Resumo dos dados demográficos
+          index: 0
+          cards:
+            demographic_population:
+              card_id: population
+              index: 0
+
+            demographic_gender_ratio:
+              card_id: gender_ratio
+              index: 1
+
+        demographic_population:
+          name: População
+          description: Dados populacionais
+          index: 1
+          cards:
+            demographic_population_map:
+              card_id: population_map
+              index: 0
+
+            demographic_population_growth:
+              card_id: population_growth
+              index: 1
+
+            demographic_population_per_age_group:
+              card_id: population_per_age_group
+              index: 2

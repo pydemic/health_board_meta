@@ -1,0 +1,60 @@
+default:
+  link: '?' #  link para a base
+  date: '?' # data do último mapeamento
+  columns:
+    municipioNotificacaoIBGE:
+      description: Municipio de notificacao
+      type: integer
+      required: yes
+      parsing: IBGE 7 dígitos
+      observations: A padronização deste campo é pelo IBGE
+
+    municipioIBGE:
+      description: Municipio de residencia
+      type: integer
+      required: yes
+      parsing: IBGE 7 dígitos
+      observations: A padronização deste campo é pelo IBGE
+
+    dataInicioSintomas:
+      description: Data do primeiro sintoma
+      type: date
+      required: no
+      parsing: AAAA-MM-DD hms # que padrão é hms?
+      observations: Quando esse campo for vazio, será utilizado a dataNotificação para cálculo do indicador Incidência de COVID-19
+
+    dataNotificação:
+      description: Data da notificação do caso
+      type: date
+      required: yes
+      parsing: AAAA-MM-DD hms # que padrão é hms?
+
+    sexo:
+      description: Sexo do paciente
+      type: string
+      required: no
+      parsing:
+        - Feminino
+        - Masculino
+
+    idade:
+      description: idade do paciente
+      type: integer
+      required: no
+      parsing: n/a # é um número inteiro de idade? Se sim, remover essa linha
+
+    resultadoTeste:
+      description: Resultado do teste
+      type: string
+      required: no
+      parsing:
+        - Positivo
+        - Negativo
+
+    profissionalSaude:
+      description: Se é profissional da saude
+      type: string
+      required: no
+      parsing:
+        - Sim
+        - Não
