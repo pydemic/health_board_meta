@@ -1,0 +1,93 @@
+form_casos_obitos:
+  title: formulário para os indicadores de casos e óbitos diários não vinculados a indígenas
+  fields:
+    data:
+      name: data_casos_obitos
+      type: date
+    csv:
+      name: csv_casos_obitos
+      type: file
+      file:
+        type: csv
+        parsing:
+          columns:
+            municipio:
+              description: Código do município
+              type: integer
+            numero_casos:
+              description: Nº de casos confirmados
+              type: integer
+            numero_obitos:
+              description: Nº de óbitos
+              type: integer
+
+  table_columns:
+    - municipio
+    - data
+    - numero_casos
+    - numero_obitos
+
+  indicators:
+    - "N° de casos nas últimas 24h": numero_casos
+    - "N° de óbitos nas últimas 24h": numero_obitos
+
+form_capacidade_testagem:
+  title: formulário para o indicador de capacidade de testagem
+  fields:
+    data:
+      name: data_capacidade_testagem
+      type: date
+    csv:
+      name: csv_capacidade_testagem
+      type: file
+      file:
+        type: csv
+        parsing:
+          columns:
+            municipio:
+              description: Código do município
+              type: integer
+            numero_testes_realizados:
+              description: Nº de testes de RT-PCR solicitados/realizado
+              type: integer
+
+  table_columns:
+    - municipio
+    - data
+    - numero_testes_realizados
+
+  indicators:
+    - "Capacidade de testagem": numero_testes_realizados / numero_casos (presente no form_casos_obitos)
+
+form_casos_obitos_em_indigenas:
+  title: formulário para os indicadores de casos e óbitos diários vinculados a indígenas
+  fields:
+    data:
+      name: data_casos_obitos_indigenas
+      type: date
+    csv:
+      name: csv_casos_obitos_indigenas
+      type: file
+      file:
+        type: csv
+        parsing:
+          columns:
+            codigo_dsei:
+              description: Código do Distritos Sanitários Especiais Indígenas (DSEI)
+              type: integer
+            confirmados:
+              description: Nº de casos confirmados
+              type: integer
+            obitos:
+              description: Nº de óbitos
+              type: integer
+
+  table_columns:
+    - codigo_dsei
+    - data
+    - confirmados
+    - obitos
+
+  indicators:
+    - "N° de casos nas últimas 24h indigena": confirmados (para cada DSEI)
+    - "N° de óbitos nas últimas 24h indigena": obitos (para cada DSEI)
