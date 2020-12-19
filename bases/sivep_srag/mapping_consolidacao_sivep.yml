@@ -1,0 +1,80 @@
+sivep_daily:
+  obs:
+    Separar todas as linhas que PCR_SARS2 com valor = (1-confirmado covid-19)
+  coluns:
+    'contexto'
+    'local': campos ID_MUNICIP ou CO_MUN_NOT / ID_MN_RESI ou CO_MUN_RES
+    'data': DT_SIN_PRI se vazio DT_NOTIFIC
+    'total_internacoes_covid': onde DT_INTERNA tiver uma data valida 
+    'total_casos': linhas que tem PCR_SARS2 com valor = (1-confirmado covid-19)
+    'total_obitos': campo EVOLUCAO = 2-óbitos
+    'total_amostras': campo AMOSTRA = 1-sim
+    'total_internacoes_SRAG': campo HOSPITAL = 1-sim e DT_INTERNA com uma data valida
+    'total_internacoes_indigenas_covid': total_internacoes_SRAG onde CS_RACA = 5-indigena
+    'sintoma_FEBRE': FEBRE = 1-sim
+    'sintoma_TOSSE': TOSSE = 1-sim
+    'sintoma_GARGANTA': GARGANTA = 1-sim
+    'sintoma_DISPNEIA': DISPNEIA = 1-sim
+    'sintoma_DESC_RESP': DESC_RESP = 1-sim
+    'sintoma_SATURACAO': SATURACAO = 1-sim
+    'sintoma_DIARREIA': DIARREIA = 1-sim
+    'sintoma_VOMITO': VOMITO = 1-sim
+    'sintoma_DOR_ABD': DOR_ABD = 1-sim
+    'sintoma_FADIGA': FADIGA = 1-sim
+    'sintoma_PERD_OLFT': PERD_OLFT = 1-sim
+    'sintoma_PERD_PALA': PERD_PALA = 1-sim
+    'sintoma_OUTRO_SIN': OUTRO_SIN = 1-sim
+    'comorbidade_PUERPERA': PUERPERA = 1-sim
+    'comorbidade_CARDIOPATI': CARDIOPATI = 1-sim
+    'comorbidade_HEMATOLOGI': HEMATOLOGI = 1-sim
+    'comorbidade_SIND_DOWN': SIND_DOWN = 1-sim
+    'comorbidade_HEPATICA': HEPATICA = 1-sim
+    'comorbidade_ASMA': ASMA = 1-sim
+    'comorbidade_DIABETES': DIABETES = 1-sim
+    'comorbidade_NEUROLOGIC': NEUROLOGIC = 1-sim
+    'comorbidade_PNEUMOPATI': PNEUMOPATI = 1-sim
+    'comorbidade_IMUNODEPRE': IMUNODEPRE = 1-sim
+    'comorbidade_RENAL': RENAL = 1-sim
+    'comorbidade_OBESIDADE': OBESIDADE = 1-sim
+    'comorbidade_OUT_MORBI': OUT_MORBI = 1-sim
+    'M04': masculino de 0 a 4 anos
+    'M09': masculino de 5 a 9 anos
+    'M14'
+    'M19'
+    'M24'
+    'M29'
+    'M34'
+    'M39'
+    'M44'
+    'M49'
+    'M54'
+    'M59'
+    'M64'
+    'M69'
+    'M74'
+    'M79'
+    'M80'
+    'F04': feminino de 0 a 4 anos
+    'F09': feminino de 5 a 9 anos
+    'F14'
+    'F19'
+    'F24'
+    'F29'
+    'F34'
+    'F39'
+    'F44'
+    'F49'
+    'F54'
+    'F59'
+    'F64'
+    'F69'
+    'F74'
+    'F79'
+    'F80'
+    'raca_branca': CS_RACA
+    'raca_preta': CS_RACA
+    'raca_amarela': CS_RACA
+    'raca_parda': CS_RACA
+    'raca_indigena': CS_RACA
+    'raca_ignorada': CS_RACA
+    

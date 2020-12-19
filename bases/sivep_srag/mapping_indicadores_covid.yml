@@ -1,0 +1,40 @@
+indicadores:
+  N° de internações semanal: 'total_internacoes_covid'
+  N° de casos de SRAG por covid: 'total_casos'
+  N° de óbitos por COVID -19: 'total_obitos'
+  N° de internações de SRAG por COVID-19: 'total_internacoes_SRAG'
+  Incidência de COVID-19: 'total_incidencia_covid' (dado composto)
+  Taxa de Mortalidade COVID-19: 'taxa_mortalidade_covid' (dado composto)
+  Taxa de internação por COVID-19: 'taxa_internação_covid' (dado composto)
+  Taxa de Letalidade hospitalar por COVID-19: 'taxa_letalidade_hospitalar_covid' (dado composto)
+  Taxa Letalidade por COVID-19: 'taxa_letalidade_covid' (dado composto)
+  Taxa de positividade SRAG-COVID-19: 'taxa_positividade_SRAG_covid' (dado composto)
+  Sintomas entre hospitalizados:
+    'sintoma_FEBRE'
+    'sintoma_TOSSE'
+    'sintoma_GARGANTA'
+    'sintoma_DISPNEIA'
+    'sintoma_DESC_RESP'
+    'sintoma_SATURACAO'
+    'sintoma_DIARREIA'
+    'sintoma_VOMITO'
+    'sintoma_DOR_ABD'
+    'sintoma_FADIGA'
+    'sintoma_PERD_OLFT'
+    'sintoma_PERD_PALA'
+    'sintoma_OUTRO_SIN'
+  Comorbidades (fatores de riscos) entre hospitalizados:
+    'comorbidade_PUERPERA'
+    'comorbidade_CARDIOPATI'
+    'comorbidade_HEMATOLOGI'
+    'comorbidade_SIND_DOWN'
+    'comorbidade_HEPATICA'
+    'comorbidade_ASMA'
+    'comorbidade_DIABETES'
+    'comorbidade_NEUROLOGIC'
+    'comorbidade_PNEUMOPATI'
+    'comorbidade_IMUNODEPRE'
+    'comorbidade_RENAL'
+    'comorbidade_OBESIDADE'
+    'comorbidade_OUT_MORBI'
+  N° de internacoes indígenas por COVID-19: 'total_internacoes_indigenas_covid'
