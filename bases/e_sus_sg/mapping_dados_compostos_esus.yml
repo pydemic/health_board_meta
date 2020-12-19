@@ -1,5 +1,5 @@
 dados_compostos_esus:
   coluns:
-    "total_incidencia_covid_esus": total_casos / população total no período e local
-    "taxa_letalidade_covid": total_obitos / total_casos
-    "taxa_positividade_SG_covid": total_casos / resultadoDoTeste = positivo
+    total_incidencia_covid_esus: total_casos / população total no período e local
+    taxa_letalidade_covid: total_obitos / total_casos
+    taxa_positividade_SG_covid: total_casos / resultadoDoTeste = positivo
