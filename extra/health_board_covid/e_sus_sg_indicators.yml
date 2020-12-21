@@ -1,0 +1,6 @@
+indicadores:
+  N° de casos de SG por covid: total_casos
+  Incidência de COVID-19: total_incidencia_covid_esus (dado composto)
+  Taxa Letalidade por COVID-19: taxa_letalidade_covid (dado composto)
+  Taxa de positividade SG-COVID-19: taxa_positividade_SG_covid (dado composto)
+  Casos entre profissionais de saúde: total_casos_profissionais_saude

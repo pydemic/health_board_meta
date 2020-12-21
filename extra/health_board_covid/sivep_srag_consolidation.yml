@@ -1,0 +1,38 @@
+sivep_srag:
+  obs:
+    Separar todas as linhas que PCR_SARS2 com valor = (1-confirmado covid-19)
+  columns:
+    registry_context: 0 se ID_MUNICIP/CO_MUN_NOT válido e 1 Se ID_MN_RESI/CO_MUN_RES válido
+    location_id: ID_MUNICIP/CO_MUN_NOT/ID_MN_RESI/CO_MUN_RES
+    date: DT_SIN_PRI/DT_NOTIFIC
+    cases: PCR_SARS2 confirmado
+    hospitalizations: HOSPITAL sim
+    deaths: EVOLUCAO óbito
+    samples: AMOSTRA sim
+    female_x_x: CS_SEXO Feminino e NU_IDADE_N
+    male_x_x: CS_SEXO Masculino e NU_IDADE_N
+    race_x: CS_RACA
+    symptom_abdominal_pain: DOR_ABD sim
+    symptom_cough: TOSSE sim
+    symptom_diarrhea: DIARREIA sim
+    symptom_dyspnoea: DISPNEIA sim
+    symptom_fatigue: FADIGA sim
+    symptom_fever: FEBRE sim
+    symptom_respiratory_distress: DESC_RESP sim
+    symptom_saturation: SATURACAO sim
+    symptom_smell_loss: PERD_OLFT sim
+    symptom_sore_throat: GARGANTA sim
+    symptom_taste_loss: PERD_PALA sim
+    symptom_vomit: VOMITO sim
+    comorbidity_asthma: ASMA sim
+    comorbidity_chronic_cardiovascular_disease: CARDIOPATI sim
+    comorbidity_chronic_hematological_disease: HEMATOLOGI sim
+    comorbidity_chronic_kidney_disease: RENAL sim
+    comorbidity_chronic_liver_disease: HEPATICA sim
+    comorbidity_chronic_neurological_disease: NEUROLOGIC sim
+    comorbidity_chronic_pneumatopathy_disease: PNEUMOPATI sim
+    comorbidity_diabetes: DIABETES sim
+    comorbidity_down_syndrome: SIND_DOWN sim
+    comorbidity_immunodeficiency: IMUNODEPRE sim
+    comorbidity_obesity: OBSESIDADE sim
+    comorbidity_puerperal: PUERPERA sim

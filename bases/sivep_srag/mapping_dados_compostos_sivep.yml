@@ -1,8 +1,0 @@
-dados_compostos:
-  coluns:
-    'total_incidencia_covid': 'total_casos' / população total no período e local
-    'taxa_mortalidade_covid': 'total_obitos' / população total no período e local
-    'taxa_internação_covid': 'total_internacoes_SRAG' / população total
-    'taxa_letalidade_hospitalar_covid': 'total_obitos' / 'total_internacoes_SRAG'
-    'taxa_letalidade_covid': 'total_obitos' / 'total_casos'
-    'taxa_positividade_SRAG_covid': 'total_casos' / 'total_amostras'
