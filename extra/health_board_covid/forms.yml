@@ -1,93 +1,122 @@
-form_casos_obitos:
+form_coronavirus_panel:
   title: formulário para os indicadores de casos e óbitos diários não vinculados a indígenas
   fields:
     data:
-      name: data_casos_obitos
+      name: data_coronavirus_panel
       type: date
     csv:
-      name: csv_casos_obitos
+      name: csv_coronavirus_panel
       type: file
       file:
         type: csv
         parsing:
           columns:
+            regiao:
+              description: Região Brasil
+              type: string
+            estado:
+              description: Estado Brasil
+              type: string
             municipio:
-              description: Código do município
+              description: Municipio Brasil
+              type: string
+            coduf:
+              description: Código do estado
               type: integer
-            numero_casos:
-              description: Nº de casos confirmados
+            codmun:
+              description: Código do municipio
               type: integer
-            numero_obitos:
-              description: Nº de óbitos
+            codRegiaoSaude:
+              description: Código da região de saúde
+              type: integer
+            nomeRegiaoSaude:
+              description: Nome da região de saúde
+              type: string
+            data_monitoramento:
+              description: Data do monitoramento (diário)
+              type: date
+            semanaEpi:
+              description: semana epidemiológica
+              type: integer
+            populacaoTCU2019:
+              description: População segundo TCU 2019
+              type: integer
+            casosAcumulado:
+              description: Casos acumulados
+              type: integer
+            casosNovos:
+              description: Casos novos
+              type: integer
+            obitosAcumulado:
+              description: Obitos acumulados
+              type: integer
+            obitosNovos:
+              description: Obitos novos
+              type: integer
+            Recuperadosnovos:
+              description: Recuperados novos
+              type: integer
+            emAcompanhamentoNovos:
+              description: Casos em acompanhamento
+              type: integer
+            interior/metropolitana:
+              description: indefinido
               type: integer
 
   table_columns:
-    - municipio
-    - data
-    - numero_casos
-    - numero_obitos
+    - data ou data_monitoramento
+    - coduf
+    - codmun
+    - codRegiaoSaude
+    - casosNovos
+    - obitosNovos
 
   indicators:
-    - "N° de casos nas últimas 24h": numero_casos
-    - "N° de óbitos nas últimas 24h": numero_obitos
+    - cases_daily: casosNovos
+    - death_daily: obitosNovos
+    - lists_ufs_with_the_highest_number_cases_daily: list
+    - lists_ufs_with_the_highest_number_death_daily: list
+    - lists_cities_with_the_highest_number_cases_daily: list
+    - lists_cities_with_the_highest_number_death_daily: list
+    - lists_ufs_with_the_highest_incidence_rate_daily: list
+    - lists_cities_with_the_highest_incidence_rate_daily: list
 
-form_capacidade_testagem:
-  title: formulário para o indicador de capacidade de testagem
+form_hospital_internment:
+  title: formulário para o indicador de ocupação hospitalar de leitos de UTI
   fields:
     data:
-      name: data_capacidade_testagem
+      name: data_hospital_internment
       type: date
     csv:
-      name: csv_capacidade_testagem
+      name: csv_hospital_internment
       type: file
       file:
         type: csv
         parsing:
           columns:
-            municipio:
-              description: Código do município
+            data_mineracao:
+              description: Data da mineração
+              type: date
+            estado:
+              description: Nome do Estado
+              type: string
+            sigla_uf:
+              description: Sigla do Estado
+              type: string
+            chave_pareamento:
+              description: Chave de pareamento
+              type: string
+            taxa_ocupação_uti:
+              description: Taxa de ocupação de leitos de uti
               type: integer
-            numero_testes_realizados:
-              description: Nº de testes de RT-PCR solicitados/realizado
-              type: integer
+            fonte:
+              description: Fonte da informação
+              type: string
 
   table_columns:
-    - municipio
-    - data
-    - numero_testes_realizados
+    - data ou data_mineracao
+    - estado
+    - taxa_ocupação_uti
 
   indicators:
-    - "Capacidade de testagem": numero_testes_realizados / numero_casos (presente no form_casos_obitos)
-
-form_casos_obitos_em_indigenas:
-  title: formulário para os indicadores de casos e óbitos diários vinculados a indígenas
-  fields:
-    data:
-      name: data_casos_obitos_indigenas
-      type: date
-    csv:
-      name: csv_casos_obitos_indigenas
-      type: file
-      file:
-        type: csv
-        parsing:
-          columns:
-            codigo_dsei:
-              description: Código do Distritos Sanitários Especiais Indígenas (DSEI)
-              type: integer
-            confirmados:
-              description: Nº de casos confirmados
-              type: integer
-            obitos:
-              description: Nº de óbitos
-              type: integer
-
-  table_columns:
-    - codigo_dsei
-    - data
-    - confirmados
-    - obitos
-
-  indicators:
-    - "N° de casos nas últimas 24h indigena": confirmados (para cada DSEI)
-    - "N° de óbitos nas últimas 24h indigena": obitos (para cada DSEI)
+    - hospital_occupancy_rate_UTI_bed: taxa_ocupação_uti
