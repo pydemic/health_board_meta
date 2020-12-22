@@ -214,6 +214,16 @@ pandemic_sars_cases:
     - race_brown
     - race_native
     - ignored_race
+
+pandemic_sars_symptoms:
+  date: '2020-12-21'
+  period:
+    from: '2020-02-26'
+    to: '2020-12-17'
+  source: sivep_srag
+  fields:
+    - context
+    - location_id
     - symptom_abdominal_pain
     - symptom_cough
     - symptom_diarrhea
