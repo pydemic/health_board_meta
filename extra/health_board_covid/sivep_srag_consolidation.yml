@@ -2,7 +2,7 @@ sivep_srag:
   obs:
     Separar todas as linhas que PCR_SARS2 com valor = (1-confirmado covid-19)
   columns:
-    registry_context: 0 se ID_MUNICIP/CO_MUN_NOT válido e 1 Se ID_MN_RESI/CO_MUN_RES válido
+    context: 0 se ID_MUNICIP/CO_MUN_NOT válido e 1 Se ID_MN_RESI/CO_MUN_RES válido
     location_id: ID_MUNICIP/CO_MUN_NOT/ID_MN_RESI/CO_MUN_RES
     date: DT_SIN_PRI/DT_NOTIFIC
     cases: PCR_SARS2 confirmado

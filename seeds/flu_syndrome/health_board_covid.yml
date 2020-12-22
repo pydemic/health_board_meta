@@ -5,7 +5,7 @@ daily_flu_syndrome_cases:
     to: '2020-12-07'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - date
     - confirmed
@@ -53,7 +53,7 @@ weekly_flu_syndrome_cases:
     to: '2020-12-07'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - week
@@ -102,7 +102,7 @@ monthly_flu_syndrome_cases:
     to: '2020-12-07'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - month
@@ -151,7 +151,7 @@ pandemic_flu_syndrome_cases:
     to: '2020-12-07'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - confirmed
     - discarded

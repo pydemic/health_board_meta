@@ -1,11 +1,11 @@
 daily_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - date
     - cases
@@ -54,13 +54,13 @@ daily_sars_cases:
     - ignored_race
 
 weekly_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - week
@@ -110,13 +110,13 @@ weekly_sars_cases:
     - ignored_race
 
 monthly_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - month
@@ -166,13 +166,13 @@ monthly_sars_cases:
     - ignored_race
 
 pandemic_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: e_sus_sg
   fields:
-    - registry_context
+    - context
     - location_id
     - cases
     - hospitalizations
