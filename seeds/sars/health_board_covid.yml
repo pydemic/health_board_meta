@@ -1,11 +1,11 @@
 daily_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - location_id
     - date
     - confirmed
@@ -52,13 +52,13 @@ daily_sars_cases:
     - ignored_race
 
 weekly_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
     to: '2020-12-??'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - week
@@ -106,13 +106,13 @@ weekly_sars_cases:
     - ignored_race
 
 monthly_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
     to: '2020-12-??'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - location_id
     - year
     - month
@@ -160,13 +160,13 @@ monthly_sars_cases:
     - ignored_race
 
 pandemic_sars_cases:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - location_id
     - confirmed
     - discarded
@@ -236,13 +236,13 @@ pandemic_sars_cases:
     - comorbidity_puerperal
 
 daily_sars_events:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - year
     - week
     - hospitalizations
@@ -250,13 +250,13 @@ daily_sars_events:
     - samples
 
 weekly_sars_events:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - year
     - week
     - hospitalizations
@@ -264,13 +264,13 @@ weekly_sars_events:
     - samples
 
 monthly_sars_events:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - year
     - month
     - hospitalizations
@@ -278,13 +278,13 @@ monthly_sars_events:
     - samples
 
 pandemic_sars_events:
-  date: '2020-12-??'
+  date: '2020-12-21'
   period:
     from: '2020-02-26'
-    to: '2020-12-??'
+    to: '2020-12-17'
   source: sivep_srag
   fields:
-    - registry_context
+    - context
     - hospitalizations
     - deaths
     - samples

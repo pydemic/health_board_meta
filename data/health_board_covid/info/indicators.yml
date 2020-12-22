@@ -40,3 +40,206 @@ population:
   reference: http://fichas.ripsa.org.br/2012/a-1/?l=pt_BR
   sources:
     - datasus_population
+
+cases_daily:
+  description: Total de novos casos diários de covid confirmados na população residente em determinado espaço geográfico
+  formula: Somatório do número de novos casos de covid confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - coronavirus_panel
+
+death_daily:
+  description: Total de novos óbitos diários por covid confirmados na população residente em determinado espaço geográfico
+  formula: Somatório do número de novos óbitos por covid confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - coronavirus_panel
+
+hospital_occupancy_rate_UTI_bed:
+  description: Taxa de ocupação hospitalar de leito UTI por covid diária na população residente em determinado espaço geográfico
+  formula: Taxa de ocupação hospitalar de leito UTI por covid diária
+  measurement_unit: \%
+  sources:
+    - hospital_internment
+
+number_hospitalizations_weekly:
+  description: Total de internações por covid na população residente em determinado espaço geográfico, na semana considerada
+  formula: Somatório do número de internações por covid na população residente
+  measurement_unit: Escalar
+  sources:
+    - sivep_srag
+
+incidence_covid:
+  description: Total de novos casos de covid confirmados na população residente em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de novos casos de SRAG e SG confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - e_sus_sg
+    - sivep_srag
+
+incidence_srag:
+  description: Total de novos casos de SRAG confirmados na população residente em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de novos casos de SRAG confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - sivep_srag
+
+incidence_sg:
+  description: Total de novos casos de SG confirmados na população residente em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de novos casos de SG confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - e_sus_sg
+
+death_covid:
+  description: Total de novos óbitos por covid confirmados na população residente em determinado espaço geográfico
+  formula: Somatório do número de novos óbitos por covid confirmados em residentes
+  measurement_unit: Escalar
+  sources:
+    - sivep_srag
+
+number_hospitalizations_srag:
+  description: Total de internações por SRAG na população residente em determinado espaço geográfico
+  formula: Somatório do número de internações por SRAG na população residente
+  measurement_unit: Escalar
+  sources:
+    - sivep_srag
+
+incidence_rate_covid:
+  description: Total de novos casos confirmados na população residente em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de casos novos por covid/população residente * 100.000
+  measurement_unit: /100 mil habitantes
+  source:
+    - e_sus_sg
+    - sivep_srag
+    - datasus_population
+  children:
+    - incidence_covid
+    - population
+
+mortality_rate_covid:
+  description: Taxa de mortalidade na população residente em determinado espaço geográfico
+  formula: Somatório do número de óbitos por covid/população residente
+  measurement_unit: \%
+  source:
+    - sivep_srag
+    - datasus_population
+  children:
+    - death_covid
+    - population
+
+hospitalization_rate_covid:
+  description: Taxa de internações por covid na população residente em determinado espaço geográfico
+  formula: Somatório do número de internações/população total * 10.000
+  measurement_unit: /10 mil habitantes
+  source:
+    - sivep_srag
+    - datasus_population
+  children:
+    - number_hospitalizations_srag
+    - population
+
+hospital_lethality_rate_covid:
+  description: Taxa de letalidade hospitalar por covid na população residente em determinado espaço geográfico
+  formula: Somatório do número de óbitos por covid/Somatório do número de internações
+  measurement_unit: \%
+  source:
+    - sivep_srag
+  children:
+    - death_covid
+    - number_hospitalizations_srag
+
+lethality_rate_covid:
+  description: Taxa de letalidade por covid na população residente em determinado espaço geográfico
+  formula: Somatório do número de óbitos por covid/Somatório do número de casos novos por covid
+  measurement_unit: \%
+  source:
+    - e_sus_sg
+    - sivep_srag
+  children:
+    - death_covid
+    - incidence_covid
+
+positivity_srag_rate_covid:
+  description: Taxa de positividade por SRAG na população residente em determinado espaço geográfico
+  formula: Somatório do número de exames positivos/Somatório do número de exames realizados
+  measurement_unit: \%
+  source:
+    - sivep_srag
+
+positivity_sg_rate_covid:
+  description: Taxa de positividade por SG na população residente em determinado espaço geográfico
+  formula: Somatório do número de exames positivos/Somatório do número de exames realizados
+  measurement_unit: \%
+  source:
+    - e_sus_sg
+
+symptoms_among_hospitalized:
+  description: Sintomas entre os pacientes hospitalizados na população residente em determinado espaço geográfico
+  formula: Descrição do sintoma
+  measurement_unit: Escalar
+  source:
+    - sivep_srag
+
+comorbidities_among_hospitalized:
+  description: Comorbidades entre os pacientes hospitalizados na população residente em determinado espaço geográfico
+  formula: Descrição da comorbidade
+  measurement_unit: Escalar
+  source:
+    - sivep_srag
+
+cases_among_health_professionals:
+  description: Total de novos casos de covid confirmados entre profissionais de saúde residente em determinado espaço geográfico
+  formula: Somatório do número de novos casos de covid confirmados entre profissionais de saúde residentes
+  measurement_unit: Escalar
+  source:
+    - e_sus_sg
+
+incidence_indigenous_hospitalizations_covid:
+  description: Total de novos casos de covid confirmados na população indígena residente em determinado espaço geográfico
+  formula: Somatório do número de novos casos de covid confirmados em residentes indígenas
+  measurement_unit: Escalar
+  source:
+    - sivep_srag
+
+lists_ufs_with_the_highest_number_cases_daily:
+  description: Lista 10 UFs com maior número de casos de covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel
+
+lists_ufs_with_the_highest_number_death_daily:
+  description: Lista 10 UFs com maior número de óbitos por covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel
+
+lists_cities_with_the_highest_number_cases_daily:
+  description: Lista 5 cidades com maior número de casos de covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel
+
+lists_cities_with_the_highest_number_death_daily:
+  description: Lista 5 cidades com maior número de óbitos por covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel
+
+lists_ufs_with_the_highest_incidence_rate_daily:
+  description: Lista 5 UFs com maior taxa de incidência de covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel
+
+lists_cities_with_the_highest_incidence_rate_daily:
+  description: Lista 5 cidades com maior taxa de incidência por covid-19 nas últimas 24 horas
+  formula: lista
+  measurement_unit: lista
+  source:
+    - coronavirus_panel

@@ -19,18 +19,46 @@ datasus_geo:
   description: Dados de territórios do DATASUS
   link: ftp://ftp.datasus.gov.br/territorio/tabelas
   update_rate: Anual
-  extraction_date: '2020-10-01'
+  extraction_date: "2020-10-01"
 
 datasus_population:
   name: População DATASUS
   description: Estimativas de dados populacionais do DATASUS
   link: http://tabnet.datasus.gov.br/cgi/deftohtm.exe?popsvs/cnv/popbr.def
   update_rate: Anual
-  extraction_date: '2020-10-01'
+  extraction_date: "2020-10-01"
 
 iso_3166:
   name: ISO 3166
   description: Códigos de países
   link: https://www.iso.org/iso-3166-country-codes.html
   update_rate: Esporádico
-  extraction_date: '2020-10-01'
+  extraction_date: "2020-10-01"
+
+e_sus_sg:
+  name: E-SUS
+  description: Dados de Síndrome Gripal (SG)
+  link: https://opendatasus.saude.gov.br/group/dados-do-coronavirus
+  update_rate: Diário
+  extraction_date: "2020-12-18"
+
+sivep_srag:
+  name: SIVEP
+  description: Dados de Síndrome Respiratória Aguda Grave (SRAG)
+  link: https://opendatasus.saude.gov.br/organization/ministerio-da-saude
+  update_rate: Semanal
+  extraction_date: "2020-12-18"
+
+hospital_internment:
+  name: Dados de internação hospitalar por estado
+  description: Dados de internação hospitalar por estado. Estes dados são recolhidos de fontes de dados diferentes para cada estado do país.
+  link: /
+  update_rate: Diário
+  extraction_date: "2020-12-18"
+
+coronavirus_panel:
+  name: Painel Coronavírus
+  description: Dados diários de casos e óbitos do coronavírus
+  link: https://covid.saude.gov.br/
+  update_rate: Diário
+  extraction_date: "2020-12-18"
