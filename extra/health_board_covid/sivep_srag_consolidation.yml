@@ -1,10 +1,9 @@
 sivep_srag:
-  obs:
-    Separar todas as linhas que PCR_SARS2 com valor = (1-confirmado covid-19)
+  obs: Separar todas as linhas que PCR_SARS2 com valor = (1-confirmado covid-19)
   columns:
-    context: 0 se ID_MUNICIP/CO_MUN_NOT válido e 1 Se ID_MN_RESI/CO_MUN_RES válido
-    location_id: ID_MUNICIP/CO_MUN_NOT/ID_MN_RESI/CO_MUN_RES
-    date: DT_SIN_PRI/DT_NOTIFIC
+    context: 0 se CO_MUN_NOT válido e 1 Se CO_MUN_RES válido
+    location_id: CO_MUN_NOT/CO_MUN_RES/CO_MU_INTE
+    date: DT_SIN_PRI/DT_NOTIFIC/DT_EVOLUCA - DATA DE EVOLUÇÃO é usado para contar os casos de óbitos
     cases: PCR_SARS2 confirmado
     hospitalizations: HOSPITAL sim
     deaths: EVOLUCAO óbito

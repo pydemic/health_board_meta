@@ -10,6 +10,7 @@ daily_sars_cases:
     - date
     - confirmed
     - discarded
+    - sample
     - female_0_4
     - female_5_9
     - female_10_14
@@ -64,6 +65,7 @@ weekly_sars_cases:
     - week
     - confirmed
     - discarded
+    - sample
     - female_0_4
     - female_5_9
     - female_10_14
@@ -118,6 +120,7 @@ monthly_sars_cases:
     - month
     - confirmed
     - discarded
+    - sample
     - female_0_4
     - female_5_9
     - female_10_14
@@ -170,6 +173,7 @@ pandemic_sars_cases:
     - location_id
     - confirmed
     - discarded
+    - sample
     - female_0_4
     - female_5_9
     - female_10_14
@@ -234,57 +238,3 @@ pandemic_sars_cases:
     - comorbidity_immunodeficiency
     - comorbidity_obesity
     - comorbidity_puerperal
-
-daily_sars_events:
-  date: '2020-12-21'
-  period:
-    from: '2020-02-26'
-    to: '2020-12-17'
-  source: sivep_srag
-  fields:
-    - context
-    - year
-    - week
-    - hospitalizations
-    - deaths
-    - samples
-
-weekly_sars_events:
-  date: '2020-12-21'
-  period:
-    from: '2020-02-26'
-    to: '2020-12-17'
-  source: sivep_srag
-  fields:
-    - context
-    - year
-    - week
-    - hospitalizations
-    - deaths
-    - samples
-
-monthly_sars_events:
-  date: '2020-12-21'
-  period:
-    from: '2020-02-26'
-    to: '2020-12-17'
-  source: sivep_srag
-  fields:
-    - context
-    - year
-    - month
-    - hospitalizations
-    - deaths
-    - samples
-
-pandemic_sars_events:
-  date: '2020-12-21'
-  period:
-    from: '2020-02-26'
-    to: '2020-12-17'
-  source: sivep_srag
-  fields:
-    - context
-    - hospitalizations
-    - deaths
-    - samples
