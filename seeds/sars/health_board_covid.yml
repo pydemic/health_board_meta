@@ -10,7 +10,7 @@ daily_sars_cases:
     - date
     - confirmed
     - discarded
-    - sample
+    - samples
     - female_0_4
     - female_5_9
     - female_10_14
@@ -65,7 +65,7 @@ weekly_sars_cases:
     - week
     - confirmed
     - discarded
-    - sample
+    - samples
     - female_0_4
     - female_5_9
     - female_10_14
@@ -120,7 +120,7 @@ monthly_sars_cases:
     - month
     - confirmed
     - discarded
-    - sample
+    - samples
     - female_0_4
     - female_5_9
     - female_10_14
@@ -173,7 +173,7 @@ pandemic_sars_cases:
     - location_id
     - confirmed
     - discarded
-    - sample
+    - samples
     - female_0_4
     - female_5_9
     - female_10_14
