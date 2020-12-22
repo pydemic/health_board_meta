@@ -87,3 +87,222 @@ demographic:
             demographic_population_per_age_group:
               card_id: population_per_age_group
               index: 2
+
+covid:
+  name: Painel Covid-19
+  description: Painel Covid-19
+  groups:
+    daily_group:
+      name: Dados diários
+      description: Dados diários
+      index: 0
+      sections:
+        daily_summary:
+          name: Sumário
+          description: Resumo dos dados diários de Covid-19
+          index: 0
+          cards:
+            daily_confirmed_cases:
+              card_id: confirmed_cases
+              index: 0
+
+            daily_confirmed_deaths:
+              card_id: confirmed_deaths
+              index: 1
+
+            daily_uti_occupancy_rate:
+              card_id: uti_occupancy_rate
+              index: 2
+
+            daily_list_uf_cases_daily:
+              card_id: list_uf_cases_daily
+              index: 3
+
+            daily_list_uf_obitos_daily:
+              card_id: list_uf_obitos_daily
+              index: 4
+
+            daily_list_city_cases_daily:
+              card_id: list_city_cases_daily
+              index: 5
+
+            daily_list_city_obitos_daily:
+              card_id: list_city_obitos_daily
+              index: 6
+
+            daily_list_uf_incidence_daily:
+              card_id: list_uf_incidence_daily
+              index: 7
+
+            daily_list_city_incidence_daily:
+              card_id: list_city_incidence_daily
+              index: 8
+
+    general_group:
+      name: Dados gerais de Covid-19
+      description: Dados gerais de Covid-19
+      index: 1
+      sections:
+        general_confirmed_cases:
+          name: Casos Confirmados
+          description: Resumo dos casos confirmados de Covid-19
+          index: 0
+          cards:
+            general_incidence_covid_cases_epicurve:
+              card_id: incidence_covid_cases_epicurve
+              index: 0
+
+            general_incidence_covid_cases_age_pyramid:
+              card_id: incidence_covid_cases_age_pyramid
+              index: 1
+
+            general_incidence_covid_cases_municipalities_map:
+              card_id: incidence_covid_cases_municipalities_map
+              index: 2
+
+            general_incidence_srag_cases_epicurve:
+              card_id: incidence_srag_cases_epicurve
+              index: 3
+
+            general_incidence_srag_cases_age_pyramid:
+              card_id: incidence_srag_cases_age_pyramid
+              index: 4
+
+            general_incidence_srag_cases_municipalities_map:
+              card_id: incidence_srag_cases_municipalities_map
+              index: 5
+
+            general_incidence_sg_cases_epicurve:
+              card_id: incidence_sg_cases_epicurve
+              index: 6
+
+            general_incidence_sg_cases_age_pyramid:
+              card_id: incidence_sg_cases_age_pyramid
+              index: 7
+
+            general_incidence_sg_cases_municipalities_map:
+              card_id: incidence_sg_cases_municipalities_map
+              index: 8
+
+            general_incidence_rate_covid_map_incidence:
+              card_id: incidence_rate_covid_map_incidence
+              index: 9
+
+            general_incidence_rate_covid_map_accumulated_incidence:
+              card_id: incidence_rate_covid_map_accumulated_incidence
+              index: 10
+
+            general_cases_among_health_professionals_cases_epicurve:
+              card_id: cases_among_health_professionals_cases_epicurve
+              index: 11
+
+            general_cases_among_health_professionals_cases_age_pyramid:
+              card_id: cases_among_health_professionals_cases_age_pyramid
+              index: 12
+
+            general_cases_among_health_professionals_cases_municipalities_map:
+              card_id: cases_among_health_professionals_cases_municipalities_map
+              index: 13
+
+            general_positivity_srag_rate_covid_monthly:
+              card_id: positivity_srag_rate_covid_monthly
+              index: 14
+
+            general_positivity_srag_rate_covid_weekly:
+              card_id: positivity_srag_rate_covid_weekly
+              index: 15
+
+            general_positivity_sg_rate_covid_monthly:
+              card_id: positivity_sg_rate_covid_monthly
+              index: 16
+
+            general_positivity_sg_rate_covid_weekly:
+              card_id: positivity_sg_rate_covid_weekly
+              index: 17
+
+        general_hospitalizations:
+          name: Internações
+          description: Resumo das internações por Covid-19
+          index: 1
+          cards:
+            general_number_hospitalizations_weekly_epicurve:
+              card_id: number_hospitalizations_weekly_epicurve
+              index: 0
+
+            general_number_hospitalizations_weekly_age_pyramid:
+              card_id: number_hospitalizations_weekly_age_pyramid
+              index: 1
+
+            general_number_hospitalizations_weekly_municipalities_map:
+              card_id: number_hospitalizations_weekly_municipalities_map
+              index: 2
+
+            general_number_hospitalizations_srag_weekly_epicurve:
+              card_id: number_hospitalizations_srag_weekly_epicurve
+              index: 3
+
+            general_number_hospitalizations_srag_weekly_age_pyramid:
+              card_id: number_hospitalizations_srag_weekly_age_pyramid
+              index: 4
+
+            general_number_hospitalizations_srag_weekly_municipalities_map:
+              card_id: number_hospitalizations_srag_weekly_municipalities_map
+              index: 5
+
+            general_hospitalization_rate_covid_heatmap:
+              card_id: hospitalization_rate_covid_heatmap
+              index: 6
+
+            general_incidence_indigenous_hospitalizations_covid_epicurve:
+              card_id: incidence_indigenous_hospitalizations_covid_epicurve
+              index: 7
+
+            general_incidence_indigenous_hospitalizations_covid_age_pyramid:
+              card_id: incidence_indigenous_hospitalizations_covid_age_pyramid
+              index: 8
+
+            general_incidence_indigenous_hospitalizations_covid_municipalities_map:
+              card_id: incidence_indigenous_hospitalizations_covid_municipalities_map
+              index: 9
+
+        general_symptoms_comorbidities:
+          name: Sintomas e Comorbidades
+          description: Resumo dos sintomas e comorbidades entre os hospitalizados por Covid-19
+          index: 2
+          cards:
+            general_symptoms_among_hospitalized_bar_chart:
+              card_id: symptoms_among_hospitalized_bar_chart
+              index: 0
+
+            general_comorbidities_among_hospitalized_bar_chart:
+              card_id: comorbidities_among_hospitalized_bar_chart
+              index: 1
+
+        general_mortality_lethality:
+          name: Mortalidade e Letalidade
+          description: Resumo dos mortalidade e letalidade por Covid-19
+          index: 3
+          cards:
+            general_mortality_rate_covid_value:
+              card_id: mortality_rate_covid_value
+              index: 0
+
+            general_lethality_rate_covid_value:
+              card_id: lethality_rate_covid_value
+              index: 1
+
+            general_hospital_lethality_rate_covid_value:
+              card_id: hospital_lethality_rate_covid_value
+              index: 2
+
+            general_death_covid_epicurve:
+              card_id: death_covid_epicurve
+              index: 3
+
+            general_death_covid_age_pyramid:
+              card_id: death_covid_age_pyramid
+              index: 4
+
+            general_death_covid_municipalities_map:
+              card_id: death_covid_municipalities_map
+              index: 5
