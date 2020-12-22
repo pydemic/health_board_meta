@@ -3,15 +3,13 @@ daily_sars_cases:
   period:
     from: '2020-02-26'
     to: '2020-12-??'
-  source: e_sus_sg
+  source: sivep_srag
   fields:
     - registry_context
     - location_id
     - date
-    - cases
-    - hospitalizations
-    - deaths
-    - samples
+    - confirmed
+    - discarded
     - female_0_4
     - female_5_9
     - female_10_14
@@ -58,16 +56,14 @@ weekly_sars_cases:
   period:
     from: '2020-02-26'
     to: '2020-12-??'
-  source: e_sus_sg
+  source: sivep_srag
   fields:
     - registry_context
     - location_id
     - year
     - week
-    - cases
-    - hospitalizations
-    - deaths
-    - samples
+    - confirmed
+    - discarded
     - female_0_4
     - female_5_9
     - female_10_14
@@ -114,16 +110,14 @@ monthly_sars_cases:
   period:
     from: '2020-02-26'
     to: '2020-12-??'
-  source: e_sus_sg
+  source: sivep_srag
   fields:
     - registry_context
     - location_id
     - year
     - month
-    - cases
-    - hospitalizations
-    - deaths
-    - samples
+    - confirmed
+    - discarded
     - female_0_4
     - female_5_9
     - female_10_14
@@ -170,14 +164,12 @@ pandemic_sars_cases:
   period:
     from: '2020-02-26'
     to: '2020-12-??'
-  source: e_sus_sg
+  source: sivep_srag
   fields:
     - registry_context
     - location_id
-    - cases
-    - hospitalizations
-    - deaths
-    - samples
+    - confirmed
+    - discarded
     - female_0_4
     - female_5_9
     - female_10_14
@@ -242,3 +234,57 @@ pandemic_sars_cases:
     - comorbidity_immunodeficiency
     - comorbidity_obesity
     - comorbidity_puerperal
+
+daily_sars_events:
+  date: '2020-12-??'
+  period:
+    from: '2020-02-26'
+    to: '2020-12-??'
+  source: sivep_srag
+  fields:
+    - registry_context
+    - year
+    - week
+    - hospitalizations
+    - deaths
+    - samples
+
+weekly_sars_events:
+  date: '2020-12-??'
+  period:
+    from: '2020-02-26'
+    to: '2020-12-??'
+  source: sivep_srag
+  fields:
+    - registry_context
+    - year
+    - week
+    - hospitalizations
+    - deaths
+    - samples
+
+monthly_sars_events:
+  date: '2020-12-??'
+  period:
+    from: '2020-02-26'
+    to: '2020-12-??'
+  source: sivep_srag
+  fields:
+    - registry_context
+    - year
+    - month
+    - hospitalizations
+    - deaths
+    - samples
+
+pandemic_sars_events:
+  date: '2020-12-??'
+  period:
+    from: '2020-02-26'
+    to: '2020-12-??'
+  source: sivep_srag
+  fields:
+    - registry_context
+    - hospitalizations
+    - deaths
+    - samples
