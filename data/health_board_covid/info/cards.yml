@@ -344,7 +344,7 @@ sars_positivity_rate:
   description: Taxa de positividade de COVID-19 (SRAG)
 
 sars_hospitalizations:
-  indicator_id: sars_hospitalization
+  indicator_id: sars_hospitalizations
   name: Internações (SRAG)
   description: Internações de COVID-19 (SRAG)
 
@@ -550,12 +550,12 @@ sars_hospitalizations_map:
   name: Mapa de internações (SRAG)
   description: Mapa de internações de COVID-19 (SRAG)
 
-sars_hospitalization_per_symptom:
+sars_hospitalizations_per_symptom:
   indicator_id: sars_hospitalizations
   name: Internações por sintoma (SRAG)
   description: Internações de COVID-19 (SRAG) por sintoma
 
-sars_hospitalization_per_comorbidity:
+sars_hospitalizations_per_comorbidity:
   indicator_id: sars_hospitalizations
   name: Internações por comorbidade
   description: Internações de COVID-19 (SRAG) por comorbidade

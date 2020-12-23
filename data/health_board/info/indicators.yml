@@ -82,7 +82,7 @@ incidence_rate:
 gender_ratio:
   description: Número de homens para cada grupo de 100 mulheres, na população residente em determinado espaço geográfico, no ano considerado
   formula: Número de residentes do sexo masculino/número de residentes do sexo feminino * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   reference: http://fichas.ripsa.org.br/2012/a-2/?l=pt_BR
   sources:
     - datasus_population
@@ -99,7 +99,7 @@ population:
 vaccination_coverage:
   description: Percentual de crianças vacinadas com vacinas específicas, em determinado espaço geográfico, no ano considerado.
   formula: Número de crianças com esquema básico completo na idade-alvo para determinado tipo de vacina / Número de crianças na idade alvo * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   reference: http://fichas.ripsa.org.br/2008/f-13/
   sources:
     - tabnet_sipni

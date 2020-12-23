@@ -29,7 +29,7 @@
 gender_ratio:
   description: Número de homens para cada grupo de 100 mulheres, em determinado espaço geográfico, no ano considerado
   formula: Número de residentes do sexo masculino/número de residentes do sexo feminino * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   reference: http://fichas.ripsa.org.br/2012/a-2/?l=pt_BR
   sources:
     - datasus_population
@@ -82,7 +82,7 @@ covid_death_rate:
 covid_fatality_rate:
   description: Taxa de letalidade por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 / Somatório do número de casos de COVID-19 * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - health_board_covid
   children:
@@ -92,7 +92,7 @@ covid_fatality_rate:
 covid_icu_rate:
   description: Taxa de ocupação hospitalar de leito de UTI por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Taxa de ocupação hospitalar de leito de UTI por COVID-19
-  measurement_unit: \%
+  measurement_unit: '%'
   sources:
     - health_board_hospitalization
 
@@ -118,7 +118,7 @@ flu_syndrome_incidence_rate:
 flu_syndrome_positivity_rate:
   description: Taxa de positividade de COVID-19 (SG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de exames realizados (SG) * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - e_sus_sg
 
@@ -161,7 +161,7 @@ sars_death_rate:
 sars_fatality_rate:
   description: Taxa de letalidade por COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 (SRAG) / Somatório do número de casos de COVID-19 (SRAG) * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - sivep_srag
   children:
@@ -188,7 +188,7 @@ sars_hospitalization_rate:
 sars_hospitalization_fatality_rate:
   description: Taxa de letalidade hospitalar por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 / Somatório do número de internações por COVID-19 * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - sivep_srag
   children:
@@ -198,7 +198,7 @@ sars_hospitalization_fatality_rate:
 sars_positivity_rate:
   description: Taxa de positividade de COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de exames positivos de COVID-19 (SRAG) / Somatório do número de exames realizados (SRAG) * 100
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - sivep_srag
 
@@ -227,7 +227,7 @@ flu_syndrome_sars_incidence_rate:
 flu_syndrome_sars_fatality_rate:
   description: Taxa de letalidade por COVID-19 (SG + SRAG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 (SRAG) / Somatório do número de casos de COVID-19 (SG + SRAG)
-  measurement_unit: \%
+  measurement_unit: '%'
   source:
     - e_sus_sg
     - sivep_srag
