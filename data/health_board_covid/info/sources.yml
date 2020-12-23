@@ -56,8 +56,8 @@ health_board_hospitalization:
   update_rate: Diário
   extraction_date: '2020-12-18'
 
-health_board_covid:
-  name: Coronavírus
+health_board_situation_report:
+  name: Boletim epidemiológico diário
   description: Dados diários de casos e óbitos por COVID-19
   link: https://covid.saude.gov.br/
   update_rate: Diário

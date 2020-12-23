@@ -45,51 +45,51 @@ population:
 
 # COVID-19 (Forms)
 
-covid_incidence:
+situation_report_incidence:
   description: Total de casos de COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de casos de COVID-19
   sources:
-    - health_board_covid
+    - health_board_situation_report
 
-covid_incidence_rate:
+situation_report_incidence_rate:
   description: Taxa de incidência de COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de casos de COVID-19 / população residente * 100.000
   measurement_unit: /100 mil habitantes
   source:
-    - health_board_covid
+    - health_board_situation_report
     - datasus_population
   children:
-    - covid_incidence
+    - situation_report_incidence
     - population
 
-covid_deaths:
+situation_report_deaths:
   description: Total de óbitos por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19
   sources:
-    - health_board_covid
+    - health_board_situation_report
 
-covid_death_rate:
+situation_report_death_rate:
   description: Taxa de mortalidade de COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 / população residente * 100.000
   measurement_unit: /100 mil habitantes
   source:
-    - health_board_covid
+    - health_board_situation_report
     - datasus_population
   children:
-    - covid_deaths
+    - situation_report_deaths
     - population
 
-covid_fatality_rate:
+situation_report_fatality_rate:
   description: Taxa de letalidade por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Somatório do número de óbitos por COVID-19 / Somatório do número de casos de COVID-19 * 100
   measurement_unit: '%'
   source:
-    - health_board_covid
+    - health_board_situation_report
   children:
-    - covid_incidence
-    - covid_deaths
+    - situation_report_incidence
+    - situation_report_deaths
 
-covid_icu_rate:
+situation_report_icu_rate:
   description: Taxa de ocupação hospitalar de leito de UTI por COVID-19 em determinado espaço geográfico, no período considerado
   formula: Taxa de ocupação hospitalar de leito de UTI por COVID-19
   measurement_unit: '%'
@@ -117,7 +117,14 @@ flu_syndrome_incidence_rate:
 
 flu_syndrome_positivity_rate:
   description: Taxa de positividade de COVID-19 (SG) em determinado espaço geográfico, no período considerado
-  formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de exames realizados (SG) * 100
+  formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de exames realizados de COVID-19 (SG) * 100
+  measurement_unit: '%'
+  source:
+    - e_sus_sg
+
+flu_syndrome_test_capacity:
+  description: Capacidade de testagem de COVID-19 (SG) em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de casos de COVID-19 (SG) * 100
   measurement_unit: '%'
   source:
     - e_sus_sg
@@ -202,35 +209,9 @@ sars_positivity_rate:
   source:
     - sivep_srag
 
-# Composite from Flu Syndrome + SARS
-
-flu_syndrome_sars_incidence:
-  description: Total de casos de COVID-19 (SG + SRAG) em determinado espaço geográfico, no período considerado
-  formula: Somatório do número de casos de COVID-19 (SG + SRAG)
-  measurement_unit: Escalar
-  sources:
-    - e_sus_sg
-    - sivep_srag
-
-flu_syndrome_sars_incidence_rate:
-  description: Taxa de incidência de COVID-19 (SG + SRAG) em determinado espaço geográfico, no período considerado
-  formula: Somatório do número de casos de COVID-19 (SG + SRAG) / população residente * 100.000
-  measurement_unit: /100 mil habitantes
-  source:
-    - e_sus_sg
-    - sivep_srag
-    - datasus_population
-  children:
-    - flu_syndrome_sars_incidence
-    - population
-
-flu_syndrome_sars_fatality_rate:
-  description: Taxa de letalidade por COVID-19 (SG + SRAG) em determinado espaço geográfico, no período considerado
-  formula: Somatório do número de óbitos por COVID-19 (SRAG) / Somatório do número de casos de COVID-19 (SG + SRAG)
+sars_test_capacity:
+  description: Capacidade de testagem de COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de exames positivos de COVID-19 (SRAG) / Somatório do número de casos de COVID-19 (SRAG) * 100
   measurement_unit: '%'
   source:
-    - e_sus_sg
     - sivep_srag
-  children:
-    - flu_syndrome_sars_incidence
-    - sars_deaths
