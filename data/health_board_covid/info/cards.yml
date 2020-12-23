@@ -48,7 +48,7 @@ covid_incidence:
 
 covid_incidence_rate:
   indicator_id: covid_incidence_rate
-  name: Taxa de Incidência
+  name: Taxa de incidência
   description: Taxa de incidência de COVID-19
 
 covid_icu_rate:
@@ -109,8 +109,8 @@ covid_states_icu_rate:
 
 covid_cities_incidence:
   indicator_id: covid_incidence
-  name: Estados de maior incidência no dia
-  description: 10 estados de maior incidência de COVID-19 no dia
+  name: Municípios de maior incidência no dia
+  description: 10 municípios de maior incidência de COVID-19 no dia
 
 covid_cities_incidence_rate:
   indicator_id: covid_incidence_rate
@@ -219,7 +219,7 @@ flu_syndrome_incidence:
 
 flu_syndrome_incidence_rate:
   indicator_id: flu_syndrome_incidence_rate
-  name: Taxa de Incidência (SG)
+  name: Taxa de incidência (SG)
   description: Taxa de incidência de COVID-19 (SG)
 
 flu_syndrome_positivity_rate:
@@ -250,8 +250,8 @@ flu_syndrome_states_positivity_rate:
 
 flu_syndrome_cities_incidence:
   indicator_id: flu_syndrome_incidence
-  name: Estados de maior incidência no dia (SG)
-  description: 10 estados de maior incidência de COVID-19 (SG) no dia
+  name: Municípios de maior incidência no dia (SG)
+  description: 10 municípios de maior incidência de COVID-19 (SG) no dia
 
 flu_syndrome_cities_incidence_rate:
   indicator_id: flu_syndrome_incidence_rate
@@ -295,11 +295,6 @@ flu_syndrome_incidence_per_age_gender:
   name: Pirâmide etária de incidência (SG)
   description: Incidência de COVID-19 (SG) por faixa etária e sexo
 
-flu_syndrome_incidence_per_race:
-  indicator_id: flu_syndrome_incidence
-  name: Incidência por Raça/Cor (SG)
-  description: Incidência de COVID-19 (SG) por Raça/Cor
-
 ## Health Professional
 
 flu_syndrome_health_professional_incidence_epicurve:
@@ -335,7 +330,7 @@ sars_incidence:
 
 sars_incidence_rate:
   indicator_id: sars_incidence_rate
-  name: Taxa de Incidência (SRAG)
+  name: Taxa de incidência (SRAG)
   description: Taxa de incidência de COVID-19 (SRAG)
 
 sars_positivity_rate:
@@ -503,8 +498,8 @@ sars_incidence_per_age_gender:
 
 sars_incidence_per_race:
   indicator_id: sars_incidence
-  name: Incidência por Raça/Cor (SRAG)
-  description: Incidência de COVID-19 (SRAG) por Raça/Cor
+  name: Incidência por raça/cor (SRAG)
+  description: Incidência de COVID-19 (SRAG) por raça/cor
 
 ## Deaths
 

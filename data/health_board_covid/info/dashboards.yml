@@ -320,9 +320,6 @@ flu_syndrome:
             flu_syndrome_incidence_per_age_gender:
               card_id: flu_syndrome_incidence_per_age_gender
               index: 5
-            flu_syndrome_incidence_per_race:
-              card_id: flu_syndrome_incidence_per_race
-              index: 6
 
         flu_syndrome_health_professional:
           name: Profissionais de saúde
