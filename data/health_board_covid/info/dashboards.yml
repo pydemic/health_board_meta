@@ -12,7 +12,7 @@
 #           section_description: required
 #           section_index: required
 #           cards:
-#             section_card_id:
+#             section_id:
 #               card_id: required
 #               card_name: optional
 #               card_index: required
@@ -37,14 +37,14 @@
 #     - section_id
 #     - section_name
 #     - section_description
-#   sections_cards:
+#   sectionss:
 #     - section_id
 #     - card_index
 #     - card_id
-#     - section_card_id
+#     - section_id
 #     - card_name
 #     - card_link
-#   sections_cards_filters:
+#   sectionss_filters:
 #     - card_id
 #     - filter_name
 #     - filter_value
@@ -88,221 +88,466 @@ demographic:
               card_id: population_per_age_group
               index: 2
 
-covid:
-  name: Painel Covid-19
-  description: Painel Covid-19
+coronavirus:
+  name: Painel Coronavírus
+  description: Painel Coronavírus
   groups:
-    daily_group:
-      name: Dados diários
-      description: Dados diários
+    coronavirus_daily_summary_group:
+      name: Resumo diário
+      description: Resumo diário
       index: 0
       sections:
-        daily_summary:
+        coronavirus_daily_summary_section:
           name: Sumário
-          description: Resumo dos dados diários de Covid-19
+          description: Sumário
           index: 0
           cards:
-            daily_confirmed_cases:
-              card_id: confirmed_cases
+            coronavirus_incidence:
+              card_id: covid_incidence
               index: 0
-
-            daily_confirmed_deaths:
-              card_id: confirmed_deaths
+            coronavirus_incidence_rate:
+              card_id: covid_incidence_rate
               index: 1
-
-            daily_uti_occupancy_rate:
-              card_id: uti_occupancy_rate
+            coronavirus_icu_rate:
+              card_id: covid_icu_rate
               index: 2
-
-            daily_list_uf_cases_daily:
-              card_id: list_uf_cases_daily
+            coronavirus_deaths:
+              card_id: covid_deaths
               index: 3
-
-            daily_list_uf_obitos_daily:
-              card_id: list_uf_obitos_daily
+            coronavirus_death_rate:
+              card_id: covid_death_rate
               index: 4
-
-            daily_list_city_cases_daily:
-              card_id: list_city_cases_daily
+            coronavirus_fatality_rate:
+              card_id: covid_fatality_rate
               index: 5
 
-            daily_list_city_obitos_daily:
-              card_id: list_city_obitos_daily
-              index: 6
-
-            daily_list_uf_incidence_daily:
-              card_id: list_uf_incidence_daily
-              index: 7
-
-            daily_list_city_incidence_daily:
-              card_id: list_city_incidence_daily
-              index: 8
-
-    general_group:
-      name: Dados gerais de Covid-19
-      description: Dados gerais de Covid-19
-      index: 1
-      sections:
-        general_confirmed_cases:
-          name: Casos Confirmados
-          description: Resumo dos casos confirmados de Covid-19
-          index: 0
-          cards:
-            general_incidence_covid_cases_epicurve:
-              card_id: incidence_covid_cases_epicurve
-              index: 0
-
-            general_incidence_covid_cases_age_pyramid:
-              card_id: incidence_covid_cases_age_pyramid
-              index: 1
-
-            general_incidence_covid_cases_municipalities_map:
-              card_id: incidence_covid_cases_municipalities_map
-              index: 2
-
-            general_incidence_srag_cases_epicurve:
-              card_id: incidence_srag_cases_epicurve
-              index: 3
-
-            general_incidence_srag_cases_age_pyramid:
-              card_id: incidence_srag_cases_age_pyramid
-              index: 4
-
-            general_incidence_srag_cases_municipalities_map:
-              card_id: incidence_srag_cases_municipalities_map
-              index: 5
-
-            general_incidence_sg_cases_epicurve:
-              card_id: incidence_sg_cases_epicurve
-              index: 6
-
-            general_incidence_sg_cases_age_pyramid:
-              card_id: incidence_sg_cases_age_pyramid
-              index: 7
-
-            general_incidence_sg_cases_municipalities_map:
-              card_id: incidence_sg_cases_municipalities_map
-              index: 8
-
-            general_incidence_rate_covid_map_incidence:
-              card_id: incidence_rate_covid_map_incidence
-              index: 9
-
-            general_incidence_rate_covid_map_accumulated_incidence:
-              card_id: incidence_rate_covid_map_accumulated_incidence
-              index: 10
-
-            general_cases_among_health_professionals_cases_epicurve:
-              card_id: cases_among_health_professionals_cases_epicurve
-              index: 11
-
-            general_cases_among_health_professionals_cases_age_pyramid:
-              card_id: cases_among_health_professionals_cases_age_pyramid
-              index: 12
-
-            general_cases_among_health_professionals_cases_municipalities_map:
-              card_id: cases_among_health_professionals_cases_municipalities_map
-              index: 13
-
-            general_positivity_srag_rate_covid_monthly:
-              card_id: positivity_srag_rate_covid_monthly
-              index: 14
-
-            general_positivity_srag_rate_covid_weekly:
-              card_id: positivity_srag_rate_covid_weekly
-              index: 15
-
-            general_positivity_sg_rate_covid_monthly:
-              card_id: positivity_sg_rate_covid_monthly
-              index: 16
-
-            general_positivity_sg_rate_covid_weekly:
-              card_id: positivity_sg_rate_covid_weekly
-              index: 17
-
-        general_hospitalizations:
-          name: Internações
-          description: Resumo das internações por Covid-19
+        coronavirus_states_rankings:
+          name: Piores estados
+          description: Piores estados
           index: 1
           cards:
-            general_number_hospitalizations_weekly_epicurve:
-              card_id: number_hospitalizations_weekly_epicurve
+            coronavirus_states_incidence:
+              card_id: covid_states_incidence
               index: 0
-
-            general_number_hospitalizations_weekly_age_pyramid:
-              card_id: number_hospitalizations_weekly_age_pyramid
+            coronavirus_states_incidence_rate:
+              card_id: covid_states_incidence_rate
               index: 1
-
-            general_number_hospitalizations_weekly_municipalities_map:
-              card_id: number_hospitalizations_weekly_municipalities_map
+            coronavirus_states_deaths:
+              card_id: covid_states_deaths
               index: 2
-
-            general_number_hospitalizations_srag_weekly_epicurve:
-              card_id: number_hospitalizations_srag_weekly_epicurve
+            coronavirus_states_death_rate:
+              card_id: covid_states_death_rate
               index: 3
-
-            general_number_hospitalizations_srag_weekly_age_pyramid:
-              card_id: number_hospitalizations_srag_weekly_age_pyramid
+            coronavirus_states_fatality_rate:
+              card_id: covid_states_fatality_rate
               index: 4
-
-            general_number_hospitalizations_srag_weekly_municipalities_map:
-              card_id: number_hospitalizations_srag_weekly_municipalities_map
+            coronavirus_states_icu_rate:
+              card_id: covid_states_icu_rate
               index: 5
 
-            general_hospitalization_rate_covid_heatmap:
-              card_id: hospitalization_rate_covid_heatmap
-              index: 6
-
-            general_incidence_indigenous_hospitalizations_covid_epicurve:
-              card_id: incidence_indigenous_hospitalizations_covid_epicurve
-              index: 7
-
-            general_incidence_indigenous_hospitalizations_covid_age_pyramid:
-              card_id: incidence_indigenous_hospitalizations_covid_age_pyramid
-              index: 8
-
-            general_incidence_indigenous_hospitalizations_covid_municipalities_map:
-              card_id: incidence_indigenous_hospitalizations_covid_municipalities_map
-              index: 9
-
-        general_symptoms_comorbidities:
-          name: Sintomas e Comorbidades
-          description: Resumo dos sintomas e comorbidades entre os hospitalizados por Covid-19
+        coronavirus_cities_rankings:
+          name: Piores municípios
+          description: Piores municípios
           index: 2
           cards:
-            general_symptoms_among_hospitalized_bar_chart:
-              card_id: symptoms_among_hospitalized_bar_chart
+            coronavirus_cities_incidence:
+              card_id: covid_cities_incidence
               index: 0
-
-            general_comorbidities_among_hospitalized_bar_chart:
-              card_id: comorbidities_among_hospitalized_bar_chart
+            coronavirus_cities_incidence_rate:
+              card_id: covid_cities_incidence_rate
               index: 1
-
-        general_mortality_lethality:
-          name: Mortalidade e Letalidade
-          description: Resumo dos mortalidade e letalidade por Covid-19
-          index: 3
-          cards:
-            general_mortality_rate_covid_value:
-              card_id: mortality_rate_covid_value
-              index: 0
-
-            general_lethality_rate_covid_value:
-              card_id: lethality_rate_covid_value
-              index: 1
-
-            general_hospital_lethality_rate_covid_value:
-              card_id: hospital_lethality_rate_covid_value
+            coronavirus_cities_deaths:
+              card_id: covid_cities_deaths
               index: 2
-
-            general_death_covid_epicurve:
-              card_id: death_covid_epicurve
+            coronavirus_cities_death_rate:
+              card_id: covid_cities_death_rate
               index: 3
+            coronavirus_cities_fatality_rate:
+              card_id: covid_cities_fatality_rate
+              index: 4
+            coronavirus_cities_icu_rate:
+              card_id: covid_cities_icu_rate
+              index: 5
 
-            general_death_covid_age_pyramid:
-              card_id: death_covid_age_pyramid
+    coronavirus_incidence_group:
+      name: Incidência
+      description: Incidência
+      index: 1
+      sections:
+        coronavirus_incidence_section:
+          name: Incidência
+          description: Incidência
+          index: 0
+          cards:
+            coronavirus_incidence_epicurve:
+              card_id: covid_incidence_epicurve
+              index: 0
+            coronavirus_incidence_per_month:
+              card_id: covid_incidence_per_month
+              index: 1
+            coronavirus_incidence_per_week:
+              card_id: covid_incidence_per_week
+              index: 2
+            coronavirus_incidence_rate_map:
+              card_id: covid_incidence_rate_map
+              index: 3
+            coronavirus_pandemic_incidence_map:
+              card_id: covid_pandemic_incidence_map
               index: 4
 
-            general_death_covid_municipalities_map:
-              card_id: death_covid_municipalities_map
+    coronavirus_deaths_group:
+      name: Óbitos
+      description: Óbitos
+      index: 2
+      sections:
+        coronavirus_deaths_section:
+          name: Óbitos
+          description: Óbitos
+          index: 0
+          cards:
+            coronavirus_deaths_epicurve:
+              card_id: covid_deaths_epicurve
+              index: 0
+            coronavirus_deaths_per_month:
+              card_id: covid_deaths_per_month
+              index: 1
+            coronavirus_deaths_per_week:
+              card_id: covid_deaths_per_week
+              index: 2
+            coronavirus_death_rate_map:
+              card_id: covid_death_rate_map
+              index: 3
+            coronavirus_pandemic_deaths_map:
+              card_id: covid_pandemic_deaths_map
+              index: 4
+
+    coronavirus_hospitalizations_group:
+      name: Ocupação hospitalar
+      description: Ocupação hospitalar
+      index: 3
+      sections:
+        coronavirus_hospitalizations_section:
+          name: Ocupação hospitalar
+          description: Ocupação hospitalar
+          index: 0
+          cards:
+            coronavirus_icu_rate_epicurve:
+              card_id: covid_icu_rate_epicurve
+              index: 0
+            coronavirus_icu_rate_map:
+              card_id: covid_icu_rate_map
+              index: 1
+
+flu_syndrome:
+  name: Painel Síndrome Gripal
+  description: Painel Síndrome Gripal
+  groups:
+    flu_syndrome_daily_summary_group:
+      name: Resumo diário
+      description: Resumo diário
+      index: 0
+      sections:
+        flu_syndrome_daily_summary_section:
+          name: Sumário
+          description: Sumário
+          index: 0
+          cards:
+            flu_syndrome_incidence:
+              card_id: flu_syndrome_incidence
+              index: 0
+            flu_syndrome_incidence_rate:
+              card_id: flu_syndrome_incidence_rate
+              index: 1
+            flu_syndrome_positivity_rate:
+              card_id: flu_syndrome_positivity_rate
+              index: 2
+
+        flu_syndrome_states_rankings:
+          name: Piores estados
+          description: Piores estados
+          index: 1
+          cards:
+            flu_syndrome_states_incidence:
+              card_id: flu_syndrome_states_incidence
+              index: 0
+            flu_syndrome_states_incidence_rate:
+              card_id: flu_syndrome_states_incidence_rate
+              index: 1
+            flu_syndrome_states_positivity_rate:
+              card_id: flu_syndrome_states_positivity_rate
+              index: 2
+
+        flu_syndrome_cities_rankings:
+          name: Piores municípios
+          description: Piores municípios
+          index: 2
+          cards:
+            flu_syndrome_cities_incidence:
+              card_id: flu_syndrome_cities_incidence
+              index: 0
+            flu_syndrome_cities_incidence_rate:
+              card_id: flu_syndrome_cities_incidence_rate
+              index: 1
+            flu_syndrome_cities_positivity_rate:
+              card_id: flu_syndrome_cities_positivity_rate
+              index: 2
+
+    flu_syndrome_incidence_group:
+      name: Incidência
+      description: Incidência
+      index: 1
+      sections:
+        flu_syndrome_incidence_section:
+          name: Incidência
+          description: Incidência
+          index: 0
+          cards:
+            flu_syndrome_incidence_epicurve:
+              card_id: flu_syndrome_incidence_epicurve
+              index: 0
+            flu_syndrome_incidence_per_month:
+              card_id: flu_syndrome_incidence_per_month
+              index: 1
+            flu_syndrome_incidence_per_week:
+              card_id: flu_syndrome_incidence_per_week
+              index: 2
+            flu_syndrome_incidence_rate_map:
+              card_id: flu_syndrome_incidence_rate_map
+              index: 3
+            flu_syndrome_pandemic_incidence_map:
+              card_id: flu_syndrome_pandemic_incidence_map
+              index: 4
+            flu_syndrome_incidence_per_age_gender:
+              card_id: flu_syndrome_incidence_per_age_gender
               index: 5
+            flu_syndrome_incidence_per_race:
+              card_id: flu_syndrome_incidence_per_race
+              index: 6
+
+        flu_syndrome_health_professional:
+          name: Profissionais de saúde
+          description: Profissionais de saúde
+          index: 1
+          cards:
+            flu_syndrome_health_professional_incidence_epicurve:
+              card_id: flu_syndrome_health_professional_incidence_epicurve
+              index: 0
+            flu_syndrome_health_professional_incidence_map:
+              card_id: flu_syndrome_health_professional_incidence_map
+              index: 1
+
+        flu_syndrome_positivity_rate:
+          name: Taxa de positividade
+          description: Taxa de positividade
+          index: 2
+          cards:
+            flu_syndrome_positivity_rate_epicurve:
+              card_id: flu_syndrome_positivity_rate_epicurve
+              index: 0
+            flu_syndrome_positivity_rate_map:
+              card_id: flu_syndrome_positivity_rate_map
+              index: 1
+
+sars:
+  name: Painel Síndrome Respiratória Aguda Grave
+  description: Painel Síndrome Respiratória Aguda Grave
+  groups:
+    sars_daily_summary_group:
+      name: Resumo diário
+      description: Resumo diário
+      index: 0
+      sections:
+        sars_daily_summary_section:
+          name: Sumário
+          description: Sumário
+          index: 0
+          cards:
+            sars_incidence:
+              card_id: sars_incidence
+              index: 0
+            sars_incidence_rate:
+              card_id: sars_incidence_rate
+              index: 1
+            sars_positivity_rate:
+              card_id: sars_positivity_rate
+              index: 2
+            sars_hospitalizations:
+              card_id: sars_hospitalizations
+              index: 3
+            sars_hospitalization_rate:
+              card_id: sars_hospitalization_rate
+              index: 4
+            sars_deaths:
+              card_id: sars_deaths
+              index: 5
+            sars_death_rate:
+              card_id: sars_death_rate
+              index: 6
+            sars_fatality_rate:
+              card_id: sars_fatality_rate
+              index: 7
+            sars_hospitalization_fatality_rate:
+              card_id: sars_hospitalization_fatality_rate
+              index: 8
+
+        sars_states_rankings:
+          name: Piores estados
+          description: Piores estados
+          index: 1
+          cards:
+            sars_states_incidence:
+              card_id: sars_states_incidence
+              index: 0
+            sars_states_incidence_rate:
+              card_id: sars_states_incidence_rate
+              index: 1
+            sars_states_positivity_rate:
+              card_id: sars_states_positivity_rate
+              index: 2
+            sars_states_hospitalizations:
+              card_id: sars_states_hospitalizations
+              index: 3
+            sars_states_hospitalization_rate:
+              card_id: sars_states_hospitalization_rate
+              index: 4
+            sars_states_deaths:
+              card_id: sars_states_deaths
+              index: 5
+            sars_states_death_rate:
+              card_id: sars_states_death_rate
+              index: 6
+            sars_states_fatality_rate:
+              card_id: sars_states_fatality_rate
+              index: 7
+            sars_states_hospitalization_fatality_rate:
+              card_id: sars_states_hospitalization_fatality_rate
+              index: 8
+
+        sars_cities_rankings:
+          name: Piores municípios
+          description: Piores municípios
+          index: 2
+          cards:
+            sars_cities_incidence:
+              card_id: sars_cities_incidence
+              index: 0
+            sars_cities_incidence_rate:
+              card_id: sars_cities_incidence_rate
+              index: 1
+            sars_cities_positivity_rate:
+              card_id: sars_cities_positivity_rate
+              index: 2
+            sars_cities_hospitalizations:
+              card_id: sars_cities_hospitalizations
+              index: 3
+            sars_cities_hospitalization_rate:
+              card_id: sars_cities_hospitalization_rate
+              index: 4
+            sars_cities_deaths:
+              card_id: sars_cities_deaths
+              index: 5
+            sars_cities_death_rate:
+              card_id: sars_cities_death_rate
+              index: 6
+            sars_cities_fatality_rate:
+              card_id: sars_cities_fatality_rate
+              index: 7
+            sars_cities_hospitalization_fatality_rate:
+              card_id: sars_cities_hospitalization_fatality_rate
+              index: 8
+
+    sars_incidence_group:
+      name: Incidência
+      description: Incidência
+      index: 1
+      sections:
+        sars_incidence_section:
+          name: Incidência
+          description: Incidência
+          index: 0
+          cards:
+            sars_incidence_epicurve:
+              card_id: sars_incidence_epicurve
+              index: 0
+            sars_incidence_per_month:
+              card_id: sars_incidence_per_month
+              index: 1
+            sars_incidence_per_week:
+              card_id: sars_incidence_per_week
+              index: 2
+            sars_incidence_rate_map:
+              card_id: sars_incidence_rate_map
+              index: 3
+            sars_pandemic_incidence_map:
+              card_id: sars_pandemic_incidence_map
+              index: 4
+            sars_incidence_per_age_gender:
+              card_id: sars_incidence_per_age_gender
+              index: 5
+            sars_incidence_per_race:
+              card_id: sars_incidence_per_race
+              index: 6
+
+        sars_positivity_rate:
+          name: Taxa de positividade
+          description: Taxa de positividade
+          index: 1
+          cards:
+            sars_positivity_rate_epicurve:
+              card_id: sars_positivity_rate_epicurve
+              index: 0
+            sars_positivity_rate_map:
+              card_id: sars_positivity_rate_map
+              index: 1
+
+    sars_deaths_group:
+      name: Óbitos
+      description: Óbitos
+      index: 2
+      sections:
+        sars_deaths_section:
+          name: Óbitos
+          description: Óbitos
+          index: 0
+          cards:
+            sars_deaths_epicurve:
+              card_id: sars_deaths_epicurve
+              index: 0
+            sars_deaths_per_month:
+              card_id: sars_deaths_per_month
+              index: 1
+            sars_deaths_per_week:
+              card_id: sars_deaths_per_week
+              index: 2
+            sars_death_rate_map:
+              card_id: sars_death_rate_map
+              index: 3
+            sars_fatality_rate_map:
+              card_id: sars_fatality_rate_map
+              index: 4
+            sars_pandemic_deaths_map:
+              card_id: sars_pandemic_deaths_map
+              index: 5
+
+    sars_hospitalizations_group:
+      name: Internações
+      description: Internações
+      index: 3
+      sections:
+        sars_hospitalizations_section:
+          name: Internações
+          description: Internações
+          index: 0
+          cards:
+            sars_hospitalizations_epicurve:
+              card_id: sars_hospitalizations_epicurve
+              index: 0
+            sars_hospitalizations_map:
+              card_id: sars_hospitalizations_map
+              index: 1
+            sars_hospitalizations_per_symptom:
+              card_id: sars_hospitalizations_per_symptom
+              index: 2
+            sars_hospitalizations_per_comorbidity:
+              card_id: sars_hospitalizations_per_comorbidity
+              index: 3

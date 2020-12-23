@@ -12,12 +12,12 @@
 
 # Population
 
-gender_ratio_card:
+gender_ratio:
   indicator_id: gender_ratio
   name: Razão de sexos
   description: Expressa a relação quantitativa entre os sexos
 
-population_card:
+population:
   indicator_id: population
   name: População
   description: População residente
@@ -37,227 +37,537 @@ population_per_age_group:
   name: População por faixa etária
   description: Distribuição da população residente por faixa etária
 
-confirmed_cases:
-  indicator_id: cases_daily
-  name: Casos diários de Covid-19
-  description: Total de casos diários de Covid-19
+# COVID-19
 
-confirmed_deaths:
-  indicator_id: death_daily
-  name: Óbitos diários por Covid-19
-  description: Total de óbitos diários por Covid-19
+## Cards
 
-uti_occupancy_rate:
-  indicator_id: hospital_occupancy_rate_UTI_bed
-  name: Taxa de Ocupação de UTI
-  description: Total de ocupação hospitalar de leitos de UTI por covid-19
+covid_incidence:
+  indicator_id: covid_incidence
+  name: Incidência
+  description: Incidência de COVID-19
 
-list_uf_cases_daily:
-  indicator_id: lists_ufs_with_the_highest_number_cases_daily
-  name: Lista 10 UFs com maior número de casos de covid-19
-  description: Lista 10 UFs com maior número de casos de covid-19 nas últimas 24 horas
+covid_incidence_rate:
+  indicator_id: covid_incidence_rate
+  name: Taxa de Incidência
+  description: Taxa de incidência de COVID-19
 
-list_uf_obitos_daily:
-  indicator_id: lists_ufs_with_the_highest_number_death_daily
-  name: Lista 10 UFs com maior número de óbitos por covid-19
-  description: Lista 10 UFs com maior número de óbitos por covid-19 nas últimas 24 horas
+covid_icu_rate:
+  indicator_id: covid_icu_rate
+  name: Taxa de ocupação hospitalar
+  description: Taxa de ocupação hospitalar de leitos de UTI por COVID-19
 
-list_city_cases_daily:
-  indicator_id: lists_cities_with_the_highest_number_cases_daily
-  name: Lista 5 cidades com maior número de casos de covid-19
-  description: Lista 5 cidades com maior número de casos de covid-19 nas últimas 24 horas
+covid_deaths:
+  indicator_id: covid_deaths
+  name: Óbitos
+  description: Total de óbitos por COVID-19
 
-list_city_obitos_daily:
-  indicator_id: lists_cities_with_the_highest_number_death_daily
-  name: Lista 5 cidades com maior número de óbitos por covid-19
-  description: Lista 5 cidades com maior número de óbitos por covid-19 nas últimas 24 horas
+covid_death_rate:
+  indicator_id: covid_death_rate
+  name: Taxa de mortalidade
+  description: Taxa de mortalidade de COVID-19
 
-list_uf_incidence_daily:
-  indicator_id: lists_ufs_with_the_highest_incidence_rate_daily
-  name: Lista 5 UFs com maior taxa de incidência de covid-19
-  description: Lista 5 UFs com maior taxa de incidência de covid-19 nas últimas 24 horas
+covid_fatality_rate:
+  indicator_id: covid_fatality_rate
+  name: Taxa de letalidade
+  description: Taxa de letalidade de COVID-19
 
-list_city_incidence_daily:
-  indicator_id: lists_cities_with_the_highest_incidence_rate_daily
-  name: Lista 5 cidades com maior taxa de incidência por covid-19
-  description: Lista 5 cidades com maior taxa de incidência por covid-19 nas últimas 24 horas
+## Rankings
 
-incidence_covid_cases_epicurve:
-  indicator_id: incidence_covid
-  name: Epicurva por dia agrupado dos casos de covid
-  description: Gráfico de epicurva por dia agrupado dos casos de covid
+### States
 
-incidence_covid_cases_age_pyramid:
-  indicator_id: incidence_covid
-  name: Pirâmide etária por sexo dos casos de covid
-  description: Gráfico de pirâmide etária por sexo dos casos de covid
+covid_states_incidence:
+  indicator_id: covid_incidence
+  name: Estados de maior incidência no dia
+  description: 10 estados de maior incidência de COVID-19 no dia
 
-incidence_covid_cases_municipalities_map:
-  indicator_id: incidence_covid
-  name: Mapa de municípios com casos de covid
-  description: Mapa de municípios com casos de covid
+covid_states_incidence_rate:
+  indicator_id: covid_incidence_rate
+  name: Estados de maior taxa de incidência no dia
+  description: 10 estados de maior taxa de incidência de COVID-19 no dia
 
-incidence_srag_cases_epicurve:
-  indicator_id: incidence_srag
-  name: Epicurva por dia agrupado dos casos de SRAG
-  description: Gráfico de epicurva por dia agrupado dos casos de SRAG
+covid_states_deaths:
+  indicator_id: covid_deaths
+  name: Estados de maior número de óbitos no dia
+  description: 10 estados de maior número de óbitos por COVID-19 no dia
 
-incidence_srag_cases_age_pyramid:
-  indicator_id: incidence_srag
-  name: Pirâmide etária por sexo dos casos de SRAG
-  description: Gráfico de pirâmide etária por sexo dos casos de SRAG
+covid_states_death_rate:
+  indicator_id: covid_death_rate
+  name: Estados de maior taxa de mortalidade no dia
+  description: 10 estados de maior taxa de mortalidade por COVID-19 no dia
 
-incidence_srag_cases_municipalities_map:
-  indicator_id: incidence_srag
-  name: Mapa de municípios com casos de SRAG
-  description: Mapa de municípios com casos de SRAG
+covid_states_fatality_rate:
+  indicator_id: covid_fatality_rate
+  name: Estados de maior taxa de fatalidade no dia
+  description: 10 estados de maior taxa de fatalidade por COVID-19 no dia
 
-incidence_sg_cases_epicurve:
-  indicator_id: incidence_sg
-  name: Epicurva por dia agrupado dos casos de SG
-  description: Gráfico de epicurva por dia agrupado dos casos de SG
+covid_states_icu_rate:
+  indicator_id: covid_icu_rate
+  name: Estados de maior taxa de ocupação hospitalar no dia
+  description: 10 estados de maior taxa de ocupação hospitalar de leito de UTI por COVID-19 no dia
 
-incidence_sg_cases_age_pyramid:
-  indicator_id: incidence_sg
-  name: Pirâmide etária por sexo dos casos de SG
-  description: Gráfico de pirâmide etária por sexo dos casos de SG
+### Cities
 
-incidence_sg_cases_municipalities_map:
-  indicator_id: incidence_sg
-  name: Mapa de municípios com casos de SG
-  description: Mapa de municípios com casos de SG
+covid_cities_incidence:
+  indicator_id: covid_incidence
+  name: Estados de maior incidência no dia
+  description: 10 estados de maior incidência de COVID-19 no dia
 
-incidence_rate_covid_map_incidence:
-  indicator_id: incidence_rate_covid
-  name: Mapa de incidência de covid por região
-  description: Mapa de incidência de covid por região
+covid_cities_incidence_rate:
+  indicator_id: covid_incidence_rate
+  name: Municípios de maior taxa de incidência no dia
+  description: 10 municípios de maior taxa de incidência de COVID-19 no dia
 
-incidence_rate_covid_map_accumulated_incidence:
-  indicator_id: incidence_rate_covid
-  name: Mapa de incidência acumulada de covid por região
-  description: Mapa de incidência acumulada de covid por região
+covid_cities_deaths:
+  indicator_id: covid_deaths
+  name: Municípios de maior número de óbitos no dia
+  description: 10 municípios de maior número de óbitos por COVID-19 no dia
 
-cases_among_health_professionals_cases_epicurve:
-  indicator_id: cases_among_health_professionals
-  name: Epicurva por dia agrupado dos profissionais de saúde com casos de covid
-  description: Gráfico de epicurva por dia agrupado dos profissionais de saúde com casos de covid
+covid_cities_death_rate:
+  indicator_id: covid_death_rate
+  name: Municípios de maior taxa de mortalidade no dia
+  description: 10 municípios de maior taxa de mortalidade por COVID-19 no dia
 
-cases_among_health_professionals_cases_age_pyramid:
-  indicator_id: cases_among_health_professionals
-  name: Pirâmide etária por sexo dos profissionais de saúde com casos de covid
-  description: Gráfico de pirâmide etária por sexo dos profissionais de saúde com casos de covid
+covid_cities_fatality_rate:
+  indicator_id: covid_fatality_rate
+  name: Municípios de maior taxa de fatalidade no dia
+  description: 10 municípios de maior taxa de fatalidade por COVID-19 no dia
 
-cases_among_health_professionals_cases_municipalities_map:
-  indicator_id: cases_among_health_professionals
-  name: Mapa de municípios com profissionais de saúde com casos de covid
-  description: Mapa de municípios com profissionais de saúde com casos de covid
+covid_cities_icu_rate:
+  indicator_id: covid_icu_rate
+  name: Municípios de maior taxa de ocupação hospitalar no dia
+  description: 10 municípios de maior taxa de ocupação hospitalar de leito de UTI por COVID-19 no dia
 
-positivity_srag_rate_covid_monthly:
-  indicator_id: positivity_srag_rate_covid
-  name: Taxa de positividade de SRAG dos últimos 30 dias
-  description: Tabela da taxa de positividade de SRAG dos últimos 30 dias
+## Incidence
 
-positivity_srag_rate_covid_weekly:
-  indicator_id: positivity_srag_rate_covid
-  name: Taxa de positividade de SRAG média dos últimos 7 dias
-  description: Tabela da taxa de positividade de SRAG média dos últimos 7 dias
+covid_incidence_epicurve:
+  indicator_id: covid_incidence
+  name: Epicurva de incidência
+  description: Epicurva de incidência de COVID-19 com tendência em média móvel de 7 dias e predito ARIMA
 
-positivity_sg_rate_covid_monthly:
-  indicator_id: positivity_sg_rate_covid
-  name: Taxa de positividade de SG dos últimos 30 dias
-  description: Tabela da taxa de positividade de SG dos últimos 30 dias
+covid_incidence_per_month:
+  indicator_id: covid_incidence
+  name: Incidência por mês
+  description: Incidência de COVID-19 agrupada por mês
 
-positivity_sg_rate_covid_weekly:
-  indicator_id: positivity_sg_rate_covid
-  name: Taxa de positividade de SG média dos últimos 7 dias
-  description: Tabela da taxa de positividade de SG média dos últimos 7 dias
+covid_incidence_per_week:
+  indicator_id: covid_incidence
+  name: Incidência por semana
+  description: Incidência de COVID-19 agrupada por semana
 
-number_hospitalizations_weekly_epicurve:
-  indicator_id: number_hospitalizations_weekly
-  name: Epicurva agrupada dos casos de hospitalização por covid
-  description: Gráfico de epicurva agrupada dos casos de hospitalização por covid
+covid_incidence_rate_map:
+  indicator_id: covid_incidence_rate
+  name: Mapa de taxa de incidência
+  description: Mapa de taxa de incidência de COVID-19
 
-number_hospitalizations_weekly_age_pyramid:
-  indicator_id: number_hospitalizations_weekly
-  name: Pirâmide etária por sexo dos casos de hospitalização por covid
-  description: Gráfico de pirâmide etária por sexo dos casos de hospitalização por covid
+covid_pandemic_incidence_map:
+  indicator_id: covid_incidence
+  name: Mapa de incidência acumulada
+  description: Mapa de incidência acumulada de COVID-19
 
-number_hospitalizations_weekly_municipalities_map:
-  indicator_id: number_hospitalizations_weekly
-  name: Mapa de municípios com os casos de hospitalização por covid
-  description: Mapa de municípios com os casos de hospitalização por covid
+## Deaths
 
-number_hospitalizations_srag_weekly_epicurve:
-  indicator_id: number_hospitalizations_srag_weekly
-  name: Epicurva agrupada dos casos de hospitalização de SRAG por covid
-  description: Gráfico de epicurva agrupada dos casos de hospitalização de SRAG por covid
+covid_deaths_epicurve:
+  indicator_id: covid_deaths
+  name: Epicurva de óbitos
+  description: Epicurva de óbitos de COVID-19 com tendência em média móvel de 7 dias e predito ARIMA
 
-number_hospitalizations_srag_weekly_age_pyramid:
-  indicator_id: number_hospitalizations_srag_weekly
-  name: Pirâmide etária por sexo dos casos de hospitalização de SRAG por covid
-  description: Gráfico de pirâmide etária por sexo dos casos de hospitalização de SRAG por covid
+covid_deaths_per_month:
+  indicator_id: covid_deaths
+  name: Óbitos por mês
+  description: Óbitos de COVID-19 agrupados por mês
 
-number_hospitalizations_srag_weekly_municipalities_map:
-  indicator_id: number_hospitalizations_srag_weekly
-  name: Mapa de municípios com os casos de hospitalização de SRAG por covid
-  description: Mapa de municípios com os casos de hospitalização de SRAG por covid
+covid_deaths_per_week:
+  indicator_id: covid_deaths
+  name: Óbitos por semana
+  description: Óbitos de COVID-19 agrupados por semana
 
-hospitalization_rate_covid_heatmap:
-  indicator_id: hospitalization_rate_covid
-  name: Heatmap da taxa de internação por covid
-  description: Heatmap da taxa de internação por covid
+covid_death_rate_map:
+  indicator_id: covid_death_rate
+  name: Mapa de taxa de mortalidade
+  description: Mapa de taxa de mortalidade de COVID-19
 
-incidence_indigenous_hospitalizations_covid_epicurve:
-  indicator_id: incidence_indigenous_hospitalizations_covid
-  name: Epicurva agrupada dos casos de hospitalização indígenas por covid
-  description: Gráfico de epicurva agrupada dos casos de hospitalização indígenas por covid
+covid_fatality_rate_map:
+  indicator_id: covid_fatality_rate
+  name: Mapa de taxa de fatalidade
+  description: Mapa de taxa de fatalidade de COVID-19
 
-incidence_indigenous_hospitalizations_covid_age_pyramid:
-  indicator_id: incidence_indigenous_hospitalizations_covid
-  name: Pirâmide etária por sexo dos casos de hospitalização indígenas por covid
-  description: Gráfico de pirâmide etária por sexo dos casos de hospitalização indígenas por covid
+covid_pandemic_deaths_map:
+  indicator_id: covid_deaths
+  name: Mapa de óbitos acumulado
+  description: Mapa de óbitos acumulado de COVID-19
 
-incidence_indigenous_hospitalizations_covid_municipalities_map:
-  indicator_id: incidence_indigenous_hospitalizations_covid
-  name: Mapa de municípios com os casos de hospitalização indígenas por covid
-  description: Mapa de municípios com os casos de hospitalização indígenas por covid
+## Hospitalization
 
-symptoms_among_hospitalized_bar_chart:
-  indicator_id: symptoms_among_hospitalized
-  name: Síntomas entre hospitalizados por covid
-  description: Gráfico de barra dos síntomas entre hospitalizados por covid
+covid_icu_rate_epicurve:
+  indicator_id: covid_icu_rate
+  name: Epicurva de taxa de ocupação hospitalar
+  description: Epicurva de taxa de ocupação hospitalar de leitos de UTI por COVID-19 com tendência em média móvel de 7 dias e predito ARIMA
 
-comorbidities_among_hospitalized_bar_chart:
-  indicator_id: comorbidities_among_hospitalized
-  name: Comorbidade entre hospitalizados por covid
-  description: Gráfico de barra dos comorbidade entre hospitalizados por covid
+covid_icu_rate_map:
+  indicator_id: covid_icu_rate
+  name: Mapa de taxa de ocupação hospitalar
+  description: Mapa de taxa de ocupação hospitalar de leitos de UTI por COVID-19
 
-mortality_rate_covid_value:
-  indicator_id: mortality_rate_covid
-  name: Percentual da taxa de mortalidade de casos de covid
-  description: Percentual da taxa de mortalidade de casos de covid-19
+# Flu Syndrome
 
-lethality_rate_covid_value:
-  indicator_id: lethality_rate_covid
-  name: Percentual da taxa de letalidade de casos de covid
-  description: Percentual da taxa de letalidade de casos de covid-19
+## Cards
 
-hospital_lethality_rate_covid_value:
-  indicator_id: hospital_lethality_rate_covid
-  name: Percentual da taxa de letalidade hospitalar de casos de covid
-  description: Percentual da taxa de letalidade hospitalar de casos de covid-19
+flu_syndrome_incidence:
+  indicator_id: flu_syndrome_incidence
+  name: Incidência (SG)
+  description: Incidência de COVID-19 (SG)
 
-death_covid_epicurve:
-  indicator_id: death_covid
-  name: Epicurva agrupada dos óbitos por covid
-  description: Gráfico de epicurva agrupada dos óbitos por covid
+flu_syndrome_incidence_rate:
+  indicator_id: flu_syndrome_incidence_rate
+  name: Taxa de Incidência (SG)
+  description: Taxa de incidência de COVID-19 (SG)
 
-death_covid_age_pyramid:
-  indicator_id: death_covid
-  name: Pirâmide etária por sexo dos óbitos por covid
-  description: Gráfico de pirâmide etária por sexo dos óbitos por covid
+flu_syndrome_positivity_rate:
+  indicator_id: flu_syndrome_positivity_rate
+  name: Taxa de positividade (SG)
+  description: Taxa de positividade de COVID-19 (SG)
 
-death_covid_municipalities_map:
-  indicator_id: death_covid
-  name: Mapa de municípios com os óbitos por covid
-  description: Mapa de municípios com os óbitos por covid
+## Rankings
+
+### States
+
+flu_syndrome_states_incidence:
+  indicator_id: flu_syndrome_incidence
+  name: Estados de maior incidência no dia (SG)
+  description: 10 estados de maior incidência de COVID-19 (SG) no dia
+
+flu_syndrome_states_incidence_rate:
+  indicator_id: flu_syndrome_incidence_rate
+  name: Estados de maior taxa de incidência no dia (SG)
+  description: 10 estados de maior taxa de incidência de COVID-19 (SG) no dia
+
+flu_syndrome_states_positivity_rate:
+  indicator_id: flu_syndrome_positivity_rate
+  name: Estados de maior taxa de positividade no dia (SG)
+  description: 10 estados de maior taxa de positividade por COVID-19 (SG) no dia
+
+### Cities
+
+flu_syndrome_cities_incidence:
+  indicator_id: flu_syndrome_incidence
+  name: Estados de maior incidência no dia (SG)
+  description: 10 estados de maior incidência de COVID-19 (SG) no dia
+
+flu_syndrome_cities_incidence_rate:
+  indicator_id: flu_syndrome_incidence_rate
+  name: Municípios de maior taxa de incidência no dia (SG)
+  description: 10 municípios de maior taxa de incidência de COVID-19 (SG) no dia
+
+flu_syndrome_cities_positivity_rate:
+  indicator_id: flu_syndrome_positivity_rate
+  name: Municípios de maior taxa de positividade no dia (SG)
+  description: 10 municípios de maior taxa de positividade por COVID-19 (SG) no dia
+
+## Incidence
+
+flu_syndrome_incidence_epicurve:
+  indicator_id: flu_syndrome_incidence
+  name: Epicurva de incidência (SG)
+  description: Epicurva de incidência de COVID-19 (SG) com tendência em média móvel de 7 dias e predito ARIMA
+
+flu_syndrome_incidence_per_month:
+  indicator_id: flu_syndrome_incidence
+  name: Incidência por mês (SG)
+  description: Incidência de COVID-19 (SG) agrupado por mês
+
+flu_syndrome_incidence_per_week:
+  indicator_id: flu_syndrome_incidence
+  name: Incidência por semana (SG)
+  description: Incidência de COVID-19 (SG) agrupado por semana
+
+flu_syndrome_incidence_rate_map:
+  indicator_id: flu_syndrome_incidence_rate
+  name: Mapa de taxa de incidência (SG)
+  description: Mapa de taxa de incidência de COVID-19 (SG)
+
+flu_syndrome_pandemic_incidence_map:
+  indicator_id: flu_syndrome_incidence
+  name: Mapa de incidência acumulada (SG)
+  description: Mapa de incidência acumulada de COVID-19 (SG)
+
+flu_syndrome_incidence_per_age_gender:
+  indicator_id: flu_syndrome_incidence
+  name: Pirâmide etária de incidência (SG)
+  description: Incidência de COVID-19 (SG) por faixa etária e sexo
+
+flu_syndrome_incidence_per_race:
+  indicator_id: flu_syndrome_incidence
+  name: Incidência por Raça/Cor (SG)
+  description: Incidência de COVID-19 (SG) por Raça/Cor
+
+## Health Professional
+
+flu_syndrome_health_professional_incidence_epicurve:
+  indicator_id: flu_syndrome_incidence
+  name: Epicurva de incidência em profissionais de saúde (SG)
+  description: Epicurva de incidência de COVID-19 (SG) em profissionais de saúde com tendência em média móvel de 7 dias e predito ARIMA
+
+flu_syndrome_health_professional_incidence_map:
+  indicator_id: flu_syndrome_incidence
+  name: Mapa de incidência em profissionais de saúde (SG)
+  description: Mapa de incidência de COVID-19 (SG) em profissionais de saúde
+
+## Positivity Rate
+
+flu_syndrome_positivity_rate_epicurve:
+  indicator_id: flu_syndrome_positivity_rate
+  name: Epicurva de taxa de positividade (SG)
+  description: Epicurva de taxa de positividade por COVID-19 (SG) com tendência em média móvel de 7 dias e predito ARIMA
+
+flu_syndrome_positivity_rate_map:
+  indicator_id: flu_syndrome_positivity_rate
+  name: Mapa de taxa de positividade (SG)
+  description: Mapa de taxa de positividade por COVID-19 (SG)
+
+# SARS
+
+## Cards
+
+sars_incidence:
+  indicator_id: sars_incidence
+  name: Incidência (SRAG)
+  description: Incidência de COVID-19 (SRAG)
+
+sars_incidence_rate:
+  indicator_id: sars_incidence_rate
+  name: Taxa de Incidência (SRAG)
+  description: Taxa de incidência de COVID-19 (SRAG)
+
+sars_positivity_rate:
+  indicator_id: sars_positivity_rate
+  name: Taxa de positividade (SRAG)
+  description: Taxa de positividade de COVID-19 (SRAG)
+
+sars_hospitalizations:
+  indicator_id: sars_hospitalization
+  name: Internações (SRAG)
+  description: Internações de COVID-19 (SRAG)
+
+sars_hospitalization_rate:
+  indicator_id: sars_hospitalization_rate
+  name: Taxa de internação (SRAG)
+  description: Taxa de internação de COVID-19 (SRAG)
+
+sars_deaths:
+  indicator_id: sars_deaths
+  name: Óbitos (SRAG)
+  description: Total de óbitos por COVID-19 (SRAG)
+
+sars_death_rate:
+  indicator_id: sars_death_rate
+  name: Taxa de mortalidade (SRAG)
+  description: Taxa de mortalidade de COVID-19 (SRAG)
+
+sars_fatality_rate:
+  indicator_id: sars_fatality_rate
+  name: Taxa de letalidade (SRAG)
+  description: Taxa de letalidade de COVID-19 (SRAG)
+
+sars_hospitalization_fatality_rate:
+  indicator_id: sars_hospitalization_fatality_rate
+  name: Taxa de letalidade hospitalar (SRAG)
+  description: Taxa de letalidade hospitalar de COVID-19 (SRAG)
+
+## Rankings
+
+### States
+
+sars_states_incidence:
+  indicator_id: sars_incidence
+  name: Estados de maior incidência no dia (SRAG)
+  description: 10 estados de maior incidência de COVID-19 (SRAG) no dia
+
+sars_states_incidence_rate:
+  indicator_id: sars_incidence_rate
+  name: Estados de maior taxa de incidência no dia (SRAG)
+  description: 10 estados de maior taxa de incidência de COVID-19 (SRAG) no dia
+
+sars_states_positivity_rate:
+  indicator_id: sars_positivity_rate
+  name: Estados de maior taxa de positividade no dia (SRAG)
+  description: 10 estados de maior taxa de positividade por COVID-19 (SRAG) no dia
+
+sars_states_hospitalizations:
+  indicator_id: sars_hospitalizations
+  name: Estados de maior número de hospitalizações no dia (SRAG)
+  description: 10 estados de maior número de hospitalizações de COVID-19 (SRAG) no dia
+
+sars_states_hospitalization_rate:
+  indicator_id: sars_hospitalization_rate
+  name: Estados de maior taxa de hospitalização no dia (SRAG)
+  description: 10 estados de maior taxa de hospitalização de COVID-19 (SRAG) no dia
+
+sars_states_deaths:
+  indicator_id: sars_deaths
+  name: Estados de maior número de óbitos no dia (SRAG)
+  description: 10 estados de maior número de óbitos por COVID-19 (SRAG) no dia
+
+sars_states_death_rate:
+  indicator_id: sars_death_rate
+  name: Estados de maior taxa de mortalidade no dia (SRAG)
+  description: 10 estados de maior taxa de mortalidade por COVID-19 (SRAG) no dia
+
+sars_states_fatality_rate:
+  indicator_id: sars_fatality_rate
+  name: Estados de maior taxa de fatalidade no dia (SRAG)
+  description: 10 estados de maior taxa de fatalidade por COVID-19 (SRAG) no dia
+
+sars_states_hospitalization_fatality_rate:
+  indicator_id: sars_hospitalization_fatality_rate
+  name: Estados de maior taxa de letalidade hospitalar no dia (SRAG)
+  description: 10 estados de maior taxa de letalidade hospitalar de COVID-19 (SRAG) no dia
+
+### Cities
+
+sars_cities_incidence:
+  indicator_id: sars_incidence
+  name: Municípios de maior incidência no dia (SRAG)
+  description: 10 municípios de maior incidência de COVID-19 (SRAG) no dia
+
+sars_cities_incidence_rate:
+  indicator_id: sars_incidence_rate
+  name: Municípios de maior taxa de incidência no dia (SRAG)
+  description: 10 municípios de maior taxa de incidência de COVID-19 (SRAG) no dia
+
+sars_cities_positivity_rate:
+  indicator_id: sars_positivity_rate
+  name: Municípios de maior taxa de positividade no dia (SRAG)
+  description: 10 municípios de maior taxa de positividade por COVID-19 (SRAG) no dia
+
+sars_cities_hospitalizations:
+  indicator_id: sars_hospitalizations
+  name: Municípios de maior número de hospitalizações no dia (SRAG)
+  description: 10 municípios de maior número de hospitalizações de COVID-19 (SRAG) no dia
+
+sars_cities_hospitalization_rate:
+  indicator_id: sars_hospitalization_rate
+  name: Municípios de maior taxa de hospitalização no dia (SRAG)
+  description: 10 municípios de maior taxa de hospitalização de COVID-19 (SRAG) no dia
+
+sars_cities_deaths:
+  indicator_id: sars_deaths
+  name: Municípios de maior número de óbitos no dia (SRAG)
+  description: 10 municípios de maior número de óbitos por COVID-19 (SRAG) no dia
+
+sars_cities_death_rate:
+  indicator_id: sars_death_rate
+  name: Municípios de maior taxa de mortalidade no dia (SRAG)
+  description: 10 municípios de maior taxa de mortalidade por COVID-19 (SRAG) no dia
+
+sars_cities_fatality_rate:
+  indicator_id: sars_fatality_rate
+  name: Municípios de maior taxa de fatalidade no dia (SRAG)
+  description: 10 municípios de maior taxa de fatalidade por COVID-19 (SRAG) no dia
+
+sars_cities_hospitalization_fatality_rate:
+  indicator_id: sars_hospitalization_fatality_rate
+  name: Municípios de maior taxa de letalidade hospitalar no dia (SRAG)
+  description: 10 municípios de maior taxa de letalidade hospitalar de COVID-19 (SRAG) no dia
+
+## Incidence
+
+sars_incidence_epicurve:
+  indicator_id: sars_incidence
+  name: Epicurva de incidência (SRAG)
+  description: Epicurva de incidência de COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
+
+sars_incidence_per_month:
+  indicator_id: sars_incidence
+  name: Incidência por mês (SRAG)
+  description: Incidência de COVID-19 (SRAG) agrupado por mês
+
+sars_incidence_per_week:
+  indicator_id: sars_incidence
+  name: Incidência por semana (SRAG)
+  description: Incidência de COVID-19 (SRAG) agrupado por semana
+
+sars_incidence_rate_map:
+  indicator_id: sars_incidence_rate
+  name: Mapa de taxa de incidência (SRAG)
+  description: Mapa de taxa de incidência de COVID-19 (SRAG)
+
+sars_pandemic_incidence_map:
+  indicator_id: sars_incidence
+  name: Mapa de incidência acumulada (SRAG)
+  description: Mapa de incidência acumulada de COVID-19 (SRAG)
+
+sars_incidence_per_age_gender:
+  indicator_id: sars_incidence
+  name: Pirâmide etária de incidência (SRAG)
+  description: Incidência de COVID-19 (SRAG) por faixa etária e sexo
+
+sars_incidence_per_race:
+  indicator_id: sars_incidence
+  name: Incidência por Raça/Cor (SRAG)
+  description: Incidência de COVID-19 (SRAG) por Raça/Cor
+
+## Deaths
+
+sars_deaths_epicurve:
+  indicator_id: sars_deaths
+  name: Epicurva de óbitos (SRAG)
+  description: Epicurva de óbitos de COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
+
+sars_deaths_per_month:
+  indicator_id: sars_deaths
+  name: Óbitos por mês (SRAG)
+  description: Óbitos de COVID-19 (SRAG) agrupados por mês
+
+sars_deaths_per_week:
+  indicator_id: sars_deaths
+  name: Óbitos por semana (SRAG)
+  description: Óbitos de COVID-19 (SRAG) agrupados por semana
+
+sars_death_rate_map:
+  indicator_id: sars_death_rate
+  name: Mapa de taxa de mortalidade (SRAG)
+  description: Mapa de taxa de mortalidade de COVID-19 (SRAG)
+
+sars_fatality_rate_map:
+  indicator_id: sars_fatality_rate
+  name: Mapa de taxa de fatalidade (SRAG)
+  description: Mapa de taxa de fatalidade de COVID-19 (SRAG)
+
+sars_pandemic_deaths_map:
+  indicator_id: sars_deaths
+  name: Mapa de óbitos acumulado (SRAG)
+  description: Mapa de óbitos acumulado de COVID-19 (SRAG)
+
+## Hospitalizations
+
+sars_hospitalizations_epicurve:
+  indicator_id: sars_hospitalizations
+  name: Epicurva de internações (SRAG)
+  description: Epicurva de internações de COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
+
+sars_hospitalizations_map:
+  indicator_id: sars_hospitalizations
+  name: Mapa de internações (SRAG)
+  description: Mapa de internações de COVID-19 (SRAG)
+
+sars_hospitalization_per_symptom:
+  indicator_id: sars_hospitalizations
+  name: Internações por sintoma (SRAG)
+  description: Internações de COVID-19 (SRAG) por sintoma
+
+sars_hospitalization_per_comorbidity:
+  indicator_id: sars_hospitalizations
+  name: Internações por comorbidade
+  description: Internações de COVID-19 (SRAG) por comorbidade
+
+## Positivity Rate
+
+sars_positivity_rate_epicurve:
+  indicator_id: sars_positivity_rate
+  name: Epicurva de taxa de positividade (SRAG)
+  description: Epicurva de taxa de positividade por COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
+
+sars_positivity_rate_map:
+  indicator_id: sars_positivity_rate
+  name: Mapa de taxa de positividade (SRAG)
+  description: Mapa de taxa de positividade por COVID-19 (SRAG)
