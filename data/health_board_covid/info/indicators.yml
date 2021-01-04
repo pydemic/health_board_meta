@@ -26,16 +26,6 @@
 
 # Demographic
 
-gender_ratio:
-  description: Número de homens para cada grupo de 100 mulheres, em determinado espaço geográfico, no ano considerado
-  formula: Número de residentes do sexo masculino/número de residentes do sexo feminino * 100
-  measurement_unit: '%'
-  reference: http://fichas.ripsa.org.br/2012/a-2/?l=pt_BR
-  sources:
-    - datasus_population
-  children:
-    - population
-
 population:
   description: Número total de pessoas residentes e sua estrutura relativa, em determinado espaço geográfico, no ano considerado
   formula: Somatório do total de pessoas residentes
@@ -118,13 +108,6 @@ flu_syndrome_incidence_rate:
 flu_syndrome_positivity_rate:
   description: Taxa de positividade de COVID-19 (SG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de exames realizados de COVID-19 (SG) * 100
-  measurement_unit: '%'
-  source:
-    - e_sus_sg
-
-flu_syndrome_test_capacity:
-  description: Capacidade de testagem de COVID-19 (SG) em determinado espaço geográfico, no período considerado
-  formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de casos de COVID-19 (SG) * 100
   measurement_unit: '%'
   source:
     - e_sus_sg

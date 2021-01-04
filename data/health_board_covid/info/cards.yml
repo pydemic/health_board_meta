@@ -10,33 +10,6 @@
 #     - name
 #     - description
 
-# Population
-
-gender_ratio:
-  indicator_id: gender_ratio
-  name: Razão de sexos
-  description: Expressa a relação quantitativa entre os sexos
-
-population:
-  indicator_id: population
-  name: População
-  description: População residente
-
-population_map:
-  indicator_id: population
-  name: Mapa de distribuição populacional
-  description: Distribuição de pessoas residentes por localidade
-
-population_growth:
-  indicator_id: population
-  name: Crescimento populacional
-  description: Série histórica de pessoas residentes por ano
-
-population_per_age_group:
-  indicator_id: population
-  name: População por faixa etária
-  description: Distribuição da população residente por faixa etária
-
 # Situation Report
 
 ## Daily
@@ -244,7 +217,7 @@ flu_syndrome_day_incidence_rate:
   name: Taxa de incidência no dia
   description: Taxa de incidência de COVID-19 (SG) no dia
 
-flu_syndrome_day_health_professional:
+flu_syndrome_day_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Incidência em profissionais de saúde no dia
   description: Incidência de COVID-19 (SG) em profissionais de saúde no dia
@@ -253,11 +226,6 @@ flu_syndrome_day_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Taxa de positividade no dia
   description: Taxa de positividade de COVID-19 (SG) no dia
-
-flu_syndrome_day_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Capacidade de testagem no dia
-  description: Capacidade de testagem de COVID-19 (SG) no dia
 
 ### Rankings
 
@@ -273,7 +241,7 @@ flu_syndrome_day_states_incidence_rate:
   name: Estados de maior taxa de incidência no dia
   description: 10 estados de maior taxa de incidência de COVID-19 (SG) no dia
 
-flu_syndrome_day_states_health_professional:
+flu_syndrome_day_states_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Estados de maior incidência em profissionais de saúde no dia
   description: 10 estados de maior incidência de COVID-19 (SG) em profissionais de saúde no dia
@@ -282,11 +250,6 @@ flu_syndrome_day_states_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Estados de maior taxa de positividade no dia
   description: 10 estados de maior taxa de positividade por COVID-19 (SG) no dia
-
-flu_syndrome_day_states_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Estados de maior capacidade de testagem no dia
-  description: 10 estados de maior capacidade de testagem por COVID-19 (SG) no dia
 
 #### Cities
 
@@ -300,7 +263,7 @@ flu_syndrome_day_cities_incidence_rate:
   name: Municípios de maior taxa de incidência no dia
   description: 10 municípios de maior taxa de incidência de COVID-19 (SG) no dia
 
-flu_syndrome_day_cities_health_professional:
+flu_syndrome_day_cities_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Municípios de maior incidência em profissionais de saúde no dia
   description: 10 municípios de maior incidência de COVID-19 (SG) em profissionais de saúde no dia
@@ -309,11 +272,6 @@ flu_syndrome_day_cities_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Municípios de maior taxa de positividade no dia
   description: 10 municípios de maior taxa de positividade por COVID-19 (SG) no dia
-
-flu_syndrome_day_cities_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Municípios de maior capacidade de testagem no dia
-  description: 10 municípios de maior capacidade de testagem por COVID-19 (SG) no dia
 
 ## Pandemic
 
@@ -329,7 +287,7 @@ flu_syndrome_pandemic_incidence_rate:
   name: Taxa de incidência acumulada
   description: Taxa de incidência acumulada de COVID-19 (SG)
 
-flu_syndrome_pandemic_health_professional:
+flu_syndrome_pandemic_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Incidência acumulada em profissionais de saúde
   description: Incidência acumulada de COVID-19 (SG) em profissionais de saúde
@@ -338,11 +296,6 @@ flu_syndrome_pandemic_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Taxa de positividade acumulada
   description: Taxa de positividade acumulada de COVID-19 (SG)
-
-flu_syndrome_pandemic_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Capacidade de testagem acumulada
-  description: Capacidade de testagem acumulada de COVID-19 (SG)
 
 ### Maps
 
@@ -377,7 +330,7 @@ flu_syndrome_pandemic_states_incidence_rate:
   name: Estados de maior taxa de incidência acumulada
   description: 10 estados de maior taxa de incidência acumulada de COVID-19 (SG)
 
-flu_syndrome_pandemic_states_health_professional:
+flu_syndrome_pandemic_states_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Estados de maior incidência acumulada em profissionais de saúde
   description: 10 estados de maior incidência acumulada de COVID-19 (SG) em profissionais de saúde
@@ -386,11 +339,6 @@ flu_syndrome_pandemic_states_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Estados de maior taxa de positividade acumulada
   description: 10 estados de maior taxa de positividade acumulada por COVID-19 (SG)
-
-flu_syndrome_pandemic_states_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Estados de maior capacidade de testagem acumulada
-  description: 10 estados de maior capacidade de testagem acumulada por COVID-19 (SG)
 
 #### Cities
 
@@ -404,7 +352,7 @@ flu_syndrome_pandemic_cities_incidence_rate:
   name: Municípios de maior taxa de incidência acumulada
   description: 10 municípios de maior taxa de incidência acumulada de COVID-19 (SG)
 
-flu_syndrome_pandemic_cities_health_professional:
+flu_syndrome_pandemic_cities_health_professional_incidence:
   indicator_id: flu_syndrome_incidence
   name: Municípios de maior incidência acumulada em profissionais de saúde
   description: 10 estados de maior incidência acumulada de COVID-19 (SG) em profissionais de saúde
@@ -413,11 +361,6 @@ flu_syndrome_pandemic_cities_positivity_rate:
   indicator_id: flu_syndrome_positivity_rate
   name: Municípios de maior taxa de positividade acumulada
   description: 10 municípios de maior taxa de positividade acumulada por COVID-19 (SG)
-
-flu_syndrome_pandemic_cities_test_capacity:
-  indicator_id: flu_syndrome_test_capacity
-  name: Municípios de maior capacidade de testagem acumulada
-  description: 10 estados de maior capacidade de testagem acumulada por COVID-19 (SG)
 
 ## History
 
@@ -451,13 +394,6 @@ flu_syndrome_positivity_rate_epicurve:
   indicator_id: flu_syndrome_positivity_rate
   name: Epicurva de taxa de positividade
   description: Epicurva de taxa de positividade por COVID-19 (SG) com tendência em média móvel de 7 dias e predito ARIMA
-
-### Test Capacity
-
-flu_syndrome_test_capacity_epicurve:
-  indicator_id: flu_syndrome_test_capacity
-  name: Epicurva de capacidade de testagem
-  description: Epicurva de capacidade de testagem por COVID-19 (SG) com tendência em média móvel de 7 dias e predito ARIMA
 
 # SARS
 
@@ -541,13 +477,13 @@ sars_day_states_test_capacity:
 
 sars_day_states_hospitalizations:
   indicator_id: sars_hospitalizations
-  name: Estados de maior número de hospitalizações no dia
-  description: 10 estados de maior número de hospitalizações de COVID-19 (SRAG) no dia
+  name: Estados de maior número de internações no dia
+  description: 10 estados de maior número de internações de COVID-19 (SRAG) no dia
 
 sars_day_states_hospitalization_rate:
   indicator_id: sars_hospitalization_rate
-  name: Estados de maior taxa de hospitalização no dia
-  description: 10 estados de maior taxa de hospitalização de COVID-19 (SRAG) no dia
+  name: Estados de maior taxa de internação no dia
+  description: 10 estados de maior taxa de internação de COVID-19 (SRAG) no dia
 
 sars_day_states_deaths:
   indicator_id: sars_deaths
@@ -593,13 +529,13 @@ sars_day_cities_test_capacity:
 
 sars_day_cities_hospitalizations:
   indicator_id: sars_hospitalizations
-  name: Municípios de maior número de hospitalizações no dia
-  description: 10 municípios de maior número de hospitalizações de COVID-19 (SRAG) no dia
+  name: Municípios de maior número de internações no dia
+  description: 10 municípios de maior número de internações de COVID-19 (SRAG) no dia
 
 sars_day_cities_hospitalization_rate:
   indicator_id: sars_hospitalization_rate
-  name: Municípios de maior taxa de hospitalização no dia
-  description: 10 municípios de maior taxa de hospitalização de COVID-19 (SRAG) no dia
+  name: Municípios de maior taxa de internação no dia
+  description: 10 municípios de maior taxa de internação de COVID-19 (SRAG) no dia
 
 sars_day_cities_deaths:
   indicator_id: sars_deaths
@@ -706,18 +642,18 @@ sars_pandemic_incidence_per_race:
 
 sars_pandemic_deaths_per_age_gender:
   indicator_id: sars_deaths
-  name: Pirâmide etária de incidência acumulada
-  description: Incidência acumulada de COVID-19 (SRAG) por faixa etária e sexo
+  name: Pirâmide etária de óbitos acumulados
+  description: Óbitos acumulados de COVID-19 (SRAG) por faixa etária e sexo
 
 sars_pandemic_death_rate_per_age_gender:
   indicator_id: sars_death_rate
-  name: Pirâmide etária de taxa de incidência acumulada
-  description: Taxa de incidência acumulada de COVID-19 (SRAG) por faixa etária e sexo
+  name: Pirâmide etária de taxa de mortalidade acumulada
+  description: Taxa de mortalidade acumulada de COVID-19 (SRAG) por faixa etária e sexo
 
 sars_pandemic_deaths_per_race:
   indicator_id: sars_deaths
-  name: Incidência acumulada por raça/cor
-  description: Incidência acumulada de COVID-19 (SRAG) por raça/cor
+  name: Óbitos acumulados por raça/cor
+  description: Óbitos acumulados de COVID-19 (SRAG) por raça/cor
 
 sars_pandemic_hospitalizations_per_symptom:
   indicator_id: sars_hospitalizations
@@ -755,13 +691,13 @@ sars_pandemic_states_test_capacity:
 
 sars_pandemic_states_hospitalizations:
   indicator_id: sars_hospitalizations
-  name: Estados de maior número de hospitalizações acumuladas
-  description: 10 estados de maior número de hospitalizações acumuladas de COVID-19 (SRAG)
+  name: Estados de maior número de internações acumuladas
+  description: 10 estados de maior número de internações acumuladas de COVID-19 (SRAG)
 
 sars_pandemic_states_hospitalization_rate:
   indicator_id: sars_hospitalization_rate
-  name: Estados de maior taxa de hospitalização acumulada
-  description: 10 estados de maior taxa de hospitalização acumulada de COVID-19 (SRAG)
+  name: Estados de maior taxa de internação acumulada
+  description: 10 estados de maior taxa de internação acumulada de COVID-19 (SRAG)
 
 sars_pandemic_states_deaths:
   indicator_id: sars_deaths
@@ -807,13 +743,13 @@ sars_pandemic_cities_test_capacity:
 
 sars_pandemic_cities_hospitalizations:
   indicator_id: sars_hospitalizations
-  name: Municípios de maior número de hospitalizações acumuladas
-  description: 10 municípios de maior número de hospitalizações acumuladas de COVID-19 (SRAG)
+  name: Municípios de maior número de internações acumuladas
+  description: 10 municípios de maior número de internações acumuladas de COVID-19 (SRAG)
 
 sars_pandemic_cities_hospitalization_rate:
   indicator_id: sars_hospitalization_rate
-  name: Municípios de maior taxa de hospitalização acumulada
-  description: 10 municípios de maior taxa de hospitalização acumulada de COVID-19 (SRAG)
+  name: Municípios de maior taxa de internação acumulada
+  description: 10 municípios de maior taxa de internação acumulada de COVID-19 (SRAG)
 
 sars_pandemic_cities_deaths:
   indicator_id: sars_deaths
@@ -887,5 +823,5 @@ sars_positivity_rate_epicurve:
 
 sars_test_capacity_epicurve:
   indicator_id: sars_test_capacity
-  name: Epicurva de capacidade de tesagem
-  description: Epicurva de capacidade de tesagem de COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
+  name: Epicurva de capacidade de testagem
+  description: Epicurva de capacidade de testagem de COVID-19 (SRAG) com tendência em média móvel de 7 dias e predito ARIMA
