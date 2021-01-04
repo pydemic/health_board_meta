@@ -105,12 +105,21 @@ flu_syndrome_incidence_rate:
     - flu_syndrome_incidence
     - population
 
+flu_syndrome_samples:
+  description: Exames realizados de COVID-19 (SG) em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de exames realizados (SG)
+  source:
+    - sivep_srag
+
 flu_syndrome_positivity_rate:
   description: Taxa de positividade de COVID-19 (SG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de exames positivos de COVID-19 (SG) / Somatório do número de exames realizados de COVID-19 (SG) * 100
   measurement_unit: '%'
   source:
     - e_sus_sg
+  children:
+    - flu_syndrome_incidence
+    - flu_syndrome_samples
 
 # SARS
 
@@ -185,12 +194,21 @@ sars_hospitalization_fatality_rate:
     - sars_deaths
     - sars_hospitalizations
 
+sars_samples:
+  description: Exames realizados de COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
+  formula: Somatório do número de exames realizados (SRAG)
+  source:
+    - sivep_srag
+
 sars_positivity_rate:
   description: Taxa de positividade de COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
   formula: Somatório do número de exames positivos de COVID-19 (SRAG) / Somatório do número de exames realizados (SRAG) * 100
   measurement_unit: '%'
   source:
     - sivep_srag
+  children:
+    - sars_incidence
+    - sars_samples
 
 sars_test_capacity:
   description: Capacidade de testagem de COVID-19 (SRAG) em determinado espaço geográfico, no período considerado
@@ -198,3 +216,5 @@ sars_test_capacity:
   measurement_unit: '%'
   source:
     - sivep_srag
+  children:
+    - sars_incidence
