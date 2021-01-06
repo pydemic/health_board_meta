@@ -12,6 +12,7 @@
 #     - description
 #     - link
 #     - update_rate
+#     - last_update_date
 #     - extraction_date
 
 datasus_geo:
@@ -40,14 +41,16 @@ e_sus_sg:
   description: Dados de Síndrome Gripal (SG) E-SUS
   link: https://opendatasus.saude.gov.br/group/dados-do-coronavirus
   update_rate: Diário
-  extraction_date: '2020-12-18'
+  last_update_date: '2020-02-26'
+  extraction_date: '2020-02-26'
 
 sivep_srag:
   name: Síndrome Respiratória Aguda Grave SIVEP
   description: Dados de Síndrome Respiratória Aguda Grave (SRAG) do SIVEP
   link: https://opendatasus.saude.gov.br/organization/ministerio-da-saude
   update_rate: Semanal
-  extraction_date: '2020-12-18'
+  last_update_date: '2020-02-26'
+  extraction_date: '2020-02-26'
 
 health_board_hospitalization:
   name: Internação hospitalar
