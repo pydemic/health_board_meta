@@ -152,11 +152,11 @@ situation_report:
           description: Mapas
           index: 1
           cards:
-            situation_report_pandemic_incidence_map:
-              card_id: situation_report_pandemic_incidence_map
+            situation_report_pandemic_incidence_rate_map:
+              card_id: situation_report_pandemic_incidence_rate_map
               index: 0
-            situation_report_pandemic_deaths_map:
-              card_id: situation_report_pandemic_deaths_map
+            situation_report_pandemic_death_rate_map:
+              card_id: situation_report_pandemic_death_rate_map
               index: 1
 
         situation_report_pandemic_states_rankings:
@@ -201,12 +201,62 @@ situation_report:
               card_id: situation_report_pandemic_cities_fatality_rate
               index: 4
 
+    situation_report_summary_group:
+      name: Resumo
+      description: Resumo
+      index: 2
+      sections:
+        situation_report_summary:
+          name: Resumo
+          description: Resumo
+          index: 0
+          cards:
+            situation_report_summary_table:
+              card_id: situation_report_summary_table
+              index: 0
+
+    situation_report_history_group:
+      name: Histórico
+      description: Histórico
+      index: 3
+      sections:
+        situation_report_history_incidence:
+          name: Incidência
+          description: Incidência
+          index: 0
+          cards:
+            situation_report_incidence_epicurve:
+              card_id: situation_report_incidence_epicurve
+              index: 0
+            situation_report_incidence_per_week:
+              card_id: situation_report_incidence_per_week
+              index: 1
+            situation_report_incidence_per_month:
+              card_id: situation_report_incidence_per_month
+              index: 2
+
+        situation_report_history_deaths:
+          name: Óbitos
+          description: Óbitos
+          index: 1
+          cards:
+            situation_report_deaths_epicurve:
+              card_id: situation_report_deaths_epicurve
+              index: 0
+            situation_report_deaths_per_week:
+              card_id: situation_report_deaths_per_week
+              index: 1
+            situation_report_deaths_per_month:
+              card_id: situation_report_deaths_per_month
+              index: 2
+
+
     situation_report_hospital_capacity_group:
       name: Capacidade hospitalar
       description: Capacidade hospitalar
-      index: 2
+      index: 4
       sections:
-        hospital_capacity:
+        situation_report_hospital_capacity:
           name: Capacidade hospitalar
           description: Capacidade hospitalar
           index: 0
@@ -318,8 +368,8 @@ flu_syndrome:
           description: Mapas
           index: 1
           cards:
-            flu_syndrome_pandemic_incidence_map:
-              card_id: flu_syndrome_pandemic_incidence_map
+            flu_syndrome_pandemic_incidence_rate_map:
+              card_id: flu_syndrome_pandemic_incidence_rate_map
               index: 0
 
         flu_syndrome_pandemic_charts:
@@ -592,11 +642,11 @@ sars:
           description: Mapas
           index: 1
           cards:
-            sars_pandemic_incidence_map:
-              card_id: sars_pandemic_incidence_map
+            sars_pandemic_incidence_rate_map:
+              card_id: sars_pandemic_incidence_rate_map
               index: 0
-            sars_pandemic_deaths_map:
-              card_id: sars_pandemic_deaths_map
+            sars_pandemic_death_rate_map:
+              card_id: sars_pandemic_death_rate_map
               index: 1
 
         sars_pandemic_charts:

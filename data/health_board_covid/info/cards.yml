@@ -128,15 +128,15 @@ situation_report_pandemic_fatality_rate:
 
 ### Maps
 
-situation_report_pandemic_incidence_map:
-  indicator_id: situation_report_incidence
-  name: Mapa de incidência acumulada
-  description: Mapa de incidência acumulada de COVID-19
+situation_report_pandemic_incidence_rate_map:
+  indicator_id: situation_report_incidence_rate
+  name: Mapa de taxa de incidência acumulada
+  description: Mapa de taxa de incidência acumulada de COVID-19
 
-situation_report_pandemic_deaths_map:
-  indicator_id: situation_report_deaths
-  name: Mapa de óbitos acumulados
-  description: Mapa de óbitos acumulado de COVID-19
+situation_report_pandemic_death_rate_map:
+  indicator_id: situation_report_death_rate
+  name: Mapa de taxa de mortalidade acumulada
+  description: Mapa de taxa de mortalidade acumulada de COVID-19
 
 ### Rankings
 
@@ -193,6 +193,49 @@ situation_report_pandemic_cities_fatality_rate:
   indicator_id: situation_report_fatality_rate
   name: Municípios de maior taxa de letalidade acumulada
   description: 10 municípios de maior taxa de letalidade acumulada por COVID-19
+
+## Summary
+
+situation_report_summary_table:
+  indicator_id: situation_report_incidence
+  name: Incidência e óbitos por COVID-19
+  description: Tabela de incidências e óbitos por COVID-19
+
+## History
+
+### Incidence
+
+situation_report_incidence_epicurve:
+  indicator_id: situation_report_incidence
+  name: Epicurva de incidência
+  description: Epicurva de incidência de COVID-19 com tendência em média móvel de 7 dias e predito ARIMA
+
+situation_report_incidence_per_month:
+  indicator_id: situation_report_incidence
+  name: Incidência por mês
+  description: Incidência de COVID-19 agrupado por mês
+
+situation_report_incidence_per_week:
+  indicator_id: situation_report_incidence
+  name: Incidência por semana
+  description: Incidência de COVID-19 agrupado por semana
+
+### Deaths
+
+situation_report_deaths_epicurve:
+  indicator_id: situation_report_deaths
+  name: Epicurva de óbitos
+  description: Epicurva de óbitos de COVID-19 com tendência em média móvel de 7 dias e predito ARIMA
+
+situation_report_deaths_per_month:
+  indicator_id: situation_report_deaths
+  name: Óbitos por mês
+  description: Óbitos de COVID-19 agrupados por mês
+
+situation_report_deaths_per_week:
+  indicator_id: situation_report_deaths
+  name: Óbitos por semana
+  description: Óbitos de COVID-19 agrupados por semana
 
 ## ICU Rate
 
@@ -319,10 +362,10 @@ flu_syndrome_pandemic_positivity_rate:
 
 ### Maps
 
-flu_syndrome_pandemic_incidence_map:
-  indicator_id: flu_syndrome_incidence
-  name: Mapa de incidência acumulada (SG)
-  description: Mapa de incidência acumulada de COVID-19 (SG)
+flu_syndrome_pandemic_incidence_rate_map:
+  indicator_id: flu_syndrome_incidence_rate
+  name: Mapa de taxa de incidência acumulada (SG)
+  description: Mapa de taxa de incidência acumulada de COVID-19 (SG)
 
 ### Charts
 
@@ -669,15 +712,15 @@ sars_pandemic_hospitalization_fatality_rate:
 
 ### Maps
 
-sars_pandemic_incidence_map:
-  indicator_id: sars_incidence
-  name: Mapa de incidência acumulada (SRAG)
-  description: Mapa de incidência acumulada de COVID-19 (SRAG)
+sars_pandemic_incidence_rate_map:
+  indicator_id: sars_incidence_rate
+  name: Mapa de taxa de incidência acumulada (SRAG)
+  description: Mapa de taxa de incidência acumulada de COVID-19 (SRAG)
 
-sars_pandemic_deaths_map:
-  indicator_id: sars_deaths
-  name: Mapa de óbitos acumulado (SRAG)
-  description: Mapa de óbitos acumulados de COVID-19 (SRAG)
+sars_pandemic_death_rate_map:
+  indicator_id: sars_death_rate
+  name: Mapa de taxa de mortalidade acumulada (SRAG)
+  description: Mapa de taxa de mortalidade acumulada de COVID-19 (SRAG)
 
 ### Charts
 

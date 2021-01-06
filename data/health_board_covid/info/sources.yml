@@ -61,4 +61,5 @@ health_board_situation_report:
   description: Dados diários de casos e óbitos por COVID-19
   link: https://covid.saude.gov.br/
   update_rate: Diário
-  extraction_date: '2020-12-18'
+  last_update_date: '2021-01-05'
+  extraction_date: '2021-01-05'
