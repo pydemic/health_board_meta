@@ -1,0 +1,11 @@
+daily_icu_occupancy:
+  date: '2020-01-07'
+  period:
+    from: '2020-05-23'
+    to: '2020-01-07'
+  source: spreadsheet
+  fields:
+    - context
+    - location_id
+    - date
+    - occupancy_rate
