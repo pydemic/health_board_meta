@@ -8,4 +8,4 @@ daily_icu_occupancy:
     - context
     - location_id
     - date
-    - occupancy_rate
+    - rate
