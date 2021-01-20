@@ -1,0 +1,226 @@
+- kind:
+    name: card
+    extends: element
+    in: dashboard.{group|groups}.{section|sections}
+
+- kind:
+    name: dashboard
+    extends: element
+
+  group:
+    type: group
+    required:
+      unless: groups
+
+  groups:
+    type:
+      list: group
+    required:
+      unless: group
+
+- kind:
+    name: element
+    abstract: yes
+
+  alias:
+    type: string
+    format: snake_case
+    unique: yes
+
+  name:
+    type: string
+    required: yes
+
+  description:
+    type: string
+
+  component:
+    type: Module.function
+    default: Element.{dashboard|group|section|card}
+
+  component_params:
+    type:
+      list: string
+
+  link:
+    type: dashboard.alias
+
+  data:
+    type:
+      object:
+        key:
+          type: string
+          format: snake_case
+        value:
+          types:
+            - Module.function
+            - data:
+                type: Module.function
+
+              data_params:
+                type:
+                  list: string
+
+  filter:
+    types:
+      - filter.alias
+      - element_filter
+
+  filters:
+    types:
+      - list: filter.alias
+      - list: element_filter
+      - element_filter
+
+  indicator:
+    type: indicator.alias
+
+  indicators:
+    type:
+      list: indicator.alias
+
+  source:
+    type: source.alias
+
+  sources:
+    type:
+      list: source.alias
+
+- kind:
+    name: element_filter
+    in: element
+
+  filter_alias:
+    type: filter.alias
+    required: true
+
+  options:
+    type: Module.function
+
+  options_params:
+    type:
+      list: string
+
+- kind: filter
+  alias:
+    type: string
+    format: snake_case
+    unique: yes
+
+  title:
+    type: string
+    required: yes
+
+  description:
+    type: string
+
+  default:
+    type: string
+
+  disabled:
+    type: boolean
+    default: false
+
+  options:
+    type: Module.function
+    required: yes
+
+  options_params:
+    type:
+      list: string
+
+- kind: filters
+  filters:
+    type:
+      list: filter
+
+    required: yes
+
+- kind:
+    name: group
+    extends: element
+    in: dashboard
+
+  section:
+    type: section
+    required:
+      unless: sections
+
+  sections:
+    type:
+      list: section
+    required:
+      unless: section
+
+- kind: indicator
+  alias:
+    type: string
+    format: snake_case
+    unique: yes
+
+  description:
+    type: string
+
+  formula:
+    type: string
+
+  measurement_unit:
+    type: string
+
+  link:
+    type: uri
+
+- kind: indicators
+  indicators:
+    type:
+      list: indicator
+
+    required: yes
+
+- kind:
+    name: section
+    extends: element
+    in: dashboard.{group|groups}
+
+  card:
+    type: card
+    required:
+      unless: cards
+
+  cards:
+    type:
+      list: card
+    required:
+      unless: card
+
+- kind: source
+  alias:
+    type: string
+    format: snake_case
+    unique: yes
+
+  name:
+    type: string
+    required: true
+
+  description:
+    type: string
+
+  link:
+    type: uri
+
+  update_rate:
+    type: string
+
+  extraction_date:
+    type: date
+
+  last_update_date:
+    type: date
+
+- kind: sources
+  sources:
+    type:
+      list: source
+
+    required: yes

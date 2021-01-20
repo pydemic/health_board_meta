@@ -1,0 +1,16 @@
+kind: filters
+filters:
+  - alias: date
+    title: Data
+    description: Filtrar por uma data específica
+    options: Time.date
+
+  - alias: location
+    title: Localidade
+    description: Filtrar por uma localidade específica
+    options: Location.location
+
+  - alias: period
+    title: Período
+    description: Filtrar por um período específico
+    options: Time.period
