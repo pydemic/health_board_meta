@@ -1,0 +1,70 @@
+kind: consolidations_groups
+groups:
+  - demographics:
+    - populations:
+      - total
+      - per_gender
+      - per_age
+
+  - morbidities:
+    - flu_syndrome:
+      - residence_confirmed_cases
+      - residence_discarded_cases
+      - residence_health_professionals_cases
+      - residence_cases_per_age_gender
+
+      - residence_deaths
+      - residence_health_professionals_deaths
+      - residence_deaths_per_age_gender
+
+      - notification_confirmed_cases
+      - notification_discarded_cases
+      - notification_health_professionals_cases
+      - notification_cases_per_age_gender
+
+    - sars:
+      - residence_confirmed_cases
+      - residence_discarded_cases
+      - residence_cases_per_age_gender
+      - residence_cases_per_race
+
+      - residence_deaths
+      - residence_deaths_per_age_gender
+      - residence_deaths_per_race
+
+      - residence_samples
+
+      - residence_hospitalizations
+      - residence_hospitalizations_per_age_gender
+      - residence_hospitalizations_per_race
+
+      - residence_hospitalizations_deaths
+      - residence_hospitalizations_deaths_per_age_gender
+      - residence_hospitalizations_deaths_per_race
+
+      - notification_confirmed_cases
+      - notification_discarded_cases
+      - notification_cases_per_age_gender
+      - notification_cases_per_race
+
+      - notification_deaths
+      - notification_deaths_per_age_gender
+      - notification_deaths_per_race
+
+      - notification_samples
+
+      - notification_hospitalizations
+      - notification_hospitalizations_per_age_gender
+      - notification_hospitalizations_per_race
+
+      - notification_hospitalizations_deaths
+      - notification_hospitalizations_deaths_per_age_gender
+      - notification_hospitalizations_deaths_per_race
+
+    - covid_reports:
+      - cases
+      - deaths
+
+  - hospitals_capacities:
+    - icu_occupations:
+      - rates
