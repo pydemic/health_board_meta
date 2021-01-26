@@ -1,0 +1,175 @@
+kind: dashboard
+name: from=morbidity_name
+sources:
+  - datasus_geo
+  - icd_10_2015
+filters:
+  - morbidity
+  - location
+data:
+  - morbidity: Filter.get?what=morbidity
+  - morbidity_name: Composite.from?what=morbidity&get=name
+groups:
+  - name: Sumário
+    section:
+      name: Sumário
+      sources:
+        - datasus_sinan
+        - datasus_sim
+        - datasus_sihsus
+      filter: period
+      data:
+        - morbidity_schema: Composite.from?what=morbidity&get=schema
+        
+        - location: Filter.get?what=location
+        - location_id: Composite.from?what=location&get=id
+        
+        - period: Filter.get?what=period
+
+        - period_incidence: Database.Consolidations.Period.get?context=morbidities&schema=morbidity_schema&data=residence_incidence
+        - year_population: Database.Consolidations.Period.get?context=demographic_populations_total
+        
+        - period_hospitalizations: Database.Consolidations.Period.get?context=morbidities&schema=morbidity_schema&data=residence_hospitalizations
+        - period_deaths: Database.Consolidations.Period.get?context=morbidities&schema=morbidity_schema&data=residence_deaths
+        - period_hospitalization_average_days: Database.Consolidations.Period.get?context=morbidities&schema=morbidity_schema&data=residence_hospitalization_average_days
+      cards:
+        - name: Incidência
+          indicator: incidence
+          component: Incidence.scalar?incidence=period_incidence
+
+        - name: Coeficiente de incidência
+          indicator: incidence_rate
+          component: IncidenceRate.scalar?incidence=period_incidence&population=year_population
+
+        - name: Internações
+          indicator: hospitalizations
+          component: Hospitalizations.scalar?hospitalizations=period_hospitalizations
+
+        - name: Coeficiente de internações
+          indicator: hospitalization_rate
+          component: HospitalizationRate.scalar?hospitalizations=period_hospitalizations&population=year_population
+
+        - name: Óbitos
+          indicator: deaths
+          component: Deaths.scalar?deaths=period_deaths
+
+        - name: Coeficiente de mortalidade
+          indicator: death_rate
+          component: DeathRate.scalar?deaths=period_deaths&population=year_population
+
+        - name: Coeficiente de mortalidade hospitalar
+          indicator: hospitalization_death_rate
+          component: HospitalizationDeathRate.scalar?deaths=period_deaths&hospitalizations=period_hospitalizations
+
+        - name: Coeficiente de letalidade hospitalar
+          indicator: hospitalization_fatality_rate
+          component: HospitalizationFatalityRate.scalar?death=period_hospitalizations&hospitalizations=period_hospitalizations
+
+        - name: Tempo médio de internação
+          indicator: hospitalization_average_days
+          component: HospitalizationAverageDays.scalar?hospitalization_average_days=period_hospitalization_average_days
+
+  - name: Incidência
+    sources:
+      - datasus_sinan
+    sections:
+      - name: Demografia de incidência
+      filter: period
+      cards:
+        - name: Mapa de coeficiente de incidência
+
+        - name: Pirânide etária de casos
+
+        - name: Casos por raça/cor
+
+        - name: Coeficiente de incidêcia por período
+
+        - name: Diagrama de controle de coeficiente de incidêcia 
+          filter: year
+          
+  - name: Mortalidade
+    sources:
+      - datasus_sim
+    sections:
+      - name: Demografia de mortalidade
+      filter: period
+      cards:
+        - name: Mapa de coeficiente de mortalidade
+
+        - name: Pirânide etária de óbitos
+
+        - name: Óbitos por raça/cor
+
+        - name: Histórico do coeficiente de mortalidade por período
+
+        - name: Diagrama de controle de coeficiente de mortalidade 
+          filter: year
+
+  - name: Internações
+    sources:
+      - datasus_sihsus
+    sections:
+      - name: Demografia de internações
+        filter: period
+        cards:
+          - name: Coeficiente de internações por localidade
+            indicator: hospitalization_rate
+            data: 
+              - morbidity_schema: Composite.from?what=morbidity&get=schema
+
+              - period: Filter.get?what=period
+
+              - period_year: Composite.from?what=period&get=year
+
+              - location: Filters.get?what=location
+              - location_id: Composite.from?what=location&get=id
+
+              - locations_ids: Database.Geo.Locations.list?related_location=location&get=id
+
+              - period_locations_hospitalizations: Database.Consolidations.Period.list?context=morbidities&schema=morbidity_schema&data=residence_hospitalizations&locations_ids=locations_ids&sum_by=time
+
+              - year_locations_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=period_year&locations_ids=locations_ids
+
+            component: HospitalizationRate.choropleth_map?locations_hospitalizations=period_locations_hospitalizations&locations_population=year_locations_population
+
+          - name: Internações por faixa etária/sexo
+            indicator: hospitalizations
+            data: 
+              - morbidity_schema: Composite.from?what=morbidity&get=schema
+
+              - period: Filter.get?what=period
+
+              - period_year: Composite.from?what=period&get=year
+
+              - location: Filters.get?what=location
+              - location_id: Composite.from?what=location&get=id
+
+              - locations_ids: Database.Geo.Locations.list?related_location=location&get=id
+
+              - period_hospitalization_per_age_gender: Database.Consolidations.Period.list?context=morbidities&schema=morbidity_schema&data=residence_hospitalization_per_age_gender&locations_ids=locations_ids&sum_by=time
+            
+            component: Hospitalization.per_age_and_gender_chart?hospitalization_per_age_gender=period_hospitalization_per_age_gender
+
+          - name: Internações por raça/cor
+            indicator: hospitalizations
+            data:
+              - morbidity_schema: Composite.from?what=morbidity&get=schema
+
+              - period: Filter.get?what=period
+
+              - period_year: Composite.from?what=period&get=year
+
+              - location: Filters.get?what=location
+              - location_id: Composite.from?what=location&get=id
+
+              - locations_ids: Database.Geo.Locations.list?related_location=location&get=id
+
+              - period_hospitalization_per_race: Database.Consolidations.Period.list?context=morbidities&schema=morbidity_schema&data=residence_hospitalization_per_race&locations_ids=locations_ids&sum_by=time
+            
+            component: Hospitalization.per_race_chart?hospitalization_per_race=period_hospitalization_per_race
+      
+      - name: Histórico
+        filter: year
+        cards:
+          - name: Coeficiente de incidência por ano
+          - name: Diagrama de controle de coeficiente de incidência
