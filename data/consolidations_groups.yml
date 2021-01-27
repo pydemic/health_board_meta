@@ -61,182 +61,436 @@ groups:
       - notification_hospitalizations_deaths_per_age_gender
       - notification_hospitalizations_deaths_per_race
 
-    - american_tegumentary_leishmaniasis_incidence:
+    - american_tegumentary_leishmaniasis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - chagas_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - chagas:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - dengue_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - dengue:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - diphtheria_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - diphtheria:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
 
-    - exogenous_intoxications_incidence:
+    - exogenous_intoxications:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - leprosy_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - leprosy:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - leptospirosis_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - leptospirosis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - meningitis_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - meningitis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - neonatal_tetanus_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - neonatal_tetanus:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - poisonous_animals_accidents_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - poisonous_animals_accidents:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - schistosomiasis_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - schistosomiasis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - tetanus_accidents_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - tetanus_accidents:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - tuberculosis_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - tuberculosis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - violence_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+    - violence:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - visceral_leishmaniasis_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+ 
+    - visceral_leishmaniasis:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
+
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
 
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
 
-    - whooping_cough_incidence:
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
+
+    - whooping_cough:
+      - residence_incidence
+      - residence_incidence_per_age_gender
+      - residence_incidence_per_race
+
       - residence_hospitalizations
       - residence_hospitalization_per_age_gender
       - residence_hospitalization_per_race
       - residence_hospitalizations_deaths
 
+      - residence_deaths
+      - residence_death_per_age_gender
+      - residence_death_per_race
+
+      - notification_incidence
+      - notification_incidence_per_age_gender
+      - notification_incidence_per_race
+
       - notification_hospitalizations
       - notification_hospitalization_per_age_gender
       - notification_hospitalization_per_race
       - notification_hospitalizations_deaths
+
+      - notification_deaths
+      - notification_death_per_age_gender
+      - notification_death_per_race
 
     - covid_reports:
       - cases
