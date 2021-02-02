@@ -45,89 +45,89 @@ groups:
     sections:
       - name: Sumário
         cards:
-          - name: Incidência no dia
+          - name: Incidência
             indicator: incidence
             component: Incidence.scalar?incidence=day_incidence
 
-          - name: Taxa de incidência no dia
+          - name: Taxa de incidência
             indicator: incidence_rate
             component: IncidenceRate.scalar?incidence=day_incidence&population=year_population
 
-          - name: Óbitos no dia
+          - name: Óbitos
             indicator: deaths
             component: Deaths.scalar?deaths=day_deaths
 
-          - name: Taxa de mortalidade no dia
+          - name: Taxa de mortalidade
             indicator: death_rate
             component: DeathRate.scalar?deaths=day_deaths&population=year_population
 
-          - name: Taxa de letalidade no dia
+          - name: Taxa de letalidade
             indicator: fatality_rate
             component: FatalityRate.scalar?deaths=day_deaths&incidence=day_incidence
 
       - name: Estados em destaque
         cards:
-          - name: Estados de maior incidência no dia
+          - name: Estados de maior incidência
             indicator: incidence
             component: Incidence.top_ten_locations_table?incidence_list=day_states_incidence
 
-          - name: Estados de maior taxa de incidência no dia
+          - name: Estados de maior taxa de incidência
             indicator: incidence_rate
             component: IncidenceRate.top_ten_locations_table?incidence_list=day_states_incidence&population_list=year_states_population
 
-          - name: Estados de maior número de óbitos no dia
+          - name: Estados de maior número de óbitos
             indicator: deaths
             component: Deaths.top_ten_locations_table?deaths_list=day_states_deaths
 
-          - name: Estados de maior taxa de mortalidade no dia
+          - name: Estados de maior taxa de mortalidade
             indicator: death_rate
             component: DeathRate.top_ten_locations_table?deaths_list=day_states_deaths&population_list=year_states_population
 
-          - name: Estados de maior taxa de letalidade no dia
+          - name: Estados de maior taxa de letalidade
             indicator: fatality_rate
             component: FatalityRate.top_ten_locations_table?deaths_list=day_states_deaths&incidence_list=day_states_incidence
 
       - name: Municípios em destaque
         cards:
-          - name: Municípios de maior incidência no dia
+          - name: Municípios de maior incidência
             indicator: incidence
             component: Incidence.top_ten_locations_table?incidence_list=day_cities_incidence
 
-          - name: Municípios de maior taxa de incidência no dia
+          - name: Municípios de maior taxa de incidência
             indicator: incidence_rate
             component: IncidenceRate.top_ten_locations_table?incidence_list=day_cities_incidence&population_list=year_cities_population
 
-          - name: Municípios de maior número de óbitos no dia
+          - name: Municípios de maior número de óbitos
             indicator: deaths
             component: Deaths.top_ten_locations_table?deaths_list=day_cities_deaths
 
-          - name: Municípios de maior taxa de mortalidade no dia
+          - name: Municípios de maior taxa de mortalidade
             indicator: death_rate
             component: DeathRate.top_ten_locations_table?deaths_list=day_cities_deaths&population_list=year_cities_population
 
-          - name: Municípios de maior taxa de letalidade no dia
+          - name: Municípios de maior taxa de letalidade
             indicator: fatality_rate
             component: FatalityRate.top_ten_locations_table?deaths_list=day_cities_deaths&incidence_list=day_cities_incidence
 
       - name: Municípios em destaque de população maior que 500 mil habitantes
         cards:
-          - name: Municípios de maior incidência no dia
+          - name: Municípios de maior incidência
             indicator: incidence
             component: Incidence.top_ten_locations_table?incidence_list=day_high_population_cities_incidence
 
-          - name: Municípios de maior taxa de incidência no dia
+          - name: Municípios de maior taxa de incidência
             indicator: incidence_rate
             component: IncidenceRate.top_ten_locations_table?incidence_list=day_high_population_cities_incidence&population_list=year_high_population_cities_population
 
-          - name: Municípios de maior número de óbitos no dia
+          - name: Municípios de maior número de óbitos
             indicator: deaths
             component: Deaths.top_ten_locations_table?deaths_list=day_high_population_cities_deaths
 
-          - name: Municípios de maior taxa de mortalidade no dia
+          - name: Municípios de maior taxa de mortalidade
             indicator: death_rate
             component: DeathRate.top_ten_locations_table?deaths_list=day_high_population_cities_deaths&population_list=year_high_population_cities_population
 
-          - name: Municípios de maior taxa de letalidade no dia
+          - name: Municípios de maior taxa de letalidade
             indicator: fatality_rate
             component: FatalityRate.top_ten_locations_table?deaths_list=day_high_population_cities_deaths&incidence_list=day_high_population_cities_incidence
 
@@ -330,7 +330,7 @@ groups:
       - datasus_population
     filter:
       filter_alias: date
-      default: yesterday
+      default: alias=yesterday
       disabled: true
     data:
       - date: Filters.get?what=date
@@ -338,7 +338,7 @@ groups:
       - day_country_deaths: Database.Consolidations.Daily.get?group=morbidities_covid_reports_deaths&date=date&location_id=76
       - day_country_incidence: Database.Consolidations.Daily.get?group=morbidities_covid_reports_cases&date=date&location_id=76
 
-      - year_country_incidence: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020&location_id=76
+      - year_country_population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020&location_id=76
 
       - regions_ids: Database.Geo.Locations.list?group=regions&get=id
 

@@ -1,5 +1,10 @@
 kind: filters
 filters:
+  - alias: week
+    title: Semana
+    description: Filtrar por uma semana específica
+    options: Time.week
+
   - alias: location
     title: Localidade
     description: Filtrar por uma localidade específica
@@ -10,12 +15,7 @@ filters:
     description: Filtrar por um período específico
     options: Time.period
 
-  - alias: date_period
-    title: Período em dias
-    description: Filtrar por um período de dias específico
-    options: Time.date_period
-
-  - alias: date
-    title: Data
-    description: Filtrar por uma data específica
-    options: Time.date
+  - alias: morbidity
+    title: Doença/Agravo
+    description: Filtrar por uma doença/agravo específica
+    options: Morbidity.morbidity

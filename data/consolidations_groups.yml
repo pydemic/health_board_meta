@@ -61,6 +61,10 @@ groups:
       - notification_hospitalizations_deaths_per_age_gender
       - notification_hospitalizations_deaths_per_race
 
+    - covid_reports:
+      - cases
+      - deaths
+
     - american_tegumentary_leishmaniasis:
       - residence_incidence
       - residence_incidence_per_age_gender
@@ -437,7 +441,7 @@ groups:
       - notification_deaths
       - notification_death_per_age_gender
       - notification_death_per_race
- 
+
     - visceral_leishmaniasis:
       - residence_incidence
       - residence_incidence_per_age_gender
@@ -491,10 +495,6 @@ groups:
       - notification_deaths
       - notification_death_per_age_gender
       - notification_death_per_race
-
-    - covid_reports:
-      - cases
-      - deaths
 
   - hospitals_capacities:
     - icu_occupations:

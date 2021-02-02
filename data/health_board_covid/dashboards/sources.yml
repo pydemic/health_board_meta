@@ -1,12 +1,5 @@
 kind: sources
 sources:
-  - alias: datasus_cnes
-    name: Cadastro Nacional de Estabelecimentos de Saúde
-    description: Dados de instituições de saúde do DATASUS
-    link: http://cnes.datasus.gov.br/pages/downloads/arquivosBaseDados.jsp
-    update_rate: Mensal
-    extraction_date: '2020-10-01'
-
   - alias: datasus_geo
     name: Território DATASUS
     description: Dados de territórios do DATASUS
@@ -20,55 +13,6 @@ sources:
     link: http://tabnet.datasus.gov.br/cgi/deftohtm.exe?popsvs/cnv/popbr.def
     update_rate: Anual
     extraction_date: '2020-10-01'
-
-  - alias: datasus_sinasc
-    name: Sistema de informação de Nascidos Vivos
-    description: Registros de nascidos vivos do DATASUS
-    link: http://www2.datasus.gov.br/DATASUS/index.php?area=0901&item=1
-    update_rate: Anual
-    extraction_date: '2020-10-01'
-
-  - alias: iso_3166
-    name: ISO 3166
-    description: Códigos de países
-    link: https://www.iso.org/iso-3166-country-codes.html
-    update_rate: Esporádico
-    extraction_date: '2020-10-01'
-
-  - alias: datasus_sinan
-    name: Sistema de agravos de notificação compulsória
-    description: Dados de notificação/ocorrência e investigação de doenças e agravos de notificação compulsória
-    link: ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/
-    update_rate: Anual
-    extraction_date: '2020-11-04'
-
-  - alias: datasus_sim
-    name: Sistema de Informações sobre Mortalidade
-    description: Dados de mortalidade
-    link: http://www2.datasus.gov.br/DATASUS/index.php?area=0901&item=1&acao=26&pad=31655
-    update_rate: Anual
-    extraction_date: '2020-11-02'
-
-  - alias: tabnet_sipni
-    name: Sistema de Informações do Programa Nacional de Imunizações - Cobertura vacinal
-    description: Dados consolidados de cobertura vacinal
-    link: http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def
-    uptade_rate: Anual
-    extraction_date: '2020-11-25'
-
-  - alias: datasus_sihsus
-    name: Sistema de informações hospitalares do SUS
-    description: Registro de todos os atendimentos provenientes de internações hospitalares que foram financiadas pelo SUS
-    link: ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/
-    uptade_rate: Mensal
-    extraction_date: '2020-11-19'
-
-  - alias: icd_10_2015
-    name: Classificação Internacional de Doenças
-    description:  CID-10 - Classificação Internacional de Doenças e Prodatasus_simblemas Relacionados à Saúde
-    link: https://icd.who.int/browse10/2015/en
-    uptade_rate: Anual
-    extraction_date: '2020-11-19'
 
   - alias: e_sus_sg
     name: Síndrome Gripal E-SUS
@@ -91,4 +35,4 @@ sources:
     name: Boletim epidemiológico diário
     description: Dados diários de casos e óbitos por COVID-19
     update_rate: Diário
-    link: https://covid.saude.gov.br/
+    link: https://covid.saude.gov.br

@@ -28,7 +28,25 @@ indicators:
     formula: óbitos / incidência * 100
     measurement_unit: '%'
 
-  - alias: icu_rate
-    description: Taxa de ocupação hospitalar de leito de UTI em determinado espaço geográfico, no período considerado
-    formula: leitos ocupados / leitos * 100
+  - alias: hospitalizations
+    description: Total de internações em relação a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: somatório de registros de internações
+
+  - alias: hospitalization_rate
+    description: Taxa de incidência de internações em relação a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: internações / população * 100.000
+    measurement_unit: /100 mil habitantes
+
+  - alias: hospitalization_death_rate
+    description: Taxa de mortalidade em internações relacionada a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: número de óbitos / número óbitos em internações * 100
     measurement_unit: '%'
+
+  - alias: hospitalization_fatality_rate
+    description: Taxa de letalidade em internações relacionada a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: número de óbitos / número de internações * 100
+    measurement_unit: '%'
+
+  - alias: hospitalization_average_days
+    description: Média de internação, em dias, relacionada a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: Média de internação, em dias
