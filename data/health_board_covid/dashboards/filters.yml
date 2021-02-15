@@ -1,21 +1,21 @@
 kind: filters
 filters:
-  - alias: location
-    title: Localidade
+  - sid: location
+    name: Localidade
     description: Filtrar por uma localidade específica
     options: Location.location
 
-  - alias: period
-    title: Período
+  - sid: period
+    name: Período
     description: Filtrar por um período específico
     options: Time.period
 
-  - alias: date_period
-    title: Período em dias
+  - sid: date_period
+    name: Período em dias
     description: Filtrar por um período de dias específico
     options: Time.date_period
 
-  - alias: date
-    title: Data
+  - sid: date
+    name: Data
     description: Filtrar por uma data específica
     options: Time.date

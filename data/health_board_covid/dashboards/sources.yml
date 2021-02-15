@@ -1,37 +1,37 @@
 kind: sources
 sources:
-  - alias: datasus_geo
+  - sid: datasus_geo
     name: Território DATASUS
     description: Dados de territórios do DATASUS
     link: ftp://ftp.datasus.gov.br/territorio/tabelas
     update_rate: Anual
     extraction_date: '2020-10-01'
 
-  - alias: datasus_population
+  - sid: datasus_population
     name: População DATASUS
     description: Estimativas de dados populacionais do DATASUS
     link: http://tabnet.datasus.gov.br/cgi/deftohtm.exe?popsvs/cnv/popbr.def
     update_rate: Anual
     extraction_date: '2020-10-01'
 
-  - alias: e_sus_sg
+  - sid: e_sus_sg
     name: Síndrome Gripal E-SUS
     description: Dados de Síndrome Gripal (SG) E-SUS
     update_rate: Diário
     link: https://opendatasus.saude.gov.br/group/dados-do-coronavirus
 
-  - alias: sivep_srag
+  - sid: sivep_srag
     name: Síndrome Respiratória Aguda Grave SIVEP
     description: Dados de Síndrome Respiratória Aguda Grave (SRAG) do SIVEP
     update_rate: Semanal
     link: https://opendatasus.saude.gov.br/organization/ministerio-da-saude
 
-  - alias: health_board_hospitalization
+  - sid: health_board_hospitalization
     name: Internação hospitalar
     description: Dados de internação hospitalar. Origem dos dados variam para cada Secretaria Estadual de Saúde
     update_rate: Diário
 
-  - alias: health_board_situation_report
+  - sid: health_board_situation_report
     name: Boletim epidemiológico diário
     description: Dados diários de casos e óbitos por COVID-19
     update_rate: Diário

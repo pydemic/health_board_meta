@@ -1,34 +1,41 @@
 kind: indicators
 indicators:
-  - alias: population
+  - sid: population
+    name: População residente
     description: Número total de pessoas residentes e sua estrutura relativa, em determinado espaço geográfico, no ano considerado
     formula: somatório do total de pessoas residentes
     link: http://fichas.ripsa.org.br/2012/a-1/?l=pt_BR
 
-  - alias: incidence
+  - sid: incidence
+    name: Incidência
     description: Total de casos de doença/agravo em determinado espaço geográfico, no período considerado
     formula: somatório de registros de casos
 
-  - alias: incidence_rate
+  - sid: incidence_rate
+    name: Taxa de incidência
     description: Taxa de incidência de doença/agravo em determinado espaço geográfico, no período considerado
     formula: incidência / população * 100.000
     measurement_unit: /100 mil habitantes
 
-  - alias: deaths
+  - sid: deaths
+    name: Óbitos
     description: Total de óbitos por doença/agravo em determinado espaço geográfico, no período considerado
     formula: somatório de registros de óbitos
 
-  - alias: death_rate
+  - sid: death_rate
+    name: Taxa de mortalidade
     description: Taxa de mortalidade de doença/agravo em determinado espaço geográfico, no período considerado
     formula: óbitos / população * 100.000
     measurement_unit: /100 mil habitantes
 
-  - alias: fatality_rate
+  - sid: fatality_rate
+    name: Taxa de letalidade
     description: Taxa de letalidade por doença/agravo em determinado espaço geográfico, no período considerado
     formula: óbitos / incidência * 100
     measurement_unit: '%'
 
-  - alias: icu_rate
+  - sid: icu_rate
+    name: Taxa de ocupação de leitos de UTI
     description: Taxa de ocupação hospitalar de leito de UTI em determinado espaço geográfico, no período considerado
     formula: leitos ocupados / leitos * 100
     measurement_unit: '%'
