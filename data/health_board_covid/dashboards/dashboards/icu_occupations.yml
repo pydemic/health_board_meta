@@ -1,0 +1,78 @@
+kind: dashboard
+sid: icu_occupations
+name: Internação UTI
+sources:
+  - health_board_hospitalization
+  - datasus_geo
+indicator: icu_occupation_rate
+filter:
+  filter_sid: period
+  options_params: from_date=2020-02-25&to_date_alias=yesterday&default_type=daily&default_from_alias=twenty_two_days_before&default_to_alias=yesterday
+groups:
+  - sid: states
+    name: Estados
+    data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+      - icu_occupation_rates: Database.Consolidations.Daily.list?group=hospitals_capacities_icu_occupations_rates&location_group=states&preload=location
+    sections:
+      - sid: maps
+        name: Mapas
+        card:
+          sid: icu_occupation_rate
+          name: Média da taxa de ocupação de leitos de UTI por estado
+          component: CovidReports.ICUOccupationRate.choropleth_map
+          data:
+            icu_occupation_rates: Composite.average?from=icu_occupation_rates&group_by=location_id&average_by=total
+
+      - sid: charts
+        name: Gráficos
+        card:
+          sid: icu_occupation_rate
+          name: Taxa de ocupação de leitos de UTI por estado e data
+          component: CovidReports.ICUOccupationRate.chart
+
+      - sid: tables
+        name: Tabelas
+        card:
+          sid: icu_occupation_rate
+          name: Taxa de ocupação de leitos de UTI por estado e data
+          component: CovidReports.ICUOccupationRate.heatmap_table
+
+  - sid: cities
+    name: Capitais
+    data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+      - icu_occupation_rates: Database.Consolidations.Daily.list?group=hospitals_capacities_icu_occupations_rates&location_group=cities&preload=location
+    sections:
+      - sid: maps
+        name: Mapas
+        card:
+          sid: icu_occupation_rate
+          name: Média da taxa de ocupação de leitos de UTI por capital
+          component: CovidReports.ICUOccupationRate.choropleth_map
+          data:
+            icu_occupation_rates: Composite.average?from=icu_occupation_rates&group_by=location_id&average_by=total
+
+      - sid: charts
+        name: Gráficos
+        card:
+          sid: icu_occupation_rate
+          name: Taxa de ocupação de leitos de UTI por capital e data
+          component: CovidReports.ICUOccupationRate.chart
+
+      - sid: tables
+        name: Tabelas
+        card:
+          sid: icu_occupation_rate
+          name: Taxa de ocupação de leitos de UTI por capital e data
+          component: CovidReports.ICUOccupationRate.heatmap_table

@@ -1,0 +1,373 @@
+kind: dashboard
+sid: flu_syndrome
+name: Síndrome Gripal (SG/COVID)
+sources:
+  - e_sus_sg
+  - datasus_population
+  - datasus_geo
+filters:
+  - filter_sid: period
+    options_params: from_date=2020-02-25&to_date_alias=yesterday
+
+  - location
+groups:
+  - sid: report
+    name: Sumário
+    data:
+      - period: Filters.get?what=period
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+
+      - incidence: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_confirmed_cases
+      - population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
+    sections:
+      - sid: incidence
+        name: Incidência (SG/COVID)
+        component_params: responsive_cols=3
+        cards:
+          - sid: incidence
+            name: Incidência
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              u: Utils.drop?what=location_id,period,population
+
+          - sid: incidence_rate
+            name: Taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.scalar
+            data:
+              - u: Utils.drop?what=location_id,period
+
+          - sid: health_professionals_incidence
+            name: Incidência em profissionais de saúde
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              - u: Utils.delete?what=population
+              - incidence: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_health_professionals_cases
+              - u: Utils.drop?what=location_id,period
+
+      - sid: samples
+        name: Testes (SG/COVID)
+        component_params: responsive_cols=2
+        data:
+          - u: Utils.delete?what=population
+          - discarded_samples: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_discarded_cases
+          - u: Utils.drop?what=location_id,period
+          - positive_samples: Composite.replace?what=incidence
+        cards:
+          - sid: samples
+            name: Testes
+            indicator: samples
+            component: Samples.scalar?with_discarded=true
+
+          - sid: positivity_rate
+            name: Taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.scalar?with_discarded=true
+
+      - sid: demographic
+        name: Demografia
+        data:
+          u: Utils.drop?what=incidence,location_id,period
+        card:
+          sid: population
+          name: População residente
+          indicator: population
+          component: Population.scalar
+
+  - sid: epicurves
+    name: Epicurvas
+    data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+      - from_year: Composite.from?what=from_date&get=year
+      - to_year: Composite.from?what=to_date&get=year
+      - from_month: Composite.from?what=from_date&get=month
+      - to_month: Composite.from?what=to_date&get=month
+      - from_yearweek: Filters.Time.date_yearweek?date=from_date
+      - from_week_year: Composite.from?what=from_yearweek&get=year
+      - from_week: Composite.from?what=from_yearweek&get=week
+      - u: Utils.delete?what=from_year_week
+      - to_yearweek: Filters.Time.date_yearweek?date=to_date
+      - to_week_year: Composite.from?what=to_yearweek&get=year
+      - to_week: Composite.from?what=to_yearweek&get=week
+      - u: Utils.delete?what=to_year_week
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+
+      - daily_incidence: Database.Consolidations.Daily.list?group=morbidities_flu_syndrome_residence_confirmed_cases
+    sections:
+      - sid: incidence
+        name: Incidência (SG/COVID)
+        indicator: incidence
+        component_params: responsive_cols=2
+        cards:
+          - sid: epicurve
+            name: Epicurva de incidência
+            component: Incidence.daily_epicurve?responsive_cols=2&cols_span=2
+            data:
+              u: Utils.take?what=daily_incidence
+
+          - sid: weekly
+            name: Incidência por semana
+            component: Incidence.weekly_chart
+            data:
+              - u: Utils.take?what=from_week_year,to_week_year,from_week,to_week,location_id
+              - weekly_incidence: Database.Consolidations.Weekly.list?group=morbidities_flu_syndrome_residence_confirmed_cases&from_year=from_week_year&to_year=to_week_year
+              - u: Utils.take?what=weekly_incidence
+
+          - sid: monthly
+            name: Incidência por mês
+            component: Incidence.monthly_chart
+            data:
+              - u: Utils.take?what=from_year,to_year,from_month,to_month,location_id
+              - monthly_incidence: Database.Consolidations.Monthly.list?group=morbidities_flu_syndrome_residence_confirmed_cases
+              - u: Utils.take?what=monthly_incidence
+
+      - sid: health_professionals_incidence
+        name: Incidência em profissionais de saúde (SG/COVID)
+        data:
+          u: Utils.drop?what=daily_incidence,from_year,to_year
+        card:
+          sid: epicurve
+          name: Epicurva de incidência em profissionais de saúde
+          indicator: samples
+          component: Incidence.daily_epicurve
+          data:
+            - u: Utils.take?what=from_date,to_date,location_id
+            - daily_incidence: Database.Consolidations.Daily.list?group=morbidities_flu_syndrome_residence_health_professionals_cases
+            - u: Utils.take?what=daily_incidence
+
+      - sid: samples
+        name: Testes (SG/COVID)
+        card:
+          sid: epicurve
+          name: Epicurva de testes
+          indicator: samples
+          component: Samples.daily_epicurve?with_discarded=true
+          data:
+            - u: Utils.take?what=from_date,to_date,location_id,daily_incidence
+            - daily_positive_samples: Composite.replace?what=daily_incidence
+            - daily_discarded_samples: Database.Consolidations.Daily.list?group=morbidities_flu_syndrome_residence_discarded_cases
+            - u: Utils.take?what=daily_positive_samples,daily_discarded_samples
+
+  - sid: maps
+    name: Mapas
+    section:
+      sid: incidence_rate
+      name: Taxas de incidência (SG/COVID)
+      card:
+        sid: incidence_rate
+        name: Taxa de incidência
+        indicator: incidence_rate
+        component: IncidenceRate.choropleth_maps
+        data:
+          - period: Filters.get?what=period
+          - location: Filters.get?what=location
+
+          - regions_ids: Database.Geo.Locations.list?group=regions&related_location=location&get=id
+          - regions_incidence: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&locations_ids=regions_ids&sum_by=location&preload=location
+          - regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=regions_ids
+          - u: Utils.delete?what=regions_ids
+
+          - states_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+          - states_incidence: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&locations_ids=states_ids&sum_by=location&preload=location
+          - states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
+          - u: Utils.delete?what=states_ids
+
+          - health_regions_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
+          - health_regions_incidence: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&locations_ids=health_regions_ids&sum_by=location&preload=location
+          - health_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=health_regions_ids
+          - u: Utils.delete?what=health_regions_ids
+
+          - cities_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - cities_incidence: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&locations_ids=cities_ids&sum_by=location&preload=location
+          - u: Utils.delete?what=period
+          - cities_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=cities_ids
+          - u: Utils.drop?what=cities_ids
+
+  - sid: charts
+    name: Gráficos
+    section:
+      sid: incidence
+      name: Incidência (SG/COVID)
+      indicator: incidence
+      card:
+        sid: per_age_gender
+        name: Por faixa etária
+        component: Incidence.per_age_gender
+        data:
+          - period: Filters.get?what=period
+
+          - location: Filters.get?what=location
+          - location_id: Composite.from?what=location&get=id
+          - u: Utils.delete?what=location
+
+          - incidence_per_age_gender: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_cases_per_age_gender&values=true
+          - u: Utils.drop?what=location_id,period
+
+  - sid: highlights
+    name: Destaques
+    data:
+      - period: Filters.get?what=period
+      - location: Filters.get?what=location
+
+      - locations_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+      - discarded_samples_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_discarded_cases&sum_by=location&preload=location
+      - health_professionals_incidence_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_health_professionals_cases&sum_by=location&preload=location
+      - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&sum_by=location&preload=location
+      - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+      - u: Utils.delete?what=locations_ids
+    sections:
+      - sid: states
+        name: Estados em destaque (SG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=regions
+        data:
+          - u: Utils.drop?what=discarded_samples_per_location,health_professionals_incidence_per_location,incidence_per_location,locations_ids,population_per_location
+          - locations_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_confirmed_cases&sum_by=location&preload=location
+          - discarded_samples_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_discarded_cases&sum_by=location&preload=location
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.drop?what=discarded_samples_per_location,locations_ids,period
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              - u: Utils.delete?what=discarded_samples_per_location
+              - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+              - u: Utils.drop?what=locations_ids,period
+
+          - sid: health_professionals_incidence
+            name: Maior incidência em profissionais de saúde
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              - u: Utils.drop?what=discarded_samples_per_location,incidence_per_location
+              - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_flu_syndrome_residence_health_professionals_cases&sum_by=location&preload=location
+              - u: Utils.drop?what=locations_ids,period
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table?with_discarded=true
+            data:
+              - u: Utils.drop?what=locations_ids,period
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table?with_discarded=true
+            data:
+              - u: Utils.drop?what=locations_ids,period
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+      - sid: cities
+        name: Municípios em destaque (SG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions_deaths
+        data:
+          u: Utils.drop?what=location,period
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.delete?what=discarded_samples_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=discarded_samples_per_location
+
+          - sid: health_professionals_incidence
+            name: Maior incidência em profissionais de saúde
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              - u: Utils.take?what=health_professionals_incidence_per_location
+              - incidence_per_location: Composite.replace?what=health_professionals_incidence_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table?with_discarded=true
+            data:
+              positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table?with_discarded=true
+            data:
+              positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+      - sid: high_population_cities
+        name: Municípios em destaque de população maior que 500 mil habitantes (SG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+        data:
+          - u: Utils.drop?what=location,period
+          - locations_ids: Composite.filter?from=population_per_location&where=total__gt__500000&get=location_id
+          - discarded_samples_per_location: Composite.filter?from=discarded_samples_per_location&where=location_id__in__locations_ids
+          - incidence_per_location: Composite.filter?from=incidence_per_location&where=location_id__in__locations_ids
+          - population_per_location: Composite.filter?from=population_per_location&where=location_id__in__locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location,population_per_location
+
+          - sid: health_professionals_incidence
+            name: Maior incidência em profissionais de saúde
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              - u: Utils.take?what=health_professionals_incidence_per_location,locations_ids
+              - incidence_per_location: Composite.filter?from=health_professionals_incidence_per_location&where=location_id__in__locations_ids
+              - u: Utils.take?what=incidence_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table?with_discarded=true
+            data:
+              - u: Utils.take?what=discarded_samples_per_location,incidence_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table?with_discarded=true
+            data:
+              - u: Utils.take?what=discarded_samples_per_location,incidence_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location

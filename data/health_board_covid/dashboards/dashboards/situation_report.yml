@@ -1,381 +1,111 @@
 kind: dashboard
 sid: situation_report
-name: Boletim epidemiológico
-source: datasus_geo
+name: Resumo COVID
+sources:
+  - health_board_situation_report
+  - datasus_population
+  - datasus_geo
+filter: location
 groups:
-  - sid: daily_report
-    name: Resumo diário
-    sources:
-      - datasus_population
-      - health_board_situation_report
-    filters:
-      - filter_sid: date
-        default: alias=yesterday
-        options_params: from_date=2020-02-25&to_date_alias=yesterday
-
-      - location
-    data:
-      - date: Filters.get?what=date
-
-      - location: Filters.get?what=location
-      - location_id: Composite.from?what=location&get=id
-
-      - year_population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
-
-      - day_deaths: Database.Consolidations.Daily.get?group=morbidities_covid_reports_deaths
-      - day_incidence: Database.Consolidations.Daily.get?group=morbidities_covid_reports_cases
-
-      - states_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
-
-      - day_states_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths&date=date&locations_ids=states_ids&preload=location
-      - day_states_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases&date=date&locations_ids=states_ids&preload=location
-
-      - year_states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
-
-      - delete: Utils.delete?what=states_ids
-
-      - cities_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
-
-      - delete: Utils.delete?what=location
-
-      - day_cities_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths&date=date&locations_ids=cities_ids&preload=location_and_state
-      - day_cities_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases&date=date&locations_ids=cities_ids&preload=location_and_state
-
-      - delete: Utils.delete?what=date
-
-      - year_cities_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=cities_ids
-
-      - delete: Utils.delete?what=cities_ids
-
-      - high_population_cities_ids: Composite.filter?from=year_cities_population&where=total__gt__500000&get=location_id
-
-      - day_high_population_cities_deaths: Composite.filter?from=day_cities_deaths&where=location_id__in__high_population_cities_ids
-      - day_high_population_cities_incidence: Composite.filter?from=day_cities_incidence&where=location_id__in__high_population_cities_ids
-      - year_high_population_cities_population: Composite.filter?from=year_cities_population&where=location_id__in__high_population_cities_ids
-
-      - delete: Utils.delete?what=high_population_cities_ids
-    sections:
-      - sid: summary
-        name: Sumário
-        component_params: responsive_cols=3
-        cards:
-          - sid: incidence
-            name: Incidência
-            indicator: incidence
-            component: Incidence.scalar?incidence=day_incidence
-
-          - sid: incidence_rate
-            name: Taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.scalar?incidence=day_incidence&population=year_population
-
-          - sid: deaths
-            name: Óbitos
-            indicator: deaths
-            component: Deaths.scalar?deaths=day_deaths
-
-          - sid: death_rate
-            name: Taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.scalar?deaths=day_deaths&population=year_population
-
-          - sid: fatality_rate
-            name: Taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.scalar?deaths=day_deaths&incidence=day_incidence
-
-      - sid: highlighted_states
-        name: Estados em destaque
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=regions
-        cards:
-          - sid: incidence
-            name: Estados de maior incidência
-            indicator: incidence
-            component: Incidence.top_ten_locations_table?incidence_list=day_states_incidence
-
-          - sid: incidence_rate
-            name: Estados de maior taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.top_ten_locations_table?incidence_list=day_states_incidence&population_list=year_states_population
-
-          - sid: deaths
-            name: Estados de maior número de óbitos
-            indicator: deaths
-            component: Deaths.top_ten_locations_table?deaths_list=day_states_deaths
-
-          - sid: death_rate
-            name: Estados de maior taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.top_ten_locations_table?deaths_list=day_states_deaths&population_list=year_states_population
-
-          - sid: fatality_rate
-            name: Estados de maior taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.top_ten_locations_table?deaths_list=day_states_deaths&incidence_list=day_states_incidence
-
-      - sid: highlighted_cities
-        name: Municípios em destaque
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
-        cards:
-          - sid: incidence
-            name: Municípios de maior incidência
-            indicator: incidence
-            component: Incidence.top_ten_locations_table?incidence_list=day_cities_incidence
-
-          - sid: incidence_rate
-            name: Municípios de maior taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.top_ten_locations_table?incidence_list=day_cities_incidence&population_list=year_cities_population
-
-          - sid: deaths
-            name: Municípios de maior número de óbitos
-            indicator: deaths
-            component: Deaths.top_ten_locations_table?deaths_list=day_cities_deaths
-
-          - sid: death_rate
-            name: Municípios de maior taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.top_ten_locations_table?deaths_list=day_cities_deaths&population_list=year_cities_population
-
-          - sid: fatality_rate
-            name: Municípios de maior taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.top_ten_locations_table?deaths_list=day_cities_deaths&incidence_list=day_cities_incidence
-
-      - sid: highlighted_high_population_cities
-        name: Municípios em destaque de população maior que 500 mil habitantes
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
-        cards:
-          - sid: incidence
-            name: Municípios de maior incidência
-            indicator: incidence
-            component: Incidence.top_ten_locations_table?incidence_list=day_high_population_cities_incidence
-
-          - sid: incidence_rate
-            name: Municípios de maior taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.top_ten_locations_table?incidence_list=day_high_population_cities_incidence&population_list=year_high_population_cities_population
-
-          - sid: deaths
-            name: Municípios de maior número de óbitos
-            indicator: deaths
-            component: Deaths.top_ten_locations_table?deaths_list=day_high_population_cities_deaths
-
-          - sid: death_rate
-            name: Municípios de maior taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.top_ten_locations_table?deaths_list=day_high_population_cities_deaths&population_list=year_high_population_cities_population
-
-          - sid: fatality_rate
-            name: Municípios de maior taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.top_ten_locations_table?deaths_list=day_high_population_cities_deaths&incidence_list=day_high_population_cities_incidence
-
-  - sid: aggregated_report
-    name: Resumo acumulado
-    sources:
-      - datasus_population
-      - health_board_situation_report
-    filters:
-      - filter_sid: period
-        options_params: from_date=2020-02-25&to_date_alias=yesterday
-
-      - location
+  - sid: report
+    name: Sumário
+    filter:
+      filter_sid: period
+      options_params: from_date=2020-02-25&to_date_alias=yesterday&default_type=daily&default_from_alias=yesterday&default_to_alias=yesterday
     data:
       - period: Filters.get?what=period
 
       - location: Filters.get?what=location
       - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
 
-      - year_population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
-
-      - period_deaths: Database.Consolidations.Period.get?group=morbidities_covid_reports_deaths&sum_by=time
-      - period_incidence: Database.Consolidations.Period.get?group=morbidities_covid_reports_cases&sum_by=time
-
-      - regions_ids: Database.Geo.Locations.list?group=regions&related_location=location&get=id
-
-      - period_regions_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=regions_ids&sum_by=time&preload=location
-      - period_regions_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=regions_ids&sum_by=time&preload=location
-
-      - year_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=regions_ids
-
-      - delete: Utils.delete?what=regions_ids
-
-      - states_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
-
-      - period_states_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=states_ids&sum_by=time&preload=location
-      - period_states_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=states_ids&sum_by=time&preload=location
-
-      - year_states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
-
-      - delete: Utils.delete?what=states_ids
-
-      - health_regions_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
-
-      - period_health_regions_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=health_regions_ids&sum_by=time&preload=location_and_state
-      - period_health_regions_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=health_regions_ids&sum_by=time&preload=location_and_state
-
-      - year_health_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=health_regions_ids
-
-      - delete: Utils.delete?what=health_regions_ids
-
-      - cities_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
-
-      - delete: Utils.delete?what=location
-
-      - period_cities_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=cities_ids&sum_by=time
-      - period_cities_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=cities_ids&sum_by=time.
-
-      - delete: Utils.delete?what=period
-
-      - year_cities_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=cities_ids
-
-      - delete: Utils.delete?what=cities_ids
-
-      - high_population_cities_ids: Composite.filter?from=year_cities_population&where=total__gt__500000&get=location_id
-
-      - period_high_population_cities_deaths: Composite.filter?from=period_cities_deaths&where=location_id__in__high_population_cities_ids
-      - period_high_population_cities_incidence: Composite.filter?from=period_cities_incidence&where=location_id__in__high_population_cities_ids
-      - year_high_population_cities_population: Composite.filter?from=year_cities_population&where=location_id__in__high_population_cities_ids
-
-      - delete: Utils.delete?what=high_population_cities_ids
+      - incidence: Database.Consolidations.Period.get?group=morbidities_covid_reports_cases
+      - population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
     sections:
-      - sid: summary
-        name: Sumário
-        component_params: responsive_cols=3
+      - sid: incidence
+        name: Incidência
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=incidence,population
         cards:
           - sid: incidence
             name: Incidência
             indicator: incidence
-            component: Incidence.scalar?incidence=period_incidence
+            component: Incidence.scalar
+            data:
+              u: Utils.take?what=incidence
 
           - sid: incidence_rate
             name: Taxa de incidência
             indicator: incidence_rate
-            component: IncidenceRate.scalar?incidence=period_incidence&population=year_population
+            component: IncidenceRate.scalar
 
+      - sid: deaths
+        name: Óbitos
+        component_params: responsive_cols=3
+        data:
+          - deaths: Database.Consolidations.Period.get?group=morbidities_covid_reports_deaths
+          - u: Utils.take?what=deaths,incidence,population
+        cards:
           - sid: deaths
             name: Óbitos
             indicator: deaths
-            component: Deaths.scalar?deaths=period_deaths
+            component: Deaths.scalar
+            data:
+              u: Utils.take?what=deaths
 
           - sid: death_rate
             name: Taxa de mortalidade
             indicator: death_rate
-            component: DeathRate.scalar?deaths=period_deaths&population=year_population
+            component: DeathRate.scalar
+            data:
+              u: Utils.delete?what=incidence
 
           - sid: fatality_rate
             name: Taxa de letalidade
             indicator: fatality_rate
-            component: FatalityRate.scalar?deaths=period_deaths&incidence=period_incidence
+            component: FatalityRate.scalar
+            data:
+              u: Utils.delete?what=population
 
-      - sid: maps
-        name: Mapas
-        cards:
-          - sid: incidence_rate
-            name: Taxas de incidência
-            indicator: incidence_rate
-            component: "IncidenceRate.choropleth_maps?\
-              regions_incidence=period_regions_incidence&\
-              regions_population=year_regions_population&\
-              states_incidence=period_states_incidence&\
-              states_population=year_states_population&\
-              health_regions_incidence=period_health_regions_incidence&\
-              health_regions_population=year_health_regions_population&\
-              cities_incidence=period_cities_incidence&\
-              cities_population=year_cities_population"
-
-          - sid: death_rate
-            name: Taxas de mortalidade
-            indicator: death_rate
-            component: "DeathRate.choropleth_maps?\
-              regions_deaths=period_regions_deaths&\
-              regions_population=year_regions_population&\
-              states_deaths=period_states_deaths&\
-              states_population=year_states_population&\
-              health_regions_deaths=period_health_regions_deaths&\
-              health_regions_population=year_health_regions_population&\
-              cities_deaths=period_cities_deaths&\
-              cities_population=year_cities_population"
-
-      - sid: highlighted_states
-        name: Estados em destaque
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=regions
-        cards:
-          - sid: incidence
-            name: Estados de maior incidência
-            indicator: incidence
-            component: Incidence.top_ten_locations_table?incidence_list=period_states_incidence
-
-          - sid: incidence_rate
-            name: Estados de maior taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.top_ten_locations_table?incidence_list=period_states_incidence&population_list=year_states_population
-
-          - sid: deaths
-            name: Estados de maior número de óbitos
-            indicator: deaths
-            component: Deaths.top_ten_locations_table?deaths_list=period_states_deaths
-
-          - sid: death_rate
-            name: Estados de maior taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.top_ten_locations_table?deaths_list=period_states_deaths&population_list=year_states_population
-
-          - sid: fatality_rate
-            name: Estados de maior taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.top_ten_locations_table?deaths_list=period_states_deaths&incidence_list=period_states_incidence
-
-      - sid: highlighted_cities
-        name: Municípios em destaque
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
-        cards:
-          - sid: incidence
-            name: Municípios de maior incidência
-            indicator: incidence
-            component: Incidence.top_ten_locations_table?incidence_list=period_cities_incidence
-
-          - sid: incidence_rate
-            name: Municípios de maior taxa de incidência
-            indicator: incidence_rate
-            component: IncidenceRate.top_ten_locations_table?incidence_list=period_cities_incidence&population_list=year_cities_population
-
-          - sid: deaths
-            name: Municípios de maior número de óbitos
-            indicator: deaths
-            component: Deaths.top_ten_locations_table?deaths_list=period_cities_deaths
-
-          - sid: death_rate
-            name: Municípios de maior taxa de mortalidade
-            indicator: death_rate
-            component: DeathRate.top_ten_locations_table?deaths_list=period_cities_deaths&population_list=year_cities_population
-
-          - sid: fatality_rate
-            name: Municípios de maior taxa de letalidade
-            indicator: fatality_rate
-            component: FatalityRate.top_ten_locations_table?deaths_list=period_cities_deaths&incidence_list=period_cities_incidence
+      - sid: demographic
+        name: Demografia
+        data:
+          u: Utils.take?what=population
+        card:
+          sid: population
+          name: População residente
+          indicator: population
+          component: Population.scalar
 
   - sid: epicurves
     name: Epicurvas
-    source: health_board_situation_report
-    filter: location
+    filter:
+      filter_sid: period
+      options_params: from_date=2020-02-25&to_date_alias=yesterday
     data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+      - from_year: Composite.from?what=from_date&get=year
+      - to_year: Composite.from?what=to_date&get=year
+      - from_month: Composite.from?what=from_date&get=month
+      - to_month: Composite.from?what=to_date&get=month
+      - from_yearweek: Filters.Time.date_yearweek?date=from_date
+      - from_week_year: Composite.from?what=from_yearweek&get=year
+      - from_week: Composite.from?what=from_yearweek&get=week
+      - u: Utils.delete?what=from_year_week
+      - to_yearweek: Filters.Time.date_yearweek?date=to_date
+      - to_week_year: Composite.from?what=to_yearweek&get=year
+      - to_week: Composite.from?what=to_yearweek&get=week
+      - u: Utils.delete?what=to_year_week
+
       - location: Filters.get?what=location
       - location_id: Composite.from?what=location&get=id
-
-      - delete: Utils.delete?what=location
-
-      - daily_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths
-      - daily_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases
-
-      - weekly_deaths: Database.Consolidations.Weekly.list?group=morbidities_covid_reports_deaths
-      - weekly_incidence: Database.Consolidations.Weekly.list?group=morbidities_covid_reports_cases
-
-      - monthly_deaths: Database.Consolidations.Monthly.list?group=morbidities_covid_reports_deaths
-      - monthly_incidence: Database.Consolidations.Monthly.list?group=morbidities_covid_reports_cases
-
-      - delete: Utils.delete?what=location_id
+      - u: Utils.delete?what=location
     sections:
       - sid: incidence
         name: Incidência
@@ -385,14 +115,26 @@ groups:
           - sid: epicurve
             name: Epicurva de incidência
             component: Incidence.daily_epicurve?responsive_cols=2&cols_span=2
+            data:
+              - u: Utils.take?what=from_date,to_date,location_id
+              - daily_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases
+              - u: Utils.take?what=daily_incidence
 
           - sid: weekly
             name: Incidência por semana
             component: Incidence.weekly_chart
+            data:
+              - u: Utils.take?what=from_week_year,to_week_year,from_week,to_week,location_id
+              - weekly_incidence: Database.Consolidations.Weekly.list?group=morbidities_covid_reports_cases&from_year=from_week_year&to_year=to_week_year
+              - u: Utils.take?what=weekly_incidence
 
           - sid: monthly
             name: Incidência por mês
             component: Incidence.monthly_chart
+            data:
+              - u: Utils.take?what=from_year,to_year,from_month,to_month,location_id
+              - monthly_incidence: Database.Consolidations.Monthly.list?group=morbidities_covid_reports_cases
+              - u: Utils.take?what=monthly_incidence
 
       - sid: deaths
         name: Óbitos
@@ -402,83 +144,229 @@ groups:
           - sid: epicurve
             name: Epicurva de óbitos
             component: Deaths.daily_epicurve?responsive_cols=2&cols_span=2
+            data:
+              - u: Utils.take?what=from_date,to_date,location_id
+              - daily_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths
+              - u: Utils.take?what=daily_deaths
 
           - sid: weekly
             name: Óbitos por semana
             component: Deaths.weekly_chart
+            data:
+              - u: Utils.take?what=from_week_year,to_week_year,from_week,to_week,location_id
+              - weekly_deaths: Database.Consolidations.Weekly.list?group=morbidities_covid_reports_deaths&from_year=from_week_year&to_year=to_week_year
+              - u: Utils.take?what=weekly_deaths
 
           - sid: monthly
             name: Óbitos por mês
             component: Deaths.monthly_chart
+            data:
+              - u: Utils.take?what=from_year,to_year,from_month,to_month,location_id
+              - monthly_deaths: Database.Consolidations.Monthly.list?group=morbidities_covid_reports_deaths
+              - u: Utils.take?what=monthly_deaths
 
-  # - name: Tabela resumo
-  #   indicators:
-  #     - incidence
-  #     - incidence_rate
-  #     - deaths
-  #     - death_rate
-  #     - fatality_rate
-  #   sources:
-  #     - health_board_situation_report
-  #     - health_board_hospitalization
-  #     - datasus_population
-  #   filter:
-  #     filter_sid: date
-  #     default: alias=yesterday
-  #     disabled: true
-  #   data:
-  #     - date: Filters.get?what=date
+  - sid: maps
+    name: Mapas
+    filter:
+      filter_sid: period
+      options_params: from_date=2020-02-25&to_date_alias=yesterday
+    data:
+      - period: Filters.get?what=period
+      - location: Filters.get?what=location
 
-  #     - day_country_deaths: Database.Consolidations.Daily.get?group=morbidities_covid_reports_deaths&date=date&location_id=76
-  #     - day_country_incidence: Database.Consolidations.Daily.get?group=morbidities_covid_reports_cases&date=date&location_id=76
+      - regions_ids: Database.Geo.Locations.list?group=regions&related_location=location&get=id
+      - regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=regions_ids
 
-  #     - year_country_population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020&location_id=76
+      - states_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+      - states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
 
-  #     - regions_ids: Database.Geo.Locations.list?group=regions&get=id
+      - health_regions_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
+      - health_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=health_regions_ids
 
-  #     - day_regions_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths&date=date&locations_ids=regions_ids
-  #     - day_regions_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases&date=date&locations_ids=regions_ids
+      - cities_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+      - u: Utils.delete?what=location
+      - cities_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=cities_ids
+    sections:
+      - sid: incidence_rate
+        name: Taxas de incidência
+        card:
+          sid: incidence_rate
+          name: Taxa de incidência
+          indicator: incidence_rate
+          component: IncidenceRate.choropleth_maps
+          data:
+            - regions_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=regions_ids
+            - states_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=states_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=states_ids
+            - health_regions_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=health_regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=health_regions_ids
+            - cities_incidence: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&locations_ids=cities_ids&sum_by=location&preload=location
+            - u: Utils.drop?what=period,cities_ids
 
-  #     - year_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=regions_ids
+      - sid: death_rate
+        name: Taxas de mortalidade
+        card:
+          sid: death_rate
+          name: Taxa de mortalidade
+          indicator: death_rate
+          component: DeathRate.choropleth_maps
+          data:
+            - regions_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=regions_ids
+            - states_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=states_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=states_ids
+            - health_regions_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=health_regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=health_regions_ids
+            - cities_deaths: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&locations_ids=cities_ids&sum_by=location&preload=location
+            - u: Utils.drop?what=period,cities_ids
 
-  #     - states_ids: Database.Geo.Locations.list?group=states&get=id
+  - sid: highlights
+    name: Destaques
+    filter:
+      filter_sid: period
+      options_params: from_date=2020-02-25&to_date_alias=yesterday&default_type=daily&default_from_alias=yesterday&default_to_alias=yesterday
+    data:
+      - period: Filters.get?what=period
+      - location: Filters.get?what=location
 
-  #     - day_states_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths&date=date&locations_ids=states_ids
-  #     - day_states_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases&date=date&locations_ids=states_ids
+      - locations_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+      - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&sum_by=location&preload=location
+      - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&sum_by=location&preload=location
+      - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+      - u: Utils.delete?what=locations_ids
+    sections:
+      - sid: states
+        name: Estados em destaque
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=regions
+        data:
+          - u: Utils.drop?what=deaths_per_location,incidence_per_location,locations_ids,population_per_location
+          - locations_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&sum_by=location&preload=location
+          - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&sum_by=location&preload=location
+          - u: Utils.delete?what=period
+          - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+          - u: Utils.delete?what=locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.drop?what=deaths_per_location,population_per_location
 
-  #     - year_states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=deaths_per_location
 
-  #     - country_deaths: Database.Consolidations.get?group=morbidities_covid_reports_deaths&location_id=76
-  #     - country_incidence: Database.Consolidations.get?group=morbidities_covid_reports_cases&location_id=76
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.drop?what=incidence_per_location,population_per_location
 
-  #     - regions_ids: Database.Geo.Locations.list?group=regions&get=id
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=incidence_per_location
 
-  #     - regions_deaths: Database.Consolidations.list?group=morbidities_covid_reports_deaths&locations_ids=regions_ids
-  #     - regions_incidence: Database.Consolidations.list?group=morbidities_covid_reports_cases&date=date&locations_ids=regions_ids
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=population_per_location
 
-  #     - states_ids: Database.Geo.Locations.list?group=states&get=id
+      - sid: cities
+        name: Municípios em destaque
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+        data:
+          u: Utils.drop?what=location,period
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.drop?what=deaths_per_location,population_per_location
 
-  #     - states_deaths: Database.Consolidations.list?group=morbidities_covid_reports_deaths&locations_ids=states_ids
-  #     - states_incidence: Database.Consolidations.list?group=morbidities_covid_reports_cases&locations_ids=states_ids
-  #   section:
-  #     name: Tabela resumo
-  #     card:
-  #       name: Tabela resumo
-  #       component: SituationReport.situation_table
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=deaths_per_location
 
-  # - name: Capacidade hospitalar
-  #   indicator: icu_rate
-  #   source: health_board_hospitalization
-  #   filter:
-  #     filter_sid: date_period
-  #     default: alias=last_fortnight
-  #     options_params: from_date=2020-02-25&to_date_alias=yesterday
-  #   data:
-  #     - date_period: Filters.get?what=date_period
-  #     - states_ids: Database.Geo.Locations.list?group=states&get=id
-  #     - daily_states_icu_rates: Database.Consolidations.Daily.list?group=hospitals_capacities_icu_occupations_rates&date_period=date_period&locations_ids=states_ids
-  #   section:
-  #     name: Ocupação hospitalar
-  #     card:
-  #       name: Ocupação hospitalar no período
-  #       component: SituationReport.icu_rate_table
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.drop?what=incidence_per_location,population_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=incidence_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=population_per_location
+
+      - sid: high_population_cities
+        name: Municípios em destaque de população maior que 500 mil habitantes
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+        data:
+          - u: Utils.drop?what=location,period
+          - locations_ids: Composite.filter?from=population_per_location&where=total__gt__500000&get=location_id
+          - deaths_per_location: Composite.filter?from=deaths_per_location&where=location_id__in__locations_ids
+          - incidence_per_location: Composite.filter?from=incidence_per_location&where=location_id__in__locations_ids
+          - population_per_location: Composite.filter?from=population_per_location&where=location_id__in__locations_ids
+          - u: Utils.delete?what=locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.drop?what=deaths_per_location,population_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=deaths_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.drop?what=incidence_per_location,population_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=incidence_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=population_per_location

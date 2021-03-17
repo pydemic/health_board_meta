@@ -1,0 +1,644 @@
+kind: dashboard
+sid: sars
+name: Síndrome Respiratória Aguda Grave (SRAG/COVID)
+sources:
+  - sivep_srag
+  - datasus_geo
+  - datasus_population
+filters:
+  - filter_sid: period
+    options_params: from_date=2020-02-25&to_date_alias=yesterday
+
+  - location
+groups:
+  - sid: report
+    name: Sumário
+    data:
+      - period: Filters.get?what=period
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+
+      - hospitalizations: Database.Consolidations.Period.get?group=morbidities_sars_residence_hospitalizations
+      - incidence: Database.Consolidations.Period.get?group=morbidities_sars_residence_confirmed_cases
+      - population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
+    sections:
+      - sid: incidence
+        name: Incidência (SRAG/COVID)
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=incidence,population
+        cards:
+          - sid: incidence
+            name: Incidência
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              u: Utils.delete?what=population
+
+          - sid: incidence_rate
+            name: Taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.scalar
+
+      - sid: deaths
+        name: Óbitos (SRAG/COVID)
+        component_params: responsive_cols=2
+        data:
+          - deaths: Database.Consolidations.Period.get?group=morbidities_sars_residence_deaths
+          - u: Utils.drop?what=location_id,period
+        cards:
+          - sid: deaths
+            name: Óbitos
+            indicator: deaths
+            component: Deaths.scalar
+            data:
+              u: Utils.take?what=deaths
+
+          - sid: death_rate
+            name: Taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.scalar
+            data:
+              u: Utils.take?what=deaths,population
+
+          - sid: fatality_rate
+            name: Taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.scalar
+            data:
+              u: Utils.take?what=deaths,incidence
+
+          - sid: hospitalization_fatality_rate
+            name: Taxa de letalidade hospitalar
+            indicator: hospitalization_fatality_rate
+            component: HospitalizationFatalityRate.scalar
+            data:
+              u: Utils.take?what=deaths,hospitalizations
+
+      - sid: hospitalizations
+        name: Internações (SRAG/COVID)
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=hospitalizations,population
+        cards:
+          - sid: hospitalizations
+            name: Internações
+            indicator: hospitalizations
+            component: Hospitalizations.scalar
+            data:
+              u: Utils.take?what=hospitalizations
+
+          - sid: hospitalization_rate
+            name: Taxa de internação
+            indicator: hospitalization_rate
+            component: HospitalizationRate.scalar
+
+      - sid: samples
+        name: Testes (SRAG/COVID)
+        component_params: responsive_cols=2
+        data:
+          - u: Utils.drop?what=hospitalizations,population
+          - samples: Database.Consolidations.Period.get?group=morbidities_sars_residence_samples
+          - u: Utils.drop?what=location_id,period
+        cards:
+          - sid: samples
+            name: Testes
+            indicator: samples
+            component: Samples.scalar
+            data:
+              u: Utils.take?what=samples
+
+          - sid: positivity_rate
+            name: Taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.scalar
+            data:
+              positive_samples: Composite.replace?what=incidence
+
+      - sid: demographic
+        name: Demografia
+        data:
+          u: Utils.take?what=population
+        card:
+          sid: population
+          name: População residente
+          indicator: population
+          component: Population.scalar
+
+  - sid: epicurves
+    name: Epicurvas
+    data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+      - from_year: Composite.from?what=from_date&get=year
+      - to_year: Composite.from?what=to_date&get=year
+      - from_month: Composite.from?what=from_date&get=month
+      - to_month: Composite.from?what=to_date&get=month
+      - from_yearweek: Filters.Time.date_yearweek?date=from_date
+      - from_week_year: Composite.from?what=from_yearweek&get=year
+      - from_week: Composite.from?what=from_yearweek&get=week
+      - u: Utils.delete?what=from_year_week
+      - to_yearweek: Filters.Time.date_yearweek?date=to_date
+      - to_week_year: Composite.from?what=to_yearweek&get=year
+      - to_week: Composite.from?what=to_yearweek&get=week
+      - u: Utils.delete?what=to_year_week
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+    sections:
+      - sid: incidence
+        name: Incidência (SRAG/COVID)
+        indicator: incidence
+        component_params: responsive_cols=2
+        cards:
+          - sid: epicurve
+            name: Epicurva de incidência
+            component: Incidence.daily_epicurve?responsive_cols=2&cols_span=2
+            data:
+              - u: Utils.take?what=from_date,to_date,location_id
+              - daily_incidence: Database.Consolidations.Daily.list?group=morbidities_sars_residence_confirmed_cases
+              - u: Utils.take?what=daily_incidence
+
+          - sid: weekly
+            name: Incidência por semana
+            component: Incidence.weekly_chart
+            data:
+              - u: Utils.take?what=from_week_year,to_week_year,from_week,to_week,location_id
+              - weekly_incidence: Database.Consolidations.Weekly.list?group=morbidities_sars_residence_confirmed_cases&from_year=from_week_year&to_year=to_week_year
+              - u: Utils.take?what=weekly_incidence
+
+          - sid: monthly
+            name: Incidência por mês
+            component: Incidence.monthly_chart
+            data:
+              - u: Utils.take?what=from_year,to_year,from_month,to_month,location_id
+              - monthly_incidence: Database.Consolidations.Monthly.list?group=morbidities_sars_residence_confirmed_cases
+              - u: Utils.take?what=monthly_incidence
+
+      - sid: deaths
+        name: Óbitos (SRAG/COVID)
+        indicator: deaths
+        component_params: responsive_cols=2
+        cards:
+          - sid: epicurve
+            name: Epicurva de óbitos
+            component: Deaths.daily_epicurve?responsive_cols=2&cols_span=2
+            data:
+              - u: Utils.take?what=from_date,to_date,location_id
+              - daily_deaths: Database.Consolidations.Daily.list?group=morbidities_sars_residence_deaths
+              - u: Utils.take?what=daily_deaths
+
+          - sid: weekly
+            name: Óbitos por semana
+            component: Deaths.weekly_chart
+            data:
+              - u: Utils.take?what=from_week_year,to_week_year,from_week,to_week,location_id
+              - weekly_deaths: Database.Consolidations.Weekly.list?group=morbidities_sars_residence_deaths&from_year=from_week_year&to_year=to_week_year
+              - u: Utils.take?what=weekly_deaths
+
+          - sid: monthly
+            name: Óbitos por mês
+            component: Deaths.monthly_chart
+            data:
+              - u: Utils.take?what=from_year,to_year,from_month,to_month,location_id
+              - monthly_deaths: Database.Consolidations.Monthly.list?group=morbidities_sars_residence_deaths
+              - u: Utils.take?what=monthly_deaths
+
+      - sid: hospitalizations
+        name: Internações (SRAG/COVID)
+        card:
+          sid: epicurve
+          name: Epicurva de internações
+          indicator: hospitalizations
+          component: Hospitalizations.daily_epicurve
+          data:
+            - u: Utils.take?what=from_date,to_date,location_id
+            - daily_hospitalizations: Database.Consolidations.Daily.list?group=morbidities_sars_residence_hospitalizations
+            - u: Utils.take?what=daily_hospitalizations
+
+      - sid: samples
+        name: Testes (SRAG/COVID)
+        card:
+          sid: epicurve
+          name: Epicurva de testes
+          indicator: samples
+          component: Samples.daily_epicurve
+          data:
+            - u: Utils.take?what=from_date,to_date,location_id
+            - daily_samples: Database.Consolidations.Daily.list?group=morbidities_sars_residence_samples
+            - u: Utils.take?what=daily_samples
+
+  - sid: maps
+    name: Mapas
+    data:
+      - period: Filters.get?what=period
+      - location: Filters.get?what=location
+
+      - regions_ids: Database.Geo.Locations.list?group=regions&related_location=location&get=id
+      - regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=regions_ids
+
+      - states_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+      - states_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=states_ids
+
+      - health_regions_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
+      - health_regions_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=health_regions_ids
+
+      - cities_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+      - u: Utils.delete?what=location
+      - cities_population: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020&locations_ids=cities_ids
+    sections:
+      - sid: incidence_rate
+        name: Taxas de incidência (SRAG/COVID)
+        card:
+          sid: incidence_rate
+          name: Taxa de incidência
+          indicator: incidence_rate
+          component: IncidenceRate.choropleth_maps
+          data:
+            - regions_incidence: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&locations_ids=regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=regions_ids
+            - states_incidence: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&locations_ids=states_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=states_ids
+            - health_regions_incidence: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&locations_ids=health_regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=health_regions_ids
+            - cities_incidence: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&locations_ids=cities_ids&sum_by=location&preload=location
+            - u: Utils.drop?what=period,cities_ids
+
+      - sid: death_rate
+        name: Taxas de mortalidade (SRAG/COVID)
+        card:
+          sid: death_rate
+          name: Taxa de mortalidade
+          indicator: death_rate
+          component: DeathRate.choropleth_maps
+          data:
+            - regions_deaths: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&locations_ids=regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=regions_ids
+            - states_deaths: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&locations_ids=states_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=states_ids
+            - health_regions_deaths: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&locations_ids=health_regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=health_regions_ids
+            - cities_deaths: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&locations_ids=cities_ids&sum_by=location&preload=location
+            - u: Utils.drop?what=period,cities_ids
+
+      - sid: hospitalization_rate
+        name: Taxas de internação (SRAG/COVID)
+        card:
+          sid: hospitalization_rate
+          name: Taxa de internação
+          indicator: hospitalization_rate
+          component: HospitalizationRate.choropleth_maps
+          data:
+            - regions_hospitalizations: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&locations_ids=regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=regions_ids
+            - states_hospitalizations: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&locations_ids=states_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=states_ids
+            - health_regions_hospitalizations: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&locations_ids=health_regions_ids&sum_by=location&preload=location
+            - u: Utils.delete?what=health_regions_ids
+            - cities_hospitalizations: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&locations_ids=cities_ids&sum_by=location&preload=location
+            - u: Utils.drop?what=period,cities_ids
+
+  - sid: charts
+    name: Gráficos
+    data:
+      - period: Filters.get?what=period
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+    sections:
+      - sid: incidence
+        name: Incidência (SRAG/COVID)
+        component_params: responsive_cols=2
+        indicator: incidence
+        cards:
+          - sid: per_age_gender
+            name: Por faixa etária
+            component: Incidence.per_age_gender
+            data:
+              - incidence_per_age_gender: Database.Consolidations.Period.get?group=morbidities_sars_residence_cases_per_age_gender&values=true
+              - u: Utils.take?what=incidence_per_age_gender
+
+          - sid: per_race
+            name: Por raça/cor
+            component: Incidence.per_race
+            data:
+              - incidence_per_race: Database.Consolidations.Period.get?group=morbidities_sars_residence_cases_per_race&values=true
+              - u: Utils.take?what=incidence_per_race
+
+      - sid: deaths
+        name: Óbitos (SRAG/COVID)
+        component_params: responsive_cols=2
+        indicator: deaths
+        cards:
+          - sid: per_age_gender
+            name: Por faixa etária
+            component: Deaths.per_age_gender
+            data:
+              - deaths_per_age_gender: Database.Consolidations.Period.get?group=morbidities_sars_residence_deaths_per_age_gender&values=true
+              - u: Utils.take?what=deaths_per_age_gender
+
+          - sid: per_race
+            name: Por raça/cor
+            component: Deaths.per_race
+            data:
+              - deaths_per_race: Database.Consolidations.Period.get?group=morbidities_sars_residence_deaths_per_race&values=true
+              - u: Utils.take?what=deaths_per_race
+
+      - sid: hospitalizations
+        name: Internações (SRAG/COVID)
+        component_params: responsive_cols=2
+        indicator: hospitalizations
+        cards:
+          - sid: per_age_gender
+            name: Por faixa etária
+            component: Hospitalizations.per_age_gender
+            data:
+              - hospitalizations_per_age_gender: Database.Consolidations.Period.get?group=morbidities_sars_residence_hospitalizations_per_age_gender&values=true
+              - u: Utils.take?what=hospitalizations_per_age_gender
+
+          - sid: per_race
+            name: Por raça/cor
+            component: Hospitalizations.per_race
+            data:
+              - hospitalizations_per_race: Database.Consolidations.Period.get?group=morbidities_sars_residence_hospitalizations_per_race&values=true
+              - u: Utils.take?what=hospitalizations_per_race
+
+          - sid: per_symptom
+            name: Por sintoma
+            component: Hospitalizations.per_symptom
+            data:
+              - hospitalizations_per_symptom: Database.Consolidations.Period.get?group=morbidities_sars_residence_hospitalizations_per_symptom&values=true
+              - u: Utils.take?what=hospitalizations_per_symptom
+
+          - sid: per_comorbidity
+            name: Por comorbidade
+            component: Hospitalizations.per_comorbidity
+            data:
+              - hospitalizations_per_comorbidity: Database.Consolidations.Period.get?group=morbidities_sars_residence_hospitalizations_per_comorbidity&values=true
+              - u: Utils.take?what=hospitalizations_per_comorbidity
+
+  - sid: highlights
+    name: Destaques
+    data:
+      - period: Filters.get?what=period
+      - location: Filters.get?what=location
+
+      - locations_ids: Database.Geo.Locations.list?group=cities&related_location=location&get=id
+      - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&sum_by=location&preload=location
+      - hospitalizations_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&sum_by=location&preload=location
+      - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&sum_by=location&preload=location
+      - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+      - samples_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_samples&sum_by=location&preload=location
+      - u: Utils.delete?what=locations_ids
+    sections:
+      - sid: states
+        name: Estados em destaque (SRAG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=regions
+        data:
+          - u: Utils.drop?what=deaths_per_location,hospitalizations_per_location,incidence_per_location,locations_ids,population_per_location,samples_per_location
+          - locations_ids: Database.Geo.Locations.list?group=states&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&sum_by=location&preload=location
+          - hospitalizations_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&sum_by=location&preload=location
+          - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&sum_by=location&preload=location
+          - samples_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_samples&sum_by=location&preload=location
+          - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+          - u: Utils.drop?what=locations_ids,period
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location,population_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table
+            data:
+              u: Utils.take?what=samples_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table
+            data:
+              - u: Utils.take?what=incidence_per_location,samples_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: hospitalizations
+            name: Maior quantidade de internações
+            indicator: hospitalizations
+            component: Hospitalizations.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location
+
+          - sid: hospitalization_rate
+            name: Maior taxa de internação
+            indicator: hospitalization_rate
+            component: HospitalizationRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location,population_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,population_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,incidence_per_location
+
+          - sid: hospitalization_fatality_rate
+            name: Maior taxa de letalidade hospitalar
+            indicator: hospitalization_fatality_rate
+            component: HospitalizationFatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,hospitalizations_per_location
+
+      - sid: cities
+        name: Municípios em destaque (SRAG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location,population_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table
+            data:
+              u: Utils.take?what=samples_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table
+            data:
+              - u: Utils.take?what=incidence_per_location,samples_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: hospitalizations
+            name: Maior quantidade de internações
+            indicator: hospitalizations
+            component: Hospitalizations.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location
+
+          - sid: hospitalization_rate
+            name: Maior taxa de internação
+            indicator: hospitalization_rate
+            component: HospitalizationRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location,population_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,population_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,incidence_per_location
+
+          - sid: hospitalization_fatality_rate
+            name: Maior taxa de letalidade hospitalar
+            indicator: hospitalization_fatality_rate
+            component: HospitalizationFatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,hospitalizations_per_location
+
+      - sid: high_population_cities
+        name: Municípios em destaque de população maior que 500 mil habitantes (SRAG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+        data:
+          - u: Utils.drop?what=location,period
+          - locations_ids: Composite.filter?from=cities_population&where=total__gt__500000&get=location_id
+          - deaths_per_location: Composite.filter?from=cities_deaths&where=location_id__in__locations_ids
+          - hospitalizations_per_location: Composite.filter?from=cities_hospitalizations&where=location_id__in__locations_ids
+          - incidence_per_location: Composite.filter?from=cities_incidence&where=location_id__in__locations_ids
+          - samples_per_location: Composite.filter?from=cities_samples&where=location_id__in__locations_ids
+          - population_per_location: Composite.filter?from=cities_population&where=location_id__in__locations_ids
+          - u: Utils.delete?what=locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location,population_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table
+            data:
+              u: Utils.take?what=samples_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table
+            data:
+              - u: Utils.take?what=incidence_per_location,samples_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: hospitalizations
+            name: Maior quantidade de internações
+            indicator: hospitalizations
+            component: Hospitalizations.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location
+
+          - sid: hospitalization_rate
+            name: Maior taxa de internação
+            indicator: hospitalization_rate
+            component: HospitalizationRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location,population_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,population_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,incidence_per_location
+
+          - sid: hospitalization_fatality_rate
+            name: Maior taxa de letalidade hospitalar
+            indicator: hospitalization_fatality_rate
+            component: HospitalizationFatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,hospitalizations_per_location

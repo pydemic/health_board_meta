@@ -34,8 +34,40 @@ indicators:
     formula: óbitos / incidência * 100
     measurement_unit: '%'
 
-  - sid: icu_rate
+  - sid: hospitalizations
+    name: Internações
+    description: Total de internações por doença/agravo em determinado espaço geográfico, no período considerado
+    formula: somatório de registros de internação
+
+  - sid: hospitalization_rate
+    name: Taxa de internação
+    description: Taxa de internação de doença/agravo em determinado espaço geográfico, no período considerado
+    formula: internações / população * 100.000
+    measurement_unit: /100 mil habitantes
+
+  - sid: hospitalization_fatality_rate
+    name: Taxa de letalidade hospitalar
+    description: Taxa de letalidade em internações relacionada a uma doença/agravo em determinado espaço geográfico, no período considerado
+    formula: óbitos / internações * 100
+    measurement_unit: '%'
+
+  - sid: icu_occupation_rate
     name: Taxa de ocupação de leitos de UTI
     description: Taxa de ocupação hospitalar de leito de UTI em determinado espaço geográfico, no período considerado
-    formula: leitos ocupados / leitos * 100
+    formula: leitos UTI ocupados / leitos UTI * 100
     measurement_unit: '%'
+
+  - sid: samples
+    name: Testes
+    description: Total de testes realizados por doença/agravo em determinado espaço geográfico, no período considerado
+    formula: somatório de registros de teste
+
+  - sid: positivity_rate
+    name: Taxa de positividade
+    description: Taxa de positividade de doença/agravo em determinado espaço geográfico, no período considerado
+    formula: testes positivos / testes * 100
+
+  - sid: test_capacity
+    name: Capacidade de testagem
+    description: Capacidade de testagem de doença/agravo em determinado espaço geográfico, no período considerado
+    formula: testes positivos / incidência * 100

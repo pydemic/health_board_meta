@@ -7,59 +7,29 @@ groups:
       - per_age
 
   - morbidities:
-    - flu_syndrome:
-      - residence_confirmed_cases
-      - residence_discarded_cases
-      - residence_health_professionals_cases
-      - residence_cases_per_age_gender
+    - flu_syndrome_residence:
+      - confirmed_cases
+      - discarded_cases
+      - health_professionals_cases
+      - cases_per_age_gender
 
-      - residence_deaths
-      - residence_health_professionals_deaths
-      - residence_deaths_per_age_gender
+    - sars_residence:
+      - confirmed_cases
+      - discarded_cases
+      - cases_per_age_gender
+      - cases_per_race
 
-      - notification_confirmed_cases
-      - notification_discarded_cases
-      - notification_health_professionals_cases
-      - notification_cases_per_age_gender
+      - deaths
+      - deaths_per_age_gender
+      - deaths_per_race
 
-    - sars:
-      - residence_confirmed_cases
-      - residence_discarded_cases
-      - residence_cases_per_age_gender
-      - residence_cases_per_race
+      - samples
 
-      - residence_deaths
-      - residence_deaths_per_age_gender
-      - residence_deaths_per_race
-
-      - residence_samples
-
-      - residence_hospitalizations
-      - residence_hospitalizations_per_age_gender
-      - residence_hospitalizations_per_race
-
-      - residence_hospitalizations_deaths
-      - residence_hospitalizations_deaths_per_age_gender
-      - residence_hospitalizations_deaths_per_race
-
-      - notification_confirmed_cases
-      - notification_discarded_cases
-      - notification_cases_per_age_gender
-      - notification_cases_per_race
-
-      - notification_deaths
-      - notification_deaths_per_age_gender
-      - notification_deaths_per_race
-
-      - notification_samples
-
-      - notification_hospitalizations
-      - notification_hospitalizations_per_age_gender
-      - notification_hospitalizations_per_race
-
-      - notification_hospitalizations_deaths
-      - notification_hospitalizations_deaths_per_age_gender
-      - notification_hospitalizations_deaths_per_race
+      - hospitalizations
+      - hospitalizations_per_age_gender
+      - hospitalizations_per_race
+      - hospitalizations_per_symptom
+      - hospitalizations_per_comorbidity
 
     - covid_reports:
       - cases
@@ -499,3 +469,22 @@ groups:
   - hospitals_capacities:
     - icu_occupations:
       - rates
+
+  - environment:
+    - air_quality:
+      - total
+      - particulatte_matter (nível de precisão pendente)
+      - humidity
+
+    - temperature:
+      - maximum
+      - minimum
+      - average
+
+    - precipitation:
+      - total
+      - average
+
+    - wind:
+      - direction
+      - speed
