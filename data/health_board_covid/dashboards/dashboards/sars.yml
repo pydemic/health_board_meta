@@ -484,9 +484,19 @@ groups:
             data:
               u: Utils.take?what=deaths_per_location,hospitalizations_per_location
 
-      - sid: cities
-        name: Municípios em destaque (SRAG/COVID)
-        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
+      - sid: health_regions
+        name: Regionais de saúde em destaque (SRAG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=states
+        data:
+          - u: Utils.take?what=location,period
+          - locations_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_deaths&sum_by=location&preload=location
+          - hospitalizations_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_hospitalizations&sum_by=location&preload=location
+          - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_confirmed_cases&sum_by=location&preload=location
+          - samples_per_location: Database.Consolidations.Period.list?group=morbidities_sars_residence_samples&sum_by=location&preload=location
+          - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+          - u: Utils.drop?what=locations_ids,period
         cards:
           - sid: incidence
             name: Maior incidência
@@ -564,13 +574,88 @@ groups:
         component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
         data:
           - u: Utils.drop?what=location,period
-          - locations_ids: Composite.filter?from=cities_population&where=total__gt__500000&get=location_id
-          - deaths_per_location: Composite.filter?from=cities_deaths&where=location_id__in__locations_ids
-          - hospitalizations_per_location: Composite.filter?from=cities_hospitalizations&where=location_id__in__locations_ids
-          - incidence_per_location: Composite.filter?from=cities_incidence&where=location_id__in__locations_ids
-          - samples_per_location: Composite.filter?from=cities_samples&where=location_id__in__locations_ids
-          - population_per_location: Composite.filter?from=cities_population&where=location_id__in__locations_ids
+          - locations_ids: Composite.filter?from=population_per_location&where=total__gt__500000&get=location_id
+          - deaths_per_location: Composite.filter?from=deaths_per_location&where=location_id__in__locations_ids
+          - hospitalizations_per_location: Composite.filter?from=hospitalizations_per_location&where=location_id__in__locations_ids
+          - incidence_per_location: Composite.filter?from=incidence_per_location&where=location_id__in__locations_ids
+          - samples_per_location: Composite.filter?from=samples_per_location&where=location_id__in__locations_ids
+          - population_per_location: Composite.filter?from=population_per_location&where=location_id__in__locations_ids
           - u: Utils.delete?what=locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location,population_per_location
+
+          - sid: samples
+            name: Maior quantidade de testes
+            indicator: samples
+            component: Samples.top_ten_locations_table
+            data:
+              u: Utils.take?what=samples_per_location
+
+          - sid: positivity_rate
+            name: Maior taxa de positividade
+            indicator: positivity_rate
+            component: PositivityRate.top_ten_locations_table
+            data:
+              - u: Utils.take?what=incidence_per_location,samples_per_location
+              - positive_samples_per_location: Composite.replace?what=incidence_per_location
+
+          - sid: hospitalizations
+            name: Maior quantidade de internações
+            indicator: hospitalizations
+            component: Hospitalizations.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location
+
+          - sid: hospitalization_rate
+            name: Maior taxa de internação
+            indicator: hospitalization_rate
+            component: HospitalizationRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=hospitalizations_per_location,population_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,population_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,incidence_per_location
+
+          - sid: hospitalization_fatality_rate
+            name: Maior taxa de letalidade hospitalar
+            indicator: hospitalization_fatality_rate
+            component: HospitalizationFatalityRate.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location,hospitalizations_per_location
+
+      - sid: cities
+        name: Municípios em destaque (SRAG/COVID)
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
         cards:
           - sid: incidence
             name: Maior incidência

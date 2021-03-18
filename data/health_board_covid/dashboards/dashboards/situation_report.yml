@@ -284,11 +284,64 @@ groups:
             data:
               u: Utils.delete?what=population_per_location
 
-      - sid: cities
-        name: Municípios em destaque
+      - sid: health_regions
+        name: Regionais de saúde em destaque
+        component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=states
+        data:
+          - u: Utils.take?what=period,location
+          - locations_ids: Database.Geo.Locations.list?group=health_regions&related_location=location&get=id
+          - u: Utils.delete?what=location
+          - deaths_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_deaths&sum_by=location&preload=location
+          - incidence_per_location: Database.Consolidations.Period.list?group=morbidities_covid_reports_cases&sum_by=location&preload=location
+          - u: Utils.delete?what=period
+          - population_per_location: Database.Consolidations.Yearly.list?group=demographics_populations_total&year=2020
+          - u: Utils.delete?what=locations_ids
+        cards:
+          - sid: incidence
+            name: Maior incidência
+            indicator: incidence
+            component: Incidence.top_ten_locations_table
+            data:
+              u: Utils.take?what=incidence_per_location
+
+          - sid: incidence_rate
+            name: Maior taxa de incidência
+            indicator: incidence_rate
+            component: IncidenceRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=deaths_per_location
+
+          - sid: deaths
+            name: Maior quantidade de óbitos
+            indicator: deaths
+            component: Deaths.top_ten_locations_table
+            data:
+              u: Utils.take?what=deaths_per_location
+
+          - sid: death_rate
+            name: Maior taxa de mortalidade
+            indicator: death_rate
+            component: DeathRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=incidence_per_location
+
+          - sid: fatality_rate
+            name: Maior taxa de letalidade
+            indicator: fatality_rate
+            component: FatalityRate.top_ten_locations_table
+            data:
+              u: Utils.delete?what=population_per_location
+
+      - sid: high_population_cities
+        name: Municípios em destaque de população maior que 500 mil habitantes
         component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
         data:
-          u: Utils.drop?what=location,period
+          - u: Utils.drop?what=location,period
+          - locations_ids: Composite.filter?from=population_per_location&where=total__gt__500000&get=location_id
+          - deaths_per_location: Composite.filter?from=deaths_per_location&where=location_id__in__locations_ids
+          - incidence_per_location: Composite.filter?from=incidence_per_location&where=location_id__in__locations_ids
+          - population_per_location: Composite.filter?from=population_per_location&where=location_id__in__locations_ids
+          - u: Utils.delete?what=locations_ids
         cards:
           - sid: incidence
             name: Maior incidência
@@ -325,16 +378,11 @@ groups:
             data:
               u: Utils.delete?what=population_per_location
 
-      - sid: high_population_cities
-        name: Municípios em destaque de população maior que 500 mil habitantes
+      - sid: cities
+        name: Municípios em destaque
         component_params: responsive_cols=2&filter__location__verbose_name__minimum_parent_group=health_regions
         data:
-          - u: Utils.drop?what=location,period
-          - locations_ids: Composite.filter?from=population_per_location&where=total__gt__500000&get=location_id
-          - deaths_per_location: Composite.filter?from=deaths_per_location&where=location_id__in__locations_ids
-          - incidence_per_location: Composite.filter?from=incidence_per_location&where=location_id__in__locations_ids
-          - population_per_location: Composite.filter?from=population_per_location&where=location_id__in__locations_ids
-          - u: Utils.delete?what=locations_ids
+          u: Utils.drop?what=location,period
         cards:
           - sid: incidence
             name: Maior incidência
