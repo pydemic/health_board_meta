@@ -36,3 +36,9 @@ sources:
     description: Dados diários de casos e óbitos por COVID-19
     update_rate: Diário
     link: https://covid.saude.gov.br
+
+  - sid: covid_vaccines
+    name: Registros de Vacinação COVID-19
+    description: Dados diários da Campanha Nacional de Vacinação contra COVID-19
+    update_rate: Diário
+    link: https://opendatasus.saude.gov.br/dataset/covid-19-vacinacao
