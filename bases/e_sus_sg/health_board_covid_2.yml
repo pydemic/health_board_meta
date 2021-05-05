@@ -1,0 +1,498 @@
+# <name>:
+#   columns:
+#     <column_name>:
+#       type: required
+#       required: yes / no
+#       parsing: optional
+#   observations:
+#      observation_1
+#      observation_2
+
+sivep:
+  columns:
+    CS_GESTANT:
+      description: Idade gestacional da paciente
+      type: integer
+      required: yes
+      parsing:
+        1: 1º trimestre
+        2: 2º trimestre
+        3: 3º trimestre
+        4: Idade gestacional ignorada
+        5: Não
+        6: Não se aplica
+        9: Ignorado
+
+    AMOSTRA:
+      description: Indica se foi realizada coleta de amostra para realização de teste diagnóstico
+      type: integer
+      required: yes
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+
+    DT_COLETA:
+      description: Data da coleta da amostra para realização do teste diagnóstico
+      type: datetime
+      required: yes
+      parsing: ddmmaaaa
+      observations:
+        Data deve ser maior ou igual a Data de 1º sintomas e menor ou igual a data da digitação (atual)
+
+    TP_AMOSTRA:
+      description: Tipo da amostra clínica coletada para o teste diagnóstico
+      type: integer
+      required: yes
+      parsing:
+        1: Secreção de Naso-orofaringe
+        2: Lavado Broco-alveolar
+        3: Tecido post-mortem
+        4: Outra, qual?
+        5: LCR
+        9: Ignorado
+
+    OUT_AMOST:
+      description: Descrição do tipo da amostra clínica, caso diferente das listadas nas categorias do campo TP_AMOSTRA [tipo de amostra]
+      type: string
+      required: yes
+
+    TP_TES_AN:
+      description: Tipo do teste antigênico que foi realizado
+      type: integer
+      required: yes
+      parsing:
+        1: Imunofluorescência (IF)
+        2: Teste rápido antigênico
+
+    DT_RES_AN:
+      description: Data  do resultado do teste antigênico
+      type: datetime
+      parsing: ddmmaaaa
+
+    RES_AN:
+      description: Resultado do teste antigênico
+      type: integer
+      required: yes
+      parsing:
+        1: Positivo
+        2: Negativo
+        3: Inconclusivo
+        4: Não realizado
+        5: Aguardando resultado
+        9: Ignorado
+
+    POS_AN_FLU:
+      description: Resultado do Teste Antigênico que foi positivo para Influenza
+      type: integer
+      required: yes
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+
+    TP_FLU_AN:
+      description: Resultado do Teste Antigênico para o tipo de Influenza
+      type: integer
+      required: yes
+      parsing:
+        1: Influenza A
+        2: Influenza B
+
+    POS_AN_OUT:
+      description: Resultado do Teste Antigênico que foi positivo para outro vírus respiratório
+      type: integer
+      required: yes
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+
+    AN_SARS2:
+      description: Resultado do Teste Antigênico para Sars-Cov-2
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_VSR:
+      description: Resultado do Teste Antigênico para VSR
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_PARA1:
+      description: Resultado do Teste Antigênico para Parainfluenza 1
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_PARA2:
+      description: Resultado do Teste Antigênico para Parainfluenza 2
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_PARA3:
+      description: Resultado do Teste Antigênico para Parainfluenza 3
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_ADENO:
+      description: Resultado do Teste Antigênico para Adenovírus
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    AN_OUTRO:
+      description: Resultado do Teste Antigênico para outro vírus respiratório
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    DS_AN_OUT:
+      description: Nome do outro vírus respiratório identificado pelo Teste Antigênico.
+      type: string
+      required: yes
+      observation:
+        Habilitado se e campo POS_AN_OUT = 1
+
+    PCR_RESUL:
+      description: Resultado do teste RT-PCR
+      type: integer
+      required: yes
+      parsing:
+        1: Detectável
+        2: Não Detectável
+        3: Inconclusivo
+        4: Não realizado
+        5: Aguardando resultado
+        9: Ignorado
+
+    DT_PCR:
+      description: Data do resultado do teste RT-PCR
+      type: datetime
+      required: yes
+      parsing: ddmmaaaa
+      observation: Data deve ser maior ou igual a data da coleta DT_COLETA
+
+    POS_PCRFLU:
+      description: Resultado da RT-PCR foi positivo para Influenza
+      type: integer
+      required: yes
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+
+    TP_FLU_PCR:
+      description: Resultado diagnóstico do RT-PCR para o tipo de Influenza
+      type: integer
+      required: yes
+      parsing:
+        1: Influenza A
+        2: Influenza B
+
+    PCR_FLUASU:
+      description: Subtipo para Influenza A
+      type: integer
+      required: yes
+      parsing:
+        1: Influenza A(H1N1)pdm09
+        2: Influenza A(H3N2)
+        3: Influenza A não subtipado
+        4: Influenza A não subtipável
+        5: Inconclusivo
+        6: Outro
+
+    FLUASU_OUT:
+      description: Outro subtipo para Influenza A
+      type: string
+      required: yes
+
+    PCR_FLUBLI:
+      description: Linhagem para Influenza B
+      type: integer
+      required: yes
+      parsing:
+        1: Victoria
+        2: Yamagatha
+        3: Não realizado
+        4: Inconclusivo
+        5: Outro
+
+    FLUBLI_OUT:
+      description: Outra linhagem para Influenza B
+      type: string
+      required: yes
+
+    POS_PCROUT:
+      description: Resultado da RT-PCR foi positivo para outro vírus respiratório
+      type: integer
+      required: yes
+      parsing:
+        1: Sim
+        2: Não
+        9: Ignorado
+
+    PCR_SARS2:
+      description: Resultado diagnóstico do RT-PCR para Sars-Cov-2
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+    PCR_VSR:
+      description: Resultado diagnóstico do RT-PCR para VSR
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+    PCR_PARA1:
+      description: Resultado diagnóstico do RT-PCR para Parainfluenza 1
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_PARA2:
+      description: Resultado diagnóstico do RT-PCR para Parainfluenza 2
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_PARA3:
+      description: Resultado diagnóstico do RT-PCR para Parainfluenza 3
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_PARA4:
+      description: Resultado diagnóstico do RT-PCR para Parainfluenza 4
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_ADENO:
+      description: Resultado diagnóstico do RT-PCR para Adenovírus
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_METAP:
+      description: Resultado diagnóstico do RT-PCR para Metapneumovírus
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_BOCA:
+      description: Resultado diagnóstico do RT-PCR para Bocavírus
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_RINO:
+      description: Resultado diagnóstico do RT-PCR para Rinovírus
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+     PCR_OUTRO:
+      description: Resultado diagnóstico do RT-PCR para outro vírus respiratório
+      type: boolean
+      required: yes
+      parsing:
+        1: true
+      observation:
+        Habilitado se e campo POS_PCROUT = 1
+
+    DS_PCR_OUT:
+      description: Nome do outro vírus respiratório identificado pelo RT-PCR
+      type: string
+      required: yes
+      observation:
+        Habilitado se e campo PCR_OUTRO = 1
+
+    TP_AM_SOR:
+      description: Tipo de amostra sorológica que foi coletada para Sars-Cov-2
+      type: integer
+      required: yes
+      parsing:
+        1: Sangue/plasma/soro
+        2: Outra, qual?
+        9: Ignorado
+
+    SOR_OUT:
+      description: Descrição do tipo da amostra clínica, caso diferente das listadas no campo tipo de amostra sorológica para Sars-Cov-2
+      type: string
+      required: yes
+
+    TP_SOR:
+      description: Tipo do teste sorológico que foi realizado
+      type: integer
+      required: yes
+      parsing:
+        1: Teste rápido
+        2: Elisa
+        3: Quimiluminescência
+        4: Outro, qual
+
+    OUT_SOR:
+      description: Descrição do tipo de teste sorológico, caso diferente dos listados no campo TP_SOR [tipo do teste sorológico]
+      type: string
+      required: yes
+
+    SOR_OUT:
+      description: Outro tipo de amostra Sorológica
+      type: string
+      required: yes
+
+    RES_SOR:
+      description: Resultado da Sorologia para SARS-Cov-2
+      type: integer
+      required: yes
+      parsing:
+        1: Positivo
+        2: Negativo
+        3: Inconclusivo
+        4: Não realizado
+        5: Aguardando resultado
+        9: Ignorado
+
+    RES_IGG:
+      description: Resultado da Sorologia para SARS-Cov-2
+      type: string
+      required: yes
+      parsing: IgG
+
+    RES_IGM:
+      description: Resultado da Sorologia para SARS-Cov-2
+      type: string
+      required: yes
+      parsing: IgM
+
+    RES_IGA:
+      description: Resultado da Sorologia para SARS-Cov-2
+      type: string
+      required: yes
+      parsing: IgA
+
+    DT_RES:
+      description: Data do resultado do teste sorológico
+      type: datetime
+      required: yes
+      parsing: ddmmaaaa
+
+    CLASSI_FIN:
+      description: Diagnóstico final do caso. Se tiver resultados divergentes entre as metodologias laboratoriais, priorizar o resultado do RT- PCR.
+      type: integer
+      required: yes
+      parsing:
+        1: SRAG porinfluenza
+        2: SRAG por outro vírus respiratório
+        3: SRAG por outro agente etiológico
+        4: SRAG nãoespecificado
+        5: SRAG por COVID-19
+
+    CLASSI_OUT:
+      description: Descrição de qual outro agente etiológico foi identificado
+      type: string
+      required: yes
+      observation:
+        Preenchido se o campo CLASSI_FIN for preenchido com o valor 3
+
+    EVOLUCAO:
+      description: Evolução do caso
+      type: integer
+      required: yes
+      parsing:
+        1: Cura
+        2: Óbito
+        3: Óbito por outras causas
+        9: Ignorado
+
+
+esus:
+  columns:
+    condicoes:
+      observation: As categorias são separadas por vírgula e é possível selecionar mais de uma categoria
+      parsing: Gestante
+
+    estadoTeste:
+      observation:
+        Se selecionada a categoria Coletado é necessário preencher a data de coleta do teste
+        Se selecionada a categoria Concluído é necessário preencher os campos Data de coleta do teste, Tipo de teste e Resultado do teste
+      parsing:
+        Solicitado
+        Coletado
+        Concluído
+        Exame não solicitado
+
+    dataTeste:
+      observation:
+        A data da coleta deve ser maior que 01/01/2020 e menor que a data atual do sistema
+        Preenchimento obrigatório se o campo Estado do Teste = Coletado ou Concluído
+      parsing: aaaa-mm-dd
+
+    tipoTeste:
+      observation: Caso o paciente tenha resultado positivo ou negativo tanto para teste rápido quanto para RT-PCR, selecionar a opção RT-PCR.
+      parsing:
+        Teste Rápido - Anticorpo
+        Teste Rápido - Antígeno
+        RT-PCR
+        Enzimaimunoensaio-ELISA
+        Imunoensaio por Eletroquimioluminescência-ECLIA
+
+    resultadoTeste:
+      parsing:
+        Negativo
+        Positivo

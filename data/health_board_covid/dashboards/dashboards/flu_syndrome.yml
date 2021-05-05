@@ -1,6 +1,6 @@
 kind: dashboard
 sid: flu_syndrome
-name: Síndrome Gripal (SG/COVID)
+name: SG/COVID
 sources:
   - e_sus_sg
   - datasus_population

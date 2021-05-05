@@ -1,0 +1,277 @@
+kind: dashboard
+sid: comparative_covid
+name: Comparativo COVID
+sources:
+  - e_sus_sg
+  - health_board_situation_report
+  - sivep_srag
+  - datasus_population
+  - datasus_geo
+filters:
+  - filter_sid: period
+    options_params: from_date=2020-02-25&to_date_alias=yesterday
+
+  - location
+groups:
+  - sid: report
+    name: Sumário
+    data:
+      - period: Filters.get?what=period
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+
+      - sars_deaths: Database.Consolidations.Period.get?group=morbidities_sars_residence_deaths
+      - sr_deaths: Database.Consolidations.Period.get?group=morbidities_covid_reports_deaths
+
+      - fs_incidence: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_confirmed_cases
+      - sars_incidence: Database.Consolidations.Period.get?group=morbidities_sars_residence_confirmed_cases
+      - sr_incidence: Database.Consolidations.Period.get?group=morbidities_covid_reports_cases
+
+      - fs_discarded_samples: Database.Consolidations.Period.get?group=morbidities_flu_syndrome_residence_discarded_cases
+      - sars_samples: Database.Consolidations.Period.get?group=morbidities_sars_residence_samples
+
+      - population: Database.Consolidations.Yearly.get?group=demographics_populations_total&year=2020
+
+      - u: Utils.drop?what=location_id,period
+    sections:
+      - sid: incidence
+        name: Incidência
+        component_params: responsive_cols=3
+        data:
+          u: Utils.take?what=fs_incidence,sars_incidence,sr_incidence
+        cards:
+          - sid: sr_incidence
+            name: Incidência (Resumo COVID)
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              - u: Utils.take?what=sr_incidence
+              - incidence: Composite.replace?what=sr_incidence
+
+          - sid: fs_incidence
+            name: Incidência (SG/COVID)
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              - u: Utils.take?what=fs_incidence
+              - incidence: Composite.replace?what=fs_incidence
+
+          - sid: sars_incidence
+            name: Incidência (SRAG/COVID)
+            indicator: incidence
+            component: Incidence.scalar
+            data:
+              - u: Utils.take?what=sars_incidence
+              - incidence: Composite.replace?what=sars_incidence
+
+      - sid: incidence_rate
+        name: Taxa de Incidência
+        component_params: responsive_cols=3
+        data:
+          u: Utils.take?what=fs_incidence,sars_incidence,sr_incidence,population
+        cards:
+          - sid: sr_incidence_rate
+            name: Taxa de incidência (Resumo COVID)
+            indicator: incidence_rate
+            component: IncidenceRate.scalar
+            data:
+              - u: Utils.take?what=sr_incidence,population
+              - incidence: Composite.replace?what=sr_incidence
+
+          - sid: fs_incidence_rate
+            name: Taxa de incidência (SG/COVID)
+            indicator: incidence_rate
+            component: IncidenceRate.scalar
+            data:
+              - u: Utils.take?what=fs_incidence,population
+              - incidence: Composite.replace?what=fs_incidence
+
+          - sid: sars_incidence_rate
+            name: Taxa de incidência (SRAG/COVID)
+            indicator: incidence_rate
+            component: IncidenceRate.scalar
+            data:
+              - u: Utils.take?what=sars_incidence,population
+              - incidence: Composite.replace?what=sars_incidence
+
+      - sid: deaths
+        name: Óbitos
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=sars_deaths,sr_deaths
+        cards:
+          - sid: sr_deaths
+            name: Óbitos (Resumo COVID)
+            indicator: deaths
+            component: Deaths.scalar
+            data:
+              - u: Utils.take?what=sr_deaths
+              - deaths: Composite.replace?what=sr_deaths
+
+          - sid: sars_deaths
+            name: Óbitos (SRAG/COVID)
+            indicator: deaths
+            component: Deaths.scalar
+            data:
+              - u: Utils.take?what=sars_deaths
+              - deaths: Composite.replace?what=sars_deaths
+
+      - sid: death_rate
+        name: Taxa de mortalidade
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=sars_deaths,sr_deaths,population
+        cards:
+          - sid: sr_death_rate
+            name: Taxa de mortalidade (Resumo COVID)
+            indicator: death_rate
+            component: DeathRate.scalar
+            data:
+              - u: Utils.take?what=sr_deaths,population
+              - deaths: Composite.replace?what=sr_deaths
+
+          - sid: sars_death_rate
+            name: Taxa de mortalidade (SRAG/COVID)
+            indicator: death_rate
+            component: DeathRate.scalar
+            data:
+              - u: Utils.take?what=sars_deaths,population
+              - deaths: Composite.replace?what=sars_deaths
+
+      - sid: fatality_rate
+        name: Taxa de letalidade
+        component_params: responsive_cols=2
+        data:
+          u: Utils.take?what=sars_deaths,sr_deaths,sars_incidence,sr_incidence
+        cards:
+          - sid: sr_fatality_rate
+            name: Taxa de letalidade (Resumo COVID)
+            indicator: fatality_rate
+            component: FatalityRate.scalar
+            data:
+              - u: Utils.take?what=sr_deaths,sr_incidence
+              - deaths: Composite.replace?what=sr_deaths
+              - incidence: Composite.replace?what=sr_incidence
+
+          - sid: sars_fatality_rate
+            name: Taxa de letalidade (SRAG/COVID)
+            indicator: fatality_rate
+            component: FatalityRate.scalar
+            data:
+              - u: Utils.take?what=sars_deaths,sars_incidence
+              - deaths: Composite.replace?what=sars_deaths
+              - incidence: Composite.replace?what=sars_incidence
+
+      - sid: samples
+        name: Testes
+        component_params: responsive_cols=2
+        data:
+          - u: Utils.take?what=fs_discarded_samples,fs_incidence,sars_samples
+        cards:
+          - sid: fs_samples
+            name: Testes (SG/COVID)
+            indicator: samples
+            component: Samples.scalar?with_discarded=true
+            data:
+              - u: Utils.take?what=fs_discarded_samples,fs_incidence
+              - positive_samples: Composite.replace?what=fs_incidence
+              - discarded_samples: Composite.replace?what=fs_discarded_samples
+
+          - sid: sars_samples
+            name: Testes (SRAG/COVID)
+            indicator: samples
+            component: Samples.scalar
+            data:
+              - u: Utils.take?what=sars_samples
+              - samples: Composite.replace?what=sars_samples
+
+      - sid: positivity_rate
+        name: Taxa de positividade
+        component_params: responsive_cols=2
+        data:
+          - u: Utils.take?what=fs_discarded_samples,fs_incidence,sars_incidence,sars_samples
+        cards:
+          - sid: fs_positivity_rate
+            name: Taxa de positividade (SG/COVID)
+            indicator: positivity_rate
+            component: PositivityRate.scalar?with_discarded=true
+            data:
+              - u: Utils.take?what=fs_discarded_samples,fs_incidence
+              - positive_samples: Composite.replace?what=fs_incidence
+              - discarded_samples: Composite.replace?what=fs_discarded_samples
+
+          - sid: sars_positivity_rate
+            name: Taxa de positividade (SRAG/COVID)
+            indicator: positivity_rate
+            component: PositivityRate.scalar
+            data:
+              - u: Utils.take?what=sars_samples,sars_incidence
+              - positive_samples: Composite.replace?what=sars_incidence
+              - samples: Composite.replace?what=sars_samples
+
+      - sid: demographic
+        name: Demografia
+        data:
+          u: Utils.take?what=population
+        card:
+          sid: population
+          name: População residente
+          indicator: population
+          component: Population.scalar
+
+  - sid: epicurves
+    name: Epicurvas
+    data:
+      - period: Filters.get?what=period
+      - date_range: Filters.Time.period_date_range
+      - u: Utils.delete?what=period
+      - from_date: Composite.from?what=date_range&get=from
+      - to_date: Composite.from?what=date_range&get=to
+      - u: Utils.delete?what=date_range
+
+      - location: Filters.get?what=location
+      - location_id: Composite.from?what=location&get=id
+      - u: Utils.delete?what=location
+
+      - fs_daily_incidence: Database.Consolidations.Daily.list?group=morbidities_flu_syndrome_residence_confirmed_cases
+    sections:
+      - sid: incidence
+        name: Incidência
+        indicator: incidence
+        card:
+          sid: epicurve
+          name: Epicurva de incidência
+          component: CovidReports.Incidence.daily_epicurve
+          data:
+            - sars_daily_incidence: Database.Consolidations.Daily.list?group=morbidities_sars_residence_confirmed_cases
+            - sr_daily_incidence: Database.Consolidations.Daily.list?group=morbidities_covid_reports_cases
+            - u: Utils.take?what=fs_daily_incidence,sars_daily_incidence,sr_daily_incidence,from_date,to_date
+
+      - sid: deaths
+        name: Óbitos
+        indicator: deaths
+        data:
+          u: Utils.delete?what=fs_daily_incidence
+        card:
+          sid: epicurve
+          name: Epicurva de óbitos
+          component: CovidReports.Deaths.daily_epicurve
+          data:
+            - sars_daily_deaths: Database.Consolidations.Daily.list?group=morbidities_sars_residence_deaths
+            - sr_daily_deaths: Database.Consolidations.Daily.list?group=morbidities_covid_reports_deaths
+            - u: Utils.take?what=sars_daily_deaths,sr_daily_deaths,from_date,to_date
+
+      - sid: samples
+        name: Testes
+        indicator: samples
+        card:
+          sid: epicurve
+          name: Epicurva de testes
+          component: CovidReports.Samples.daily_epicurve
+          data:
+            - fs_daily_positive_samples: Composite.replace?what=fs_daily_incidence
+            - fs_daily_discarded_samples: Database.Consolidations.Daily.list?group=morbidities_flu_syndrome_residence_discarded_cases
+            - sars_daily_samples: Database.Consolidations.Daily.list?group=morbidities_sars_residence_samples
+            - u: Utils.take?what=fs_daily_positive_samples,fs_daily_discarded_samples,sars_daily_samples,from_date,to_date
